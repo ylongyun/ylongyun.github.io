@@ -493,10 +493,10 @@
 {
     LinkList* node;
     node = head-&gt;next;
-    int i = 0,k = 0;//k为作为判断结果的标志，k=1时表示已查找到，k=0表示未查找到。
+    int k = 0;//k为作为判断结果的标志，k=1时表示已查找到，k=0表示未查找到。
     while (node-&gt;next != NULL)
     {
-        ++i;
+
         if (node-&gt;data == data)判断该节点内的值是否是我们要查找的
         {
             ++k;
