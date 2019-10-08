@@ -5,8 +5,8 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="单链表, 庸者的笑柄">
-    <meta name="description" content="#数据结构-单链表在数据结构的学习中，第一个学的就是单链表，虽然在第一个学期的c语言中已经接触到这个东西，但实际上对链表还是一片模糊。在之前的几天里，慢慢地又把链表给学习了一遍，将单链表的基础操作自己写了一遍。如下。  
-##1.定义结构体">
+    <meta name="description" content="数据结构-单链表在数据结构的学习中，第一个学的就是单链表，虽然在第一个学期的c语言中已经接触到这个东西，但实际上对链表还是一片模糊。在之前的几天里，慢慢地又把链表给学习了一遍，将单链表的基础操作自己写了一遍。如下。  
+1.定义结构体在我理">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -435,14 +435,14 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>#数据结构-单链表<br>在数据结构的学习中，第一个学的就是单链表，虽然在第一个学期的c语言中已经接触到这个东西，但实际上对链表还是一片模糊。在之前的几天里，慢慢地又把链表给学习了一遍，将单链表的基础操作自己写了一遍。如下。  </p>
-<p>##1.定义结构体<br>在我理解中，链表就是由若干个结构体链接而成的，结构体内存放我们的数据，因此在使用链表之前要先根据你的需求定义结构体。   </p>
+                <h1 id="数据结构-单链表"><a href="#数据结构-单链表" class="headerlink" title="数据结构-单链表"></a>数据结构-单链表</h1><p>在数据结构的学习中，第一个学的就是单链表，虽然在第一个学期的c语言中已经接触到这个东西，但实际上对链表还是一片模糊。在之前的几天里，慢慢地又把链表给学习了一遍，将单链表的基础操作自己写了一遍。如下。  </p>
+<h2 id="1-定义结构体"><a href="#1-定义结构体" class="headerlink" title="1.定义结构体"></a>1.定义结构体</h2><p>在我理解中，链表就是由若干个结构体链接而成的，结构体内存放我们的数据，因此在使用链表之前要先根据你的需求定义结构体。   </p>
 <pre><code>typedef struct Node 
 {
    int data;
    struct Node* next;
 
-}LinkList;  </code></pre><p>##2.初始化链表（尾插法建立链表）<br>在链表中添加头节点会简化对链表的操作，头节点内不储存任何数据，只起到一个确定链表地址的作用。 </p>
+}LinkList;  </code></pre><h2 id="2-初始化链表（尾插法建立链表）"><a href="#2-初始化链表（尾插法建立链表）" class="headerlink" title="2.初始化链表（尾插法建立链表）"></a>2.初始化链表（尾插法建立链表）</h2><p>在链表中添加头节点会简化对链表的操作，头节点内不储存任何数据，只起到一个确定链表地址的作用。 </p>
 <pre><code>LinkList* creatList(int n)  
 {
    LinkList* head;  
@@ -470,7 +470,7 @@
 
     }
     return(head);
-}  </code></pre><p>##3.输出链表<br>链表的输出需要注意节点的更替，且要完整的输出，不能出现遗漏。  </p>
+}  </code></pre><h2 id="3-输出链表"><a href="#3-输出链表" class="headerlink" title="3.输出链表"></a>3.输出链表</h2><p>链表的输出需要注意节点的更替，且要完整的输出，不能出现遗漏。  </p>
 <pre><code>void print(LinkList* head)
 {
     LinkList* node;
@@ -487,8 +487,7 @@
    printf(&quot;%d\n&quot;, node-&gt;data);  
 /*这里需要注意，当while循环结束时，最后一个节点地内容并没有输出，由while的结束循环标志可知此时node  
 指向最后一个节点，因此我们只需要将node-&gt;data输出就可以了。*/
-}  </code></pre><p>##4.查找操作  </p>
-<p>###4.1按值查找<br>此操作用于确定链表中是否有某个元素。  </p>
+}  </code></pre><h2 id="4-查找操作"><a href="#4-查找操作" class="headerlink" title="4.查找操作"></a>4.查找操作</h2><h3 id="4-1按值查找"><a href="#4-1按值查找" class="headerlink" title="4.1按值查找"></a>4.1按值查找</h3><p>此操作用于确定链表中是否有某个元素。  </p>
 <pre><code>int find_data(LinkList* head, int data)
 {
     LinkList* node;
@@ -514,7 +513,7 @@
    else  
         return(-1);
         printf(&quot;链表内没有该元素&quot;);
-}  </code></pre><p>###4.2按顺序查找<br>此操作用于确定链表中某一个元素的位置  </p>
+}  </code></pre><h3 id="4-2按顺序查找"><a href="#4-2按顺序查找" class="headerlink" title="4.2按顺序查找"></a>4.2按顺序查找</h3><p>此操作用于确定链表中某一个元素的位置  </p>
 <pre><code>int find_order(LinkList* head, int num)  
 {
     int i = 1;
@@ -525,7 +524,7 @@
         node = node-&gt;next;//切换节点
     }
     return(i);//返回所查找的元素的位置顺序
-}</code></pre><p>##5.插入节点<br>更改链表的内容，在给定的序号后插入。  </p>
+}</code></pre><h2 id="5-插入节点"><a href="#5-插入节点" class="headerlink" title="5.插入节点"></a>5.插入节点</h2><p>更改链表的内容，在给定的序号后插入。  </p>
 <pre><code>void add(LinkList* head, int num)
 {
     LinkList* pre,* node;
@@ -539,7 +538,7 @@
     }
     node-&gt;next = pre-&gt;next;//将插入位置之后的节点连接到新节点的后面
     pre-&gt;next = node;//将新节点连接到插入位置前一个节点的后面
-}</code></pre><p>##6.删除节点<br>删除特定序号的节点，并释放该节点所占用的空间。  </p>
+}</code></pre><h2 id="6-删除节点"><a href="#6-删除节点" class="headerlink" title="6.删除节点"></a>6.删除节点</h2><p>删除特定序号的节点，并释放该节点所占用的空间。  </p>
 <pre><code>void delete(LinkList* head, int num)
 {
     LinkList* pre, * cur, * node;
@@ -554,7 +553,7 @@
     pre-&gt;next = cur;//将被删除的节点从链表中移除
     free(node);//释放被删除节点的内存
 
-}  </code></pre><p>##7.测量链表的长度<br>链表的长度不包括头节点，函数返回值为链表的长度。  </p>
+}  </code></pre><h2 id="7-测量链表的长度"><a href="#7-测量链表的长度" class="headerlink" title="7.测量链表的长度"></a>7.测量链表的长度</h2><p>链表的长度不包括头节点，函数返回值为链表的长度。  </p>
 <pre><code>int size(LinkList* head)
 {
     int i = 0;
@@ -719,8 +718,8 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            #数据结构-单链表在数据结构的学习中，第一个学的就是单链表，虽然在第一个学期的c语言中已经接触到这个东西，但实际上对链表还是一片模糊。在之前的几天里，慢慢地又把链表给学习了一遍，将单链表的基础操作自己写了一遍。如下。  
-##1.定义结构体
+                            数据结构-单链表在数据结构的学习中，第一个学的就是单链表，虽然在第一个学期的c语言中已经接触到这个东西，但实际上对链表还是一片模糊。在之前的几天里，慢慢地又把链表给学习了一遍，将单链表的基础操作自己写了一遍。如下。  
+1.定义结构体在我理
                         
                     </div>
                     <div class="publish-info">
