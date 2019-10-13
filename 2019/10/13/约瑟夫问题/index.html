@@ -7,7 +7,7 @@
     <meta name="keywords" content="庸者的笑柄">
     <meta name="description" content="
 title: 约瑟夫环问题date: 2019-10-13 19:08:02
-tags: 数据结构 约瑟夫环问题问题描述:编号为1.2..n的n个人按顺时针方向围坐一圈,每人持有一个密码(正整数)。开始时任选一个整数作为报数上界m,从第一">
+tags: 数据结构  约瑟夫环问题问题描述:编号为1.2..n的n个人按顺时针方向围坐一圈,每人持有一个密码(正整数)。开始时任选一个整数作为报数上界m,从第">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -345,7 +345,7 @@ tags: 数据结构 约瑟夫环问题问题描述:编号为1.2..n的n个人按�
             <div id="articleContent">
                 <hr>
 <p>title: 约瑟夫环问题<br>date: 2019-10-13 19:08:02</p>
-<h2 id="tags-数据结构"><a href="#tags-数据结构" class="headerlink" title="tags: 数据结构 "></a>tags: 数据结构 </h2><h2 id="约瑟夫环问题"><a href="#约瑟夫环问题" class="headerlink" title="约瑟夫环问题"></a>约瑟夫环问题</h2><p>问题描述:编号为1.2..n的n个人按顺时针方向围坐一圈,每人持有一个密码(正整数)。<br>开始时任选一个整数作为报数上界m,从第一个人开始顺时针自1开始顺序报数，报到m时停止报数。<br>报m的人出列，将他的密码作为新的m值,从他在顺时针方向上的下一个人开始重新从1报数，如此下去,<br>直至所有的人全部出列为止。试设计一个程序,求出出列顺序。    </p>
+<h2 id="tags-数据结构"><a href="#tags-数据结构" class="headerlink" title="tags: 数据结构  "></a>tags: 数据结构  </h2><h2 id="约瑟夫环问题"><a href="#约瑟夫环问题" class="headerlink" title="约瑟夫环问题"></a>约瑟夫环问题</h2><p>问题描述:编号为1.2..n的n个人按顺时针方向围坐一圈,每人持有一个密码(正整数)。<br>开始时任选一个整数作为报数上界m,从第一个人开始顺时针自1开始顺序报数，报到m时停止报数。<br>报m的人出列，将他的密码作为新的m值,从他在顺时针方向上的下一个人开始重新从1报数，如此下去,<br>直至所有的人全部出列为止。试设计一个程序,求出出列顺序。    </p>
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>在问题描述可以知道，在每一次报数中我们需要找到第m个成员，并读取他的密码作为下一次报数的m值，由于m值可能大于n(所有人的总数)，因此在一次报数中会出现成员重复的现象，因此采用无头结点的循环单链表的数据结构来存放数据。由于成员出列后就会将成员所在的节点删除，所以解决问题的关键就是找到要出列节点的前一个节点，从而删除出列的节点，然后读取出列节点的密码作为下一次报数的m值。循环上述步骤直到只剩下一个节点，然后将此节点出列，问题解决。    </p>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
@@ -515,7 +515,7 @@ int main()
                         
                             
 title: 约瑟夫环问题date: 2019-10-13 19:08:02
-tags: 数据结构 约瑟夫环问题问题描述:编号为1.2..n的n个人按顺时针方向围坐一圈,每人持有一个密码(正整数)。开始时任选一个整数作为报数上界m,从第一
+tags: 数据结构  约瑟夫环问题问题描述:编号为1.2..n的n个人按顺时针方向围坐一圈,每人持有一个密码(正整数)。开始时任选一个整数作为报数上界m,从第
                         
                     </div>
                     <div class="publish-info">
