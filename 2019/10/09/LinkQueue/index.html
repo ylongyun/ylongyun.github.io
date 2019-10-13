@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="LinkQueue, 庸者的笑柄">
-    <meta name="description" content="初识队列在今天的数据结构课上老师讲到了队列，我仔细看了看书上的描述，感觉链式队列就是链表的简化版。对链式队列的操作只有入队和出队，入队就是在队尾插入一个节点，而出队就是在队头添加一个节点。实际上队列的数据存储方式和链表是一样的，都是结构体，">
+    <meta name="keywords" content="Stack, 庸者的笑柄">
+    <meta name="description" content="初识栈栈（stack）又名堆栈，它是一种运算受限的线性表。限定仅在表尾进行插入和删除操作的线性表。这一端被称为栈顶，相对地，把另一端称为栈底。向一个栈插入新元素又称作进栈、入栈或压栈，它是把新元素放到栈顶元素的上面，使之成为新的栈顶元素；从">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>LinkQueue | 庸者的笑柄</title>
+    <title>Stack | 庸者的笑柄</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -285,13 +285,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        LinkQueue
+                        Stack
                     </div>
                 </div>
             </div>
@@ -345,8 +345,39 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="初识队列"><a href="#初识队列" class="headerlink" title="初识队列"></a>初识队列</h1><p>在今天的数据结构课上老师讲到了队列，我仔细看了看书上的描述，感觉链式队列就是链表的简化版。对链式队列的操作只有入队和出队，入队就是在队尾插入一个节点，而出队就是在队头添加一个节点。实际上队列的数据存储方式和链表是一样的，都是结构体，结构体内分为数据域和指针域，其中数据域存储数据，指针域存储下一个节点的地址。同时链式队列比单链表多了一个尾指针，以此来完成入队操作。</p>
-
+                <h2 id="初识栈"><a href="#初识栈" class="headerlink" title="初识栈"></a>初识栈</h2><p>栈（stack）又名堆栈，它是一种运算受限的线性表。限定仅在表尾进行插入和删除操作的线性表。这一端被称为栈顶，相对地，把另一端称为栈底。向一个栈插入新元素又称作进栈、入栈或压栈，它是把新元素放到栈顶元素的上面，使之成为新的栈顶元素；从一个栈删除元素又称作出栈或退栈，它是把栈顶元素删除掉，使其相邻的元素成为新的栈顶元素。  </p>
+<hr>
+<p>刚开始学习栈时，我是充满了对新知识的好奇的。结果等我看完书上的描述，脑海之中就想到了链表，心想这东西和链表储存数据的形式是一样的呀，就是限定了对它的操作，只允许在表尾进行插入和删除节点，具体的操作和链表一摸一样，或者说比链表简单一点。白瞎了我的好奇，换汤不换药而已。因为之前写过对链表的操作了，所以今天就只写了对顺序栈的操作。如下：  </p>
+<h3 id="1-定义顺序栈"><a href="#1-定义顺序栈" class="headerlink" title="1.定义顺序栈"></a>1.定义顺序栈</h3><pre><code>typedef struct Stack
+{
+    int data[100];
+    int top;
+}LinkStack;  </code></pre><h3 id="2-初始化栈"><a href="#2-初始化栈" class="headerlink" title="2.初始化栈"></a>2.初始化栈</h3><pre><code>LinkStack *initStack(LinkStack *stack)//初始化栈 
+{
+    stack-&gt;top = -1;
+    return stack;
+}  </code></pre><h3 id="3-入栈"><a href="#3-入栈" class="headerlink" title="3.入栈"></a>3.入栈</h3><pre><code>void enterStack(LinkStack *stack)//入栈操作 
+{
+    if(stack-&gt;top+1&gt;99)
+        printf(&quot;栈已满&quot;);
+    else
+    {
+        stack-&gt;top++;//栈顶后移 
+        scanf(&quot;%d&quot;,&amp;stack-&gt;data[stack-&gt;top]);//输入新成员元素 
+    } 
+}  </code></pre><h3 id="4-出栈"><a href="#4-出栈" class="headerlink" title="4.出栈"></a>4.出栈</h3><pre><code>int outStack(LinkStack *stack)//出栈操作 
+{
+    if(stack-&gt;top == -1)
+    {
+        printf(&quot;栈为空&quot;);
+        return -1;
+    }
+    else
+    {
+        stack-&gt;top--;//栈顶前移
+        return stack-&gt;data[stack-&gt;top+1];//返回新成员元素 
+     } 
+}</code></pre><h3 id="That-is-all"><a href="#That-is-all" class="headerlink" title="That is all."></a>That is all.</h3>
             </div>
             <hr/>
 
@@ -384,7 +415,7 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《LinkQueue》
+                    《Stack》
                 </span> by
             <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/10/09/LinkQueue/" property="cc:attributionName"
                rel="cc:attributionURL">
@@ -426,30 +457,31 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2019/10/09/LinkQueue/">
+                <a href="/2019/10/13/约瑟夫问题/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="LinkQueue">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">LinkQueue</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            初识队列在今天的数据结构课上老师讲到了队列，我仔细看了看书上的描述，感觉链式队列就是链表的简化版。对链式队列的操作只有入队和出队，入队就是在队尾插入一个节点，而出队就是在队头添加一个节点。实际上队列的数据存储方式和链表是一样的，都是结构体，
+                            
+title: 约瑟夫环问题date: 2019-10-13 19:08:02
+tags: 数据结构 约瑟夫环问题问题描述:编号为1.2..n的n个人按顺时针方向围坐一圈,每人持有一个密码(正整数)。开始时任选一个整数作为报数上界m,从第一
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock fa-fw icon-date"></i>2019-10-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock fa-fw icon-date"></i>2019-10-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -457,15 +489,6 @@
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/数据结构/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
                 </div>
                 
             </div>
