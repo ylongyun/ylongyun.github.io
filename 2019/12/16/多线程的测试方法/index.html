@@ -3,24 +3,24 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>单例设计模式 | 庸者的笑柄</title>
+  <title>多线程的测试方法 | 庸者的笑柄</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="单例设计模式何为设计模式软件设计模式（Design pattern），又称设计模式，是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性、程序的重用性。   其实说白了，就是在开发软件的过程中针对某一类型的问题，采用特定的解决方式，俗称“套路”。   何为单例设计模式在面向对象的编程中，我们采用特定的方式使得某一个">
-<meta name="keywords" content="设计模式">
+  <meta name="description" content="Thread类中的常用方法1. start():启动当前线程；调用当前线程的run()。2. run(): 通常需要重写Thread类中的此方法，将创建的线程要执行的操作声明在此方法中。3. currentThread():静态方法，返回执行当前代码的线程。4. getName():获取当前线程的名字。5. setName():设置当前线程的名字。6. yield():释放当前cpu的执行权。7.">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例设计模式">
-<meta property="og:url" content="https://ylongyun.github.io/2019/11/29/单例设计模式/index.html">
+<meta property="og:title" content="多线程的测试方法">
+<meta property="og:url" content="https://ylongyun.github.io/2019/12/16/多线程的测试方法/index.html">
 <meta property="og:site_name" content="庸者的笑柄">
-<meta property="og:description" content="单例设计模式何为设计模式软件设计模式（Design pattern），又称设计模式，是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性、程序的重用性。   其实说白了，就是在开发软件的过程中针对某一类型的问题，采用特定的解决方式，俗称“套路”。   何为单例设计模式在面向对象的编程中，我们采用特定的方式使得某一个">
+<meta property="og:description" content="Thread类中的常用方法1. start():启动当前线程；调用当前线程的run()。2. run(): 通常需要重写Thread类中的此方法，将创建的线程要执行的操作声明在此方法中。3. currentThread():静态方法，返回执行当前代码的线程。4. getName():获取当前线程的名字。5. setName():设置当前线程的名字。6. yield():释放当前cpu的执行权。7.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-29T00:50:11.434Z">
+<meta property="og:updated_time" content="2019-12-16T03:23:22.553Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单例设计模式">
-<meta name="twitter:description" content="单例设计模式何为设计模式软件设计模式（Design pattern），又称设计模式，是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性、程序的重用性。   其实说白了，就是在开发软件的过程中针对某一类型的问题，采用特定的解决方式，俗称“套路”。   何为单例设计模式在面向对象的编程中，我们采用特定的方式使得某一个">
+<meta name="twitter:title" content="多线程的测试方法">
+<meta name="twitter:description" content="Thread类中的常用方法1. start():启动当前线程；调用当前线程的run()。2. run(): 通常需要重写Thread类中的此方法，将创建的线程要执行的操作声明在此方法中。3. currentThread():静态方法，返回执行当前代码的线程。4. getName():获取当前线程的名字。5. setName():设置当前线程的名字。6. yield():释放当前cpu的执行权。7.">
   
     <link rel="alternative" href="/atom.xml" title="庸者的笑柄" type="application/atom+xml">
   
@@ -166,11 +166,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-单例设计模式" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-多线程的测试方法" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/11/29/单例设计模式/" class="article-date">
-  	<time datetime="2019-11-29T00:18:30.000Z" itemprop="datePublished">2019-11-29</time>
+      <a href="/2019/12/16/多线程的测试方法/" class="article-date">
+  	<time datetime="2019-12-16T03:18:30.000Z" itemprop="datePublished">2019-12-16</time>
 </a>
     </div>
   
@@ -183,7 +183,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      单例设计模式
+      多线程的测试方法
       
     </h1>
   
@@ -193,7 +193,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
 	</div>
 
         
@@ -205,59 +205,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a>单例设计模式</h1><h2 id="何为设计模式"><a href="#何为设计模式" class="headerlink" title="何为设计模式"></a>何为设计模式</h2><p>软件设计模式（Design pattern），又称设计模式，是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性、程序的重用性。  </p>
-<p>其实说白了，就是在开发软件的过程中针对某一类型的问题，采用特定的解决方式，俗称“套路”。  </p>
-<h2 id="何为单例设计模式"><a href="#何为单例设计模式" class="headerlink" title="何为单例设计模式"></a>何为单例设计模式</h2><p>在面向对象的编程中，我们采用特定的方式使得某一个类在整个软件按系统中只存在一个对象实例。这个特定的方式就叫做单例设计模式。  </p>
-<h2 id="单例模式的实现方法"><a href="#单例模式的实现方法" class="headerlink" title="单例模式的实现方法"></a>单例模式的实现方法</h2><h3 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h3><pre><code>class Bank{
-
-    //1.私有化类的构造器
-    private Bank(){
-
-    }
-
-    //2.内部创建类的对象
-    //4.要求此对象也必须声明为静态的
-    private static Bank instance = new Bank();
-
-    //3.提供公共的静态的方法，返回类的对象
-    public static Bank getInstance(){
-    return instance;
-    }
-}  </code></pre><h3 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h3><pre><code>public class SingletonTest {
-    public static void main(String[] args) {
-
-        Order order1 = Order.getInstance();
-        Order order2 = Order.getInstance();
-
-        System.out.println(order1 == order2);
-
-    }
-}
-
-
-class Order{
-
-    //1.私有化类的构造器
-    private Order(){
-
-    }
-
-    //2.声明当前类对象，没有初始化
-    //4.此对象也必须声明为static的
-    private static Order instance = null;
-
-    //3.声明public、static的返回当前类对象的方法
-    public static Order getInstance(){
-
-        if(instance == null){
-
-            instance = new Order();
-
-        }
-    return instance;
-}  </code></pre><h2 id="两种方式的区别"><a href="#两种方式的区别" class="headerlink" title="两种方式的区别"></a>两种方式的区别</h2><h3 id="饿汉式-1"><a href="#饿汉式-1" class="headerlink" title="饿汉式"></a>饿汉式</h3><p>坏处：对象加载时间过长。<br>好处：饿汉式是线程安全的。</p>
-<h3 id="懒汉式-1"><a href="#懒汉式-1" class="headerlink" title="懒汉式"></a>懒汉式</h3><p>好处：延迟对象的创建。<br>坏处：线程不安全。</p>
-
+        <h2 id="Thread类中的常用方法"><a href="#Thread类中的常用方法" class="headerlink" title="Thread类中的常用方法"></a>Thread类中的常用方法</h2><h3 id="1-start-启动当前线程；调用当前线程的run-。"><a href="#1-start-启动当前线程；调用当前线程的run-。" class="headerlink" title="1. start():启动当前线程；调用当前线程的run()。"></a>1. start():启动当前线程；调用当前线程的run()。</h3><h3 id="2-run-通常需要重写Thread类中的此方法，将创建的线程要执行的操作声明在此方法中。"><a href="#2-run-通常需要重写Thread类中的此方法，将创建的线程要执行的操作声明在此方法中。" class="headerlink" title="2. run(): 通常需要重写Thread类中的此方法，将创建的线程要执行的操作声明在此方法中。"></a>2. run(): 通常需要重写Thread类中的此方法，将创建的线程要执行的操作声明在此方法中。</h3><h3 id="3-currentThread-静态方法，返回执行当前代码的线程。"><a href="#3-currentThread-静态方法，返回执行当前代码的线程。" class="headerlink" title="3. currentThread():静态方法，返回执行当前代码的线程。"></a>3. currentThread():静态方法，返回执行当前代码的线程。</h3><h3 id="4-getName-获取当前线程的名字。"><a href="#4-getName-获取当前线程的名字。" class="headerlink" title="4. getName():获取当前线程的名字。"></a>4. getName():获取当前线程的名字。</h3><h3 id="5-setName-设置当前线程的名字。"><a href="#5-setName-设置当前线程的名字。" class="headerlink" title="5. setName():设置当前线程的名字。"></a>5. setName():设置当前线程的名字。</h3><h3 id="6-yield-释放当前cpu的执行权。"><a href="#6-yield-释放当前cpu的执行权。" class="headerlink" title="6. yield():释放当前cpu的执行权。"></a>6. yield():释放当前cpu的执行权。</h3><h3 id="7-join-在线程a中调用线程b的join-此时线程a就进入阻塞状态，直到线程b完全执行完以后，线程a才"><a href="#7-join-在线程a中调用线程b的join-此时线程a就进入阻塞状态，直到线程b完全执行完以后，线程a才" class="headerlink" title="7. join():在线程a中调用线程b的join(),此时线程a就进入阻塞状态，直到线程b完全执行完以后，线程a才"></a>7. join():在线程a中调用线程b的join(),此时线程a就进入阻塞状态，直到线程b完全执行完以后，线程a才</h3><p> 结束阻塞状态。</p>
+<h3 id="8-stop-已过时。当执行此方法时，强制结束当前线程。"><a href="#8-stop-已过时。当执行此方法时，强制结束当前线程。" class="headerlink" title="8. stop():已过时。当执行此方法时，强制结束当前线程。"></a>8. stop():已过时。当执行此方法时，强制结束当前线程。</h3><h3 id="9-sleep-long-millitime-让当前线程“睡眠”指定的millitime毫秒。在指定的millitime毫秒时间内，当前线程是阻塞状态。"><a href="#9-sleep-long-millitime-让当前线程“睡眠”指定的millitime毫秒。在指定的millitime毫秒时间内，当前线程是阻塞状态。" class="headerlink" title="9. sleep(long millitime):让当前线程“睡眠”指定的millitime毫秒。在指定的millitime毫秒时间内，当前线程是阻塞状态。"></a>9. sleep(long millitime):让当前线程“睡眠”指定的millitime毫秒。在指定的millitime毫秒时间内，当前线程是阻塞状态。</h3><h3 id="10-isAlive-判断当前线程是否存活。"><a href="#10-isAlive-判断当前线程是否存活。" class="headerlink" title="10. isAlive():判断当前线程是否存活。"></a>10. isAlive():判断当前线程是否存活。</h3>
       
     </div>
     
@@ -266,18 +215,9 @@ class Order{
     
 <nav id="article-nav">
   
-    <a href="/2019/12/06/接口的使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">&lt;</strong>
-      <div class="article-nav-title">
-        
-          接口的使用
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/11/26/与包有关的关键字/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">与包有关的关键字</div>
+    <a href="/2019/12/06/接口的使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">接口的使用</div>
       <strong class="article-nav-caption">&gt;</strong>
     </a>
   
@@ -287,7 +227,7 @@ class Order{
 </article>
 
 
-<div class="ds-share share" data-thread-key="单例设计模式" data-title="单例设计模式" data-url="https://ylongyun.github.io/2019/11/29/单例设计模式/"  data-images="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" data-content="单例设计模式">
+<div class="ds-share share" data-thread-key="多线程的测试方法" data-title="多线程的测试方法" data-url="https://ylongyun.github.io/2019/12/16/多线程的测试方法/"  data-images="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" data-content="多线程的测试方法">
     <div class="ds-share-inline">
       <ul  class="ds-share-icons-16">
       	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
