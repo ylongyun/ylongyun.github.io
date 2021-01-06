@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>庸者的笑柄</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Python Study Day03 while循环结构    12345678while 循环条件 :    循环语句一    循环语句二    循环语句三    循环语句四    ……	最后一句循环语句循环结束后第一条语句   替换print函数末尾的换行符   1print(&quot;*&quot;, end=&quot;&quot;)   字符串end会替换print函数默认在输出内容添加的换行符   练手题目：给定一个排序数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="庸者的笑柄">
+<meta property="og:url" content="https://ylongyun.github.io/2021/01/05/杨龙云-Day03/index.html">
+<meta property="og:site_name" content="庸者的笑柄">
+<meta property="og:description" content="Python Study Day03 while循环结构    12345678while 循环条件 :    循环语句一    循环语句二    循环语句三    循环语句四    ……	最后一句循环语句循环结束后第一条语句   替换print函数末尾的换行符   1print(&quot;*&quot;, end=&quot;&quot;)   字符串end会替换print函数默认在输出内容添加的换行符   练手题目：给定一个排序数">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-01-06T12:24:21.711Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="庸者的笑柄">
+<meta name="twitter:description" content="Python Study Day03 while循环结构    12345678while 循环条件 :    循环语句一    循环语句二    循环语句三    循环语句四    ……	最后一句循环语句循环结束后第一条语句   替换print函数末尾的换行符   1print(&quot;*&quot;, end=&quot;&quot;)   字符串end会替换print函数默认在输出内容添加的换行符   练手题目：给定一个排序数">
+  
+    <link rel="alternative" href="/atom.xml" title="庸者的笑柄" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">ylongyun</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">ylongyun</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">ylongyun</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-杨龙云-Day03" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/01/05/杨龙云-Day03/" class="article-date">
+  	<time datetime="2021-01-05T09:55:48.695Z" itemprop="datePublished">2021-01-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Python-Study-Day03"><a href="#Python-Study-Day03" class="headerlink" title="Python Study Day03"></a>Python Study Day03</h1><ul>
+<li>while循环结构  </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 循环条件 :</span><br><span class="line">    循环语句一</span><br><span class="line">    循环语句二</span><br><span class="line">    循环语句三</span><br><span class="line">    循环语句四</span><br><span class="line">    ……</span><br><span class="line">	最后一句循环语句</span><br><span class="line">循环结束后第一条语句</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>替换print函数末尾的换行符  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"*"</span>, end=<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>字符串end会替换print函数默认在输出内容添加的换行符</p>
+</blockquote>
+</li>
+<li><p>练手题目：给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。你可以假设数组中无重复元素。</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">    l = len(nums)</span><br><span class="line">    <span class="keyword">if</span> target &gt; nums[l<span class="number">-1</span>] :</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line">    i = <span class="number">0</span> </span><br><span class="line">    <span class="keyword">while</span> i &lt; l :</span><br><span class="line">        <span class="keyword">if</span> nums[i] == target :</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">elif</span> nums[i] &gt; target :</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        i=i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>练手题目：打印九九乘法表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">multiple_table</span><span class="params">()</span>:</span></span><br><span class="line">i,j=<span class="number">1</span>,<span class="number">1</span></span><br><span class="line"><span class="keyword">while</span>(i &lt; <span class="number">10</span>) :</span><br><span class="line">   	j = <span class="number">1</span></span><br><span class="line">  		<span class="keyword">while</span>(j &lt;= i) :</span><br><span class="line">      		print(<span class="string">f'<span class="subst">&#123;j&#125;</span>*<span class="subst">&#123;i&#125;</span>=<span class="subst">&#123;i*j&#125;</span>'</span>,end=<span class="string">"\t"</span>)</span><br><span class="line">      		j += <span class="number">1</span></span><br><span class="line">  		print(<span class="string">""</span>)</span><br><span class="line">  		i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>函数的定义  </p>
+<ul>
+<li><p>函数代码块以 <strong>def</strong> 关键词开头，后接函数标识符名称和圆括号 <strong>()</strong>。</p>
+</li>
+<li><p>任何传入参数和自变量必须放在圆括号中间，圆括号之间可以用于定义参数。</p>
+</li>
+<li><p>函数的第一行语句可以选择性地使用文档字符串—用于存放函数说明。</p>
+</li>
+<li><p>函数内容以冒号 <strong>:</strong> 起始，并且缩进。</p>
+</li>
+<li><p><strong>return [表达式]</strong> 结束函数，选择性地返回一个值给调用方，不带表达式的 return 相当于返回 None。  </p>
+<blockquote>
+<p>格式如下     </p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> 函数名（参数列表）:</span></span><br><span class="line">    函数体</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>调用函数练手  </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> List</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">    l = len(nums)</span><br><span class="line">    <span class="keyword">if</span> target &gt; nums[l - <span class="number">1</span>]:</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; l:</span><br><span class="line">        <span class="keyword">if</span> nums[i] == target:</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">elif</span> nums[i] &gt; target:</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        i = i + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">8</span>]</span><br><span class="line">x = <span class="number">5</span></span><br><span class="line">print(searchInsert(list1, x))</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>range()</code>用法  </p>
+<ul>
+<li><p>函数说明  </p>
+<ul>
+<li>Python3 range() 函数返回的是一个可迭代对象（类型是对象），而不是列表类型， 所以打印的时候不会打印列表。</li>
+<li>Python3 list() 函数是对象迭代器，可以把range()返回的可迭代对象转为一个列表，返回的变量类型为列表。</li>
+</ul>
+</li>
+<li><p>函数语法  </p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">range(stop)</span><br><span class="line">range(start, stop[, step])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>参数说明  <ul>
+<li>start: 计数从 start 开始。默认是从 0 开始。例如range（5）等价于range（0， 5）;  </li>
+<li>stop: 计数到 stop 结束，但不包括 stop。例如：range（0， 5） 是[0, 1, 2, 3, 4]没有5;  </li>
+<li>step：步长，默认为1。例如：range（0， 5） 等价于 range(0, 5, 1);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>for循环  </p>
+<ul>
+<li><p>for循环结构</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for &lt;variable&gt; in &lt;sequence&gt;:</span><br><span class="line">    &lt;statements&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>循环示例</p>
+<ul>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">languages = [<span class="string">"一个憨憨"</span>, <span class="string">"两个憨憨"</span>] </span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> languages:</span><br><span class="line">	<span class="keyword">print</span> (x)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">结果显示</span></span><br><span class="line"><span class="string">一个憨憨</span></span><br><span class="line"><span class="string">两个憨憨</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">	print(i)</span><br><span class="line">	</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">显示结果：</span></span><br><span class="line"><span class="string">0</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string">2</span></span><br><span class="line"><span class="string">3</span></span><br><span class="line"><span class="string">4</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/04/杨龙云-Day02/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="杨龙云-Day03" data-title="" data-url="https://ylongyun.github.io/2021/01/05/杨龙云-Day03/"  data-images="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" data-content="">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2021 ylongyun
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
