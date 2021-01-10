@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>杨龙云-day05 | 庸者的笑柄</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Python Study Day04Dictionary字典 说明    字典是另一种可变容器模型，且可存储任意类型对象。    字典的每个键值 key=&amp;gt;value 对用冒号 : 分割，每个对之间用逗号(,)分割，整个字典包括在花括号 {} 中 ,格式如下所示：   1d = &amp;#123;key1 : value1, key2 : value2, key3 : value3 &amp;#125;">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="杨龙云-day05">
+<meta property="og:url" content="https://ylongyun.github.io/2021/01/08/杨龙云-day05/index.html">
+<meta property="og:site_name" content="庸者的笑柄">
+<meta property="og:description" content="Python Study Day04Dictionary字典 说明    字典是另一种可变容器模型，且可存储任意类型对象。    字典的每个键值 key=&amp;gt;value 对用冒号 : 分割，每个对之间用逗号(,)分割，整个字典包括在花括号 {} 中 ,格式如下所示：   1d = &amp;#123;key1 : value1, key2 : value2, key3 : value3 &amp;#125;">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-01-08T14:33:02.687Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="杨龙云-day05">
+<meta name="twitter:description" content="Python Study Day04Dictionary字典 说明    字典是另一种可变容器模型，且可存储任意类型对象。    字典的每个键值 key=&amp;gt;value 对用冒号 : 分割，每个对之间用逗号(,)分割，整个字典包括在花括号 {} 中 ,格式如下所示：   1d = &amp;#123;key1 : value1, key2 : value2, key3 : value3 &amp;#125;">
+  
+    <link rel="alternative" href="/atom.xml" title="庸者的笑柄" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">ylongyun</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">ylongyun</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">ylongyun</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-杨龙云-day05" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/01/08/杨龙云-day05/" class="article-date">
+  	<time datetime="2021-01-08T10:47:24.000Z" itemprop="datePublished">2021-01-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      杨龙云-day05
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Python-Study-Day04"><a href="#Python-Study-Day04" class="headerlink" title="Python Study Day04"></a>Python Study Day04</h2><h4 id="Dictionary字典"><a href="#Dictionary字典" class="headerlink" title="Dictionary字典"></a><code>Dictionary</code>字典</h4><ul>
+<li><p>说明  </p>
+<ul>
+<li><p>字典是另一种可变容器模型，且可存储任意类型对象。  </p>
+</li>
+<li><p>字典的每个键值 <strong>key=&gt;value</strong> 对用冒号 <strong>:</strong> 分割，每个对之间用逗号(<strong>,</strong>)分割，整个字典包括在花括号 <strong>{}</strong> 中 ,格式如下所示：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;key1 : value1, key2 : value2, key3 : value3 &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>键必须是唯一的，但值则不必。</p>
+</li>
+</ul>
+</li>
+<li><p>字典访问方式  </p>
+<blockquote>
+<p>把相应的键放入到方括号中，如下实例:</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;<span class="string">'Name'</span>: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: <span class="number">7</span>, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">print</span> (<span class="string">"dict['Name']: "</span>, dict[<span class="string">'Name'</span>])</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"dict['Age']: "</span>, dict[<span class="string">'Age'</span>])</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>dict[‘Name’]:  Runoob<br>dict[‘Age’]:  7</p>
+</blockquote>
+<ul>
+<li><p>修改字典  </p>
+<ul>
+<li><p>向字典添加新内容的方法是增加新的键/值对，修改或删除已有键/值对如下实例:  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;<span class="string">'Name'</span>: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: <span class="number">7</span>, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line">dict[<span class="string">'Age'</span>] = <span class="number">8</span>               <span class="comment"># 更新 Age</span></span><br><span class="line">dict[<span class="string">'School'</span>] = <span class="string">"杨龙云"</span>  <span class="comment"># 添加信息</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">print</span> (<span class="string">"dict['Age']: "</span>, dict[<span class="string">'Age'</span>]) <span class="comment"># 打印 8</span></span><br><span class="line"><span class="keyword">print</span> (<span class="string">"dict['School']: "</span>, dict[<span class="string">'School'</span>]) <span class="comment"># 打印 杨龙云</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>删除字典元素  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dict = &#123;<span class="string">'Name'</span>: <span class="string">'Runoob'</span>, <span class="string">'Age'</span>: <span class="number">7</span>, <span class="string">'Class'</span>: <span class="string">'First'</span>&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">del</span> dict[<span class="string">'Name'</span>] <span class="comment"># 删除键 'Name'</span></span><br><span class="line">dict.clear()     <span class="comment"># 清空字典</span></span><br><span class="line"><span class="keyword">del</span> dict         <span class="comment"># 删除字典</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字典特性  </p>
+<ol>
+<li>字典值可以是任何的 python 对象，既可以是标准的对象，也可以是用户定义的，但键不行。  </li>
+<li>不允许同一个键出现两次。创建时如果同一个键被赋值两次，那么第二次赋值会覆盖掉第一次的赋值。  </li>
+<li>键必须不可变，所以可以用数字，字符串或元组充当，而用列表不行。</li>
+</ol>
+</li>
+<li><p>Dictionary包含函数  </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>radiansdict.clear()</td>
+<td>删除字典内所有元素</td>
+</tr>
+<tr>
+<td>radiansdict.copy()</td>
+<td>返回一个字典的浅复制</td>
+</tr>
+<tr>
+<td>radiansdict.fromkeys()</td>
+<td>创建一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值</td>
+</tr>
+<tr>
+<td>radiansdict.get(key, default=None)</td>
+<td>返回指定键的值，如果键不在字典中返回 default 设置的默认值</td>
+</tr>
+<tr>
+<td>key in dict</td>
+<td>如果键在字典dict里返回true，否则返回false</td>
+</tr>
+<tr>
+<td>radiansdict.items()</td>
+<td>以列表返回可遍历的(键, 值) 元组数组</td>
+</tr>
+<tr>
+<td>radiansdict.keys()</td>
+<td>返回一个迭代器，可以使用 list() 来转换为列表</td>
+</tr>
+<tr>
+<td>radiansdict.setdefault(key, default=None)</td>
+<td>和get()类似, 但如果键不存在于字典中，将会添加键并将值设为default</td>
+</tr>
+<tr>
+<td>radiansdict.update(dict2)</td>
+<td>把字典dict2的键/值对更新到dict里</td>
+</tr>
+<tr>
+<td>radiansdict.values()</td>
+<td>返回一个迭代器，可以使用 list() 来转换为列表</td>
+</tr>
+<tr>
+<td>pop(key[,default])</td>
+<td>删除字典给定键 key 所对应的值，返回值为被删除的值。key值必须给出。 否则，返回default值。</td>
+</tr>
+<tr>
+<td>popitem()</td>
+<td>随机返回并删除字典中的最后一对键和值。</td>
+</tr>
+</tbody></table>
+<hr>
+<h4 id="set集合"><a href="#set集合" class="headerlink" title="set集合"></a><code>set</code>集合</h4><ul>
+<li><p>说明</p>
+<blockquote>
+<ol>
+<li>集合（set）是一个无序的不重复元素序列。(所以自带去重功能(<em>^_^</em>))</li>
+<li>可以使用大括号 <strong>{ }</strong> 或者 <strong>set()</strong> 函数创建集合，注意：创建一个空集合必须用 <strong>set()</strong> 而不是 <strong>{ }</strong>，因为 <strong>{ }</strong> 是用来创建一个空字典。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>基本操作  </p>
+</li>
+</ul>
+<ol>
+<li><p>添加元素  </p>
+<p>语法格式如下：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.add( x )</span><br></pre></td></tr></table></figure>
+
+<p>或者换一个方法：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.update( x ) <span class="comment"># 此方法添加的参数可以是列表，元组，字典等，同时x可以有多个，用逗号隔开</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除元素  </p>
+<p>语法格式如下：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.remove( x ) <span class="comment"># 将元素 x 从集合 s 中移除，如果元素不存在，则会发生错误。</span></span><br></pre></td></tr></table></figure>
+
+<p>或者换一个方法：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.discard( x ) <span class="comment"># 将元素 x 从集合 s 中移除，如果元素不存在，不会发生错误。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>判断元素是否在集合中存在  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x <span class="keyword">in</span> s <span class="comment"># 若存在则该表达式的值为True，反之为False</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ul>
+<li><p><code>set</code>包含方法  </p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>set.add()</td>
+<td>为集合添加元素</td>
+</tr>
+<tr>
+<td>set.clear()</td>
+<td>移除集合中的所有元素</td>
+</tr>
+<tr>
+<td>set.copy(set1)</td>
+<td>拷贝一个集合</td>
+</tr>
+<tr>
+<td>set.difference()</td>
+<td>返回多个集合的差集</td>
+</tr>
+<tr>
+<td>set.set.difference_update()</td>
+<td>移除集合中的元素，该元素在指定的集合也存在。</td>
+</tr>
+<tr>
+<td>set.discard()</td>
+<td>删除集合中指定的元素</td>
+</tr>
+<tr>
+<td>set.intersection()</td>
+<td>返回集合的交集</td>
+</tr>
+<tr>
+<td>set.intersection_update()</td>
+<td>返回集合的交集</td>
+</tr>
+<tr>
+<td>set.isdisjoint()</td>
+<td>判断两个集合是否包含相同的元素，如果没有返回 True，否则返回 False</td>
+</tr>
+<tr>
+<td>set.issubset()</td>
+<td>判断指定集合是否为该方法参数集合的子集。</td>
+</tr>
+<tr>
+<td>set.issuperset()</td>
+<td>判断该方法的参数集合是否为指定集合的子集</td>
+</tr>
+<tr>
+<td>set.pop()</td>
+<td>随机移除元素</td>
+</tr>
+<tr>
+<td>set.remove()</td>
+<td>移除指定元素</td>
+</tr>
+<tr>
+<td>set,symmetric_difference()</td>
+<td>返回两个集合中不重复的元素集合。</td>
+</tr>
+<tr>
+<td>set,symmetric_difference_update()</td>
+<td>移除当前集合中在另外一个指定集合相同的元素，并将另外一个指定集合中不同的元素插入到当前集合中。</td>
+</tr>
+<tr>
+<td>set.union()</td>
+<td>返回两个集合的并集</td>
+</tr>
+<tr>
+<td>set.update()</td>
+<td>给集合添加元素</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/01/09/杨龙云-Day06/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          杨龙云-Day06
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/06/杨龙云-Day04/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="杨龙云-day05" data-title="杨龙云-day05" data-url="https://ylongyun.github.io/2021/01/08/杨龙云-day05/"  data-images="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" data-content="杨龙云-day05">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2021 ylongyun
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
