@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>PIL_StudyDay01 | 庸者的笑柄</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="打开和新建 在 Pillow库中,通过使用 Image模块,可以从文件中加载图像,或者处理其他图像或者从 scratch中创建图像。在对图像进行处理时,首先需要打开要处理的图片。在 Image模块中使用函数 open打开ー副图片,执行后返回image类的实例。当文件不存在时,会引发 IOError错误。使用函数 open语法格式如下所示。  123open(fp,mode)# fp : 指文件打开">
+<meta name="keywords" content="PIL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PIL_StudyDay01">
+<meta property="og:url" content="https://ylongyun.github.io/2021/01/11/PIL-StudyDay01/index.html">
+<meta property="og:site_name" content="庸者的笑柄">
+<meta property="og:description" content="打开和新建 在 Pillow库中,通过使用 Image模块,可以从文件中加载图像,或者处理其他图像或者从 scratch中创建图像。在对图像进行处理时,首先需要打开要处理的图片。在 Image模块中使用函数 open打开ー副图片,执行后返回image类的实例。当文件不存在时,会引发 IOError错误。使用函数 open语法格式如下所示。  123open(fp,mode)# fp : 指文件打开">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="f:%5Cwork%5Cblog%5Csource_posts%5C01.png">
+<meta property="og:image" content="c:/Users/杨龙云/Pictures/172557xo113wccvco3zc5u.jpg">
+<meta property="og:image" content="f:/work/blog/source/_posts/02.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/03.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/04.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/05.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/06.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/08.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/11.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/10.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/09.png">
+<meta property="og:image" content="c:/Users/杨龙云/AppData/Roaming/Typora/typora-user-images/image-20210111205056190.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/14.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/15.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/16.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/18.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/19.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/20.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/21.png">
+<meta property="og:image" content="f:/work/blog/source/_posts/2.png">
+<meta property="og:image" content="f:%5Cwork%5Cblog%5Csource_posts%5C22.png">
+<meta property="og:image" content="f:%5Cwork%5Cblog%5Csource_posts%5C23.jpg">
+<meta property="og:updated_time" content="2021-01-11T14:36:53.932Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PIL_StudyDay01">
+<meta name="twitter:description" content="打开和新建 在 Pillow库中,通过使用 Image模块,可以从文件中加载图像,或者处理其他图像或者从 scratch中创建图像。在对图像进行处理时,首先需要打开要处理的图片。在 Image模块中使用函数 open打开ー副图片,执行后返回image类的实例。当文件不存在时,会引发 IOError错误。使用函数 open语法格式如下所示。  123open(fp,mode)# fp : 指文件打开">
+<meta name="twitter:image" content="f:%5Cwork%5Cblog%5Csource_posts%5C01.png">
+  
+    <link rel="alternative" href="/atom.xml" title="庸者的笑柄" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">ylongyun</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/PIL/" style="font-size: 10px;">PIL</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">ylongyun</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">ylongyun</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-PIL-StudyDay01" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/01/11/PIL-StudyDay01/" class="article-date">
+  	<time datetime="2021-01-11T09:47:18.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PIL_StudyDay01
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/">PIL</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="打开和新建"><a href="#打开和新建" class="headerlink" title="打开和新建"></a>打开和新建</h4><ul>
+<li>在 Pillow库中,通过使用 Image模块,可以从文件中加载图像,或者处理其他图像或者从 <code>scratch</code>中创建图像。在对图像进行处理时,首先需要打开要处理的图片。在 Image模块中使用函数 <code>open</code>打开ー副图片,执行后返回image类的实例。当文件不存在时,会引发 <code>IOError</code>错误。使用函数 open语法格式如下所示。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">open(fp,mode)</span><br><span class="line"><span class="comment"># fp : 指文件打开的路径</span></span><br><span class="line"><span class="comment"># mode : 可选参数，表示打开文件的方式，通常使用默认值r</span></span><br></pre></td></tr></table></figure>
+
+<center> Pillow库支持的常用图片模式信息 </center>
+
+<table>
+<thead>
+<tr>
+<th>mode(模式)</th>
+<th>bands(通道)</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“1”</td>
+<td>1</td>
+<td>数字1,表示黑白二值图像,每个像素用0或者1共1位二进制代码表示</td>
+</tr>
+<tr>
+<td>“L”</td>
+<td>1</td>
+<td>灰度图,每个像素用8位二进制代码表示</td>
+</tr>
+<tr>
+<td>“P”</td>
+<td>1</td>
+<td>索引图,每个像素用8位二进制代码表示</td>
+</tr>
+<tr>
+<td>“RGB”</td>
+<td>3</td>
+<td>24位真彩图,每个像素用3个字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“RGBA”</td>
+<td>4</td>
+<td>“RGB”+透明通道表示,每个像素用4字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“CMYK”</td>
+<td>4</td>
+<td>印刷模式图像,每个像素用4字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“YCbCr”</td>
+<td>3</td>
+<td>彩色视频颜色隔离模式,每个像素用3个字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“LAB”</td>
+<td>3</td>
+<td>1ab颜色空间,毎个像素用3字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“HSV”</td>
+<td>3</td>
+<td>每个像素用3字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“I”</td>
+<td>1</td>
+<td>使用整数形式表示像素,毎个像素用4字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“F”</td>
+<td>1</td>
+<td>使用浮点数形式表示像素,每个像素用4字节的二进制代码表示</td>
+</tr>
+</tbody></table>
+<ul>
+<li>常用操作  </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="comment"># 打开图片</span></span><br><span class="line">img = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line"><span class="comment"># 显示图片</span></span><br><span class="line">img.show()</span><br><span class="line"><span class="comment"># 图片格式</span></span><br><span class="line">print(img.format)</span><br><span class="line"><span class="comment"># 图片尺寸</span></span><br><span class="line">print(img.size)</span><br><span class="line"><span class="comment"># 图片高度</span></span><br><span class="line">print(img.height)</span><br><span class="line"><span class="comment"># 图片指点像素点颜色</span></span><br><span class="line">print(img.getpixel((<span class="number">100</span>,<span class="number">100</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>显示结果：</p>
+<p><img src="F:%5Cwork%5Cblog%5Csource_posts%5C01.png" alt="图片信息"></p>
+<center>图片信息</center>
+
+<img src="C:\Users\杨龙云\Pictures\172557xo113wccvco3zc5u.jpg" alt="打开的图片" style="zoom:50%;">
+
+<center>打开的图片</center>
+
+<h4 id="混合"><a href="#混合" class="headerlink" title="混合"></a>混合</h4><ol>
+<li><p>透明度很合  </p>
+<p>在 Pillow库的 Image模块中,可以使用函数 <code>blend</code>实现透明度混合处理。具体语法格式如下所示：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.blend(img1,img2,alpha) <span class="comment"># alpha : 混合透明度，取值是0~1</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>要求参与混合的图片尺寸相同  </p>
+<p>混合过程：(img1*(1-alpha)+img2*alpha)</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">img2 = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">print(img2.size)</span><br><span class="line">Image.blend(img2, img1, <span class="number">0.5</span>).show()</span><br></pre></td></tr></table></figure>
+
+<p>显示结果：</p>
+<img src="F:\work\blog\source\_posts\02.png" alt="显示结果" style="zoom:50%;">
+
+<ol start="2">
+<li><p>遮罩混合  </p>
+<p>在Pillow库中 Image模块中,可以使用图数 <code>composite</code>实现遮混合处理。法格式如下所示: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.composite(img1,img2,mask)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数的功能是使用<code>mask</code>来混和图片img1和img2，并且要求三张图片的尺寸相同。</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img1 = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img2 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">r,g,b = img2.split()</span><br><span class="line">img = Image.composite(img2,img1,r)</span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\03.png" style="zoom:50%;">
+
+<h4 id="复制和缩放"><a href="#复制和缩放" class="headerlink" title="复制和缩放"></a>复制和缩放</h4><ul>
+<li><p>复制图片： </p>
+<p>在Pillow的Image模块中,可以使用函数<code>Image. copy()</code>复制指定的图片,这可以用于在处理或粘贴时需要持有源图片。</p>
+</li>
+<li><p>缩放图片像素：</p>
+<p>在 Pillow库的 Image模块中,可以使用函数 <code>eval</code>实现像素缩放处理,能够使用函数fun()计算输入图片的每个像素并返回。使用函数eval()语法格式如下:</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.eval(img,fun)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其中 image 表示输入的图片,fun表小输入图片的每个像素应用此函数,fun()函数只允许接收一个整型参数。如果一个图片含有多个通道,则每个通道都会应用这个函数。</p>
+</blockquote>
+<p>​       示例：缩放指定图片，实现图像每个像素值*2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">Image.eval(img,<span class="keyword">lambda</span> i:i*<span class="number">2</span>).show()</span><br></pre></td></tr></table></figure>
+
+<p>​      结果显示</p>
+<img src="F:\work\blog\source\_posts\04.png" style="zoom:50%;">
+
+<ul>
+<li><p>缩放图片  </p>
+<p>在 Pillow库的 Image模块中,可以使用函数 <code>thumbnail()</code>原生地缩放指定的图像。具体语法格式如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.thumbnail(size,resample=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line"><span class="comment"># 尺寸缩放</span></span><br><span class="line">img = img.copy()</span><br><span class="line">img.thumbnail((<span class="number">342</span>,<span class="number">500</span>)) <span class="comment"># 尺寸缩小为原来的一半</span></span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\05.png" style="zoom:50%;">
+
+</li>
+</ul>
+<h4 id="粘贴和裁剪"><a href="#粘贴和裁剪" class="headerlink" title="粘贴和裁剪"></a>粘贴和裁剪</h4><ul>
+<li><p>粘贴  </p>
+<p>在Pillow库的 Image模块中,函数<code>paste</code>的功能是粘贴源图像或像素至该图像中。具体语法格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.paste(img,box = <span class="literal">None</span>,mask = <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其中<code>im</code>是原图或像素值；<code>box</code>是粘贴区域；<code>mask</code>是遮罩。</p>
+<p>参数<code>box</code>可以分为以下三种情况</p>
+<ol>
+<li>(x,y) ： 将图像左上角对齐(x,y)点，鳍鱼朝数倍粘贴图像的区域被抛弃。</li>
+<li>(x1,y1,x2,y2) : 原图像与此区域一致。</li>
+<li>None ：原图像与被粘贴图像的大小必须一致。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>裁剪  </p>
+<p>在 Pillow库的 Image模块中,函数 <code>crop()</code>的功能是剪切图片中box所指定的区域具体语法如下:  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.crop(box = <span class="literal">None</span>) <span class="comment"># 参数`box`是一个四元组分别定义了剪切区域的左、上、右、下四个坐标</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例：对指定图片进行剪切和粘贴图片</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">imga = img.copy()</span><br><span class="line">region = img.crop((<span class="number">20</span>,<span class="number">20</span>,<span class="number">300</span>,<span class="number">300</span>))</span><br><span class="line">imga.paste(region,(<span class="number">300</span>,<span class="number">20</span>))</span><br><span class="line">imga.show()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>结果显示：</p>
+<img src="F:\work\blog\source\_posts\06.png" style="zoom:50%;">
+
+<h4 id="图像旋转"><a href="#图像旋转" class="headerlink" title="图像旋转"></a>图像旋转</h4><p>在 Pillow库的 Image I模块中,函数 rotate的功能返回此图像的副本,国绕其中心逆时针旋转给定的度数。具体语法格式如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.rotate(angle,resample=<span class="number">0</span>, expand=<span class="number">0</span>, center=<span class="literal">None</span>, translate = <span class="literal">None</span>, fillcolor = <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img.rotate(<span class="number">90</span>).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\08.png" style="zoom:50%;">
+
+<h4 id="格式转化"><a href="#格式转化" class="headerlink" title="格式转化"></a>格式转化</h4><ul>
+<li><p><code>covert()</code></p>
+<p>在 Pillow库的 Image模块中,函数 <code>convert()</code>的功能是返回模式转换后的图像实例。具体转换的语法格式如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image. convert(mode = <span class="literal">None</span>,Matrix = <span class="literal">None</span>, dither=<span class="literal">None</span>, palette=<span class="number">0</span>,colors=<span class="number">256</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其中mode:转换文件的模式,默契支持的模式有“L”、“RGB”“CMYK”; matrix转使用的矩阵: dither:取值为None切转为黑白图时非0(1-255)像素均为白,也可以设置此参数为 FLOYDSTEINBERG</p>
+</blockquote>
+</li>
+<li><p><code>transpose()</code></p>
+<p>在 Pillow库的 Image模块中,函数 transpose函数功能是实现图像格式的转换。语法格式如下:  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.transpose(method)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>转化图像后，返回转换后的图像，“method”的取值有以下几个。</p>
+<ol>
+<li>PIL. Image. FLIP LEFT RIGHT  :  左右镜像</li>
+<li>PIL. Image. FLIP_TOP_BOTTON  :  上下镜像</li>
+<li>PIL.Image. ROTATE_90  :  旋转90</li>
+<li>PIL.mage ROTATIE_180  :  旋转180</li>
+<li>PIL. Image. ROTATE_270  :  旋转270</li>
+<li>PIL. Image. TRANSPOSE   :   颠倒顺序</li>
+</ol>
+</blockquote>
+</li>
+<li><p>示例：对指定图片进行转换操作  </p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line"><span class="comment"># img.rotate(90).show()</span></span><br><span class="line">img.transpose(Image.FLIP_TOP_BOTTOM).show() <span class="comment"># 上下颠倒</span></span><br><span class="line">img.transpose(Image.FLIP_LEFT_RIGHT).show() <span class="comment"># 左右颠倒</span></span><br><span class="line">img.transpose(Image.ROTATE_90).show() <span class="comment"># 旋转90°</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\11.png" style="zoom:50%;">
+
+<img src="F:\work\blog\source\_posts\10.png" style="zoom:50%;">
+
+<img src="F:\work\blog\source\_posts\09.png" style="zoom:50%;">
+
+<h4 id="分离和合并"><a href="#分离和合并" class="headerlink" title="分离和合并"></a>分离和合并</h4><ul>
+<li><p>分离</p>
+<p>在 Pillow库的 Image模块中,使用函数 split()可以将图片分割为多个通道列表。使用函数spli0的语法格式如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.split()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并</p>
+<p>在 Pillow库的 Image 模块中,使用函数 merger()可以将一个通道的图像合并到更多通道图像中。使用函数 merge的语法格式如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.merge(mode,bands)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其中mode指输出图像的模式, banas段通道,一个序列包含单个带图通道。</p>
+</blockquote>
+</li>
+<li><p>示例，对指定图片进行合并和分离操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img2 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">r1,g1,b1 = img.split()</span><br><span class="line">r2,g2,b2 = img2.split()</span><br><span class="line">temp = [r1,g1,b2]</span><br><span class="line">imgb = Image.merge(<span class="string">"RGB"</span>,temp)</span><br><span class="line">imgb.show()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果：</p>
+<img src="C:\Users\杨龙云\AppData\Roaming\Typora\typora-user-images\image-20210111205056190.png" style="zoom:50%;">
+
+</li>
+</ul>
+<h4 id="滤镜"><a href="#滤镜" class="headerlink" title="滤镜"></a>滤镜</h4><ul>
+<li><p>在 Pillow库中的 Image模块中,使用函数<code>filter()</code>可以对指定的图片使用滤镜效果,在Pillow库中可以用的滤镜保存在 ImageFilter模块中。使用函数 filter的语法格式如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.filter(filter)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参数“filter”表示滤镜内核</p>
+</blockquote>
+</li>
+<li><p>示例：对特定图片实现滤镜迷糊操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageFilter</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">w,h = img.size</span><br><span class="line">imgb = img.filter(ImageFilter.GaussianBlur)</span><br><span class="line">img_new = Image.new(<span class="string">'RGB'</span>,(<span class="number">2</span>*w,h))</span><br><span class="line">img_new.paste(img,(<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">img_new.paste(imgb,(w,<span class="number">0</span>))</span><br><span class="line">img_new.show()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+<img src="F:\work\blog\source\_posts\14.png" style="zoom:50%;">
+
+</li>
+</ul>
+<h4 id="ImageChops模块"><a href="#ImageChops模块" class="headerlink" title="ImageChops模块"></a>ImageChops模块</h4><blockquote>
+<p>在 Pillow库的内置模块 Imagechops中包含了多个用于实现图片合成的函数。这些合成功能是通过计算通道中像素值的方式来实现的。其主要用于制作特效、合成图片等操作。常用的内置函数如下所示</p>
+</blockquote>
+<ol>
+<li><p>相加函数ad,功能是对两张图片进行算术加法运算。具体语法如下所示: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChop.add(img1,img2,scale = <span class="number">1.0</span>,offset = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在合成后图像中的每个像素值,是两幅图像对应像素值依据下面的公式进行计算得到的。</p>
+<p>out=((image1 + image2)/scale + offset)</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：使用add图片合成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.add(img,img1,<span class="number">3</span>,<span class="number">0</span>).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\15.png" style="zoom:50%;">
+
+<ol start="2">
+<li>减法函数 subtract(),功能是对两张图片进行算术减法运算。具体语法如下所示</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChop.subtract(img1,img2,scale = <span class="number">1.0</span>,offset = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在合成后图像中的每个像素值,是两幅图像对应像素值依据下面的公式进行计算得到的。</p>
+<p>out=((image1 - image2)/scale + offset)</p>
+</blockquote>
+<p>示例：使用subtract()图片合成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.subtract(img,img1,<span class="number">1</span>,<span class="number">0</span>).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\16.png" style="zoom:50%;">
+
+<ol start="3">
+<li><p>变暗函数 darker,功能是比较两个图片的像素,取两张图片中对应像素的教小值,所分。具体语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.darker(img1,img2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out = min(img1,img2)</p>
+</blockquote>
+</li>
+</ol>
+<p>​       示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.darker(img,img1).show()</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>(变亮函数 lighter,与变暗函数 darker相反,功能是比较两个图片(逐像素比较)返回一幅新的图片,这幅新的图片是将两张图片中较亮的部分登加得到的。也就是说,在某点上,两张图中哪个的值大(亮)则取之。具体语法如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.lighter(img1,img2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out = max(img1,img2)</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.lighter(img,img1).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\18.png" style="zoom:50%;">
+
+<ol start="5">
+<li><p>叠加函数 multiply功能是将两张图片互相登加。如果用纯界色与某图片进行叠加操作,就会得到一幅纯黑色的图片。如果用纯白色与图片作叠加,则图片不受影响。具体语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.multiply(img1,img2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out = img1 * img2 /MAX</p>
+</blockquote>
+</li>
+</ol>
+<p>​    示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.multiply(img,img1).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\19.png" style="zoom:50%;">
+
+<ol start="6">
+<li><p>屏幕函数screen(),功能是先反色后叠加,实现合成图像的效果,就像将两张幻灯片用两台投影机同时投影到一个屏幕上的效果。具体语法如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.screen(img1,img2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out = Max-((Max-img1)*(Max-img2)/MAX</p>
+</blockquote>
+</li>
+</ol>
+<p>​    示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.screen(img,img1).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\20.png" style="zoom:50%;">
+
+<ol start="7">
+<li><p>反色函数 invert,类似于集合操作中的求补集,最大值为Max,每个像素做减法,取出反色。在反色时将用255减去一幅图像的每个像素值,从而得到原来图像的反相。也就是说,其表现为“底片”性质的图像。具体语法如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.invert(img)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out  = MAX - img</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line"><span class="comment"># ImageChops.screen(img,img1).show()</span></span><br><span class="line">ImageChops.invert(img).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\21.png" style="zoom:50%;">
+
+<ol start="8">
+<li><p>比较函数 difference,可以逐像素做减法操作,计算出绝对值。函数 difference()能够两幅图像的对应像素值相减后的图像,对应像素值相同的,则为黑色。函数 difference()遇常用来找出图像之间的差异。具体语法如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.difference(img1,img2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out  = abs(img1-img2)</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.difference(img,img1).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\2.png" style="zoom:50%;">
+
+<h4 id="ImageEnhance模块"><a href="#ImageEnhance模块" class="headerlink" title="ImageEnhance模块"></a>ImageEnhance模块</h4><ul>
+<li><p>内置的 ImageEnhance模块中包含了多个用于增强图像效果的函数,主要用来调整图像的色彩、对比度、亮度和清晰度等,感觉上和调整电视机的显示参数一样</p>
+</li>
+<li><p>在模块 ImageEnhance中,所有的图片増强对象都实现一个通用的接口。这个接口只包含如下一个方法方法 </p>
+</li>
+<li><p>enhance会返回一个增强的 Image对象,参数 factor是一个大于0的浮点数,1表示返回原始图片。</p>
+</li>
+<li><p>当在 Python程序中使用模块 ImageEnhance增强图像效果时,需要首先创建对应的增强周整器,然后调用调整器输出函数,根据指定的增强系数(小于1表示减弱,大于1表示增强,等于1表示原图不变)进行调整,最后输出调整后的图像。在模块 ImageEnhance中,常用的内置函数如下所示:</p>
+<ol>
+<li><p>ImageEnhance. Color( img):功能是调整图像色彩平衡,相当于彩色电视机的色彩调整，实现了上边的enhance方法。</p>
+</li>
+<li><p>ImageEnhance.Contrat(img):功能是调整图像对比度,相当于彩色电视机的对比度调整。</p>
+</li>
+<li><p>ImageEnhance.Brightness( img):功能是调整图像亮度。</p>
+</li>
+<li><p>ImageEnhance.Sharpness( Img);功能是调整图像清晰度,用于锐化/钝化图片。</p>
+<blockquote>
+<p>锐化操作的 factor是02之间的一个浮点数。当 factor=0时,返回一个模糊的图片对象;当 factor=2时,返回一个锐化的图片对象;当 factor=1时,返回原始图片对象。 </p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>示例一：调整色彩</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageEnhance</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">w,h = img.size</span><br><span class="line">img_output = Image.new(<span class="string">'RGB'</span>,(<span class="number">3</span>*w,h))</span><br><span class="line">img_output.paste(img,(<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">img_color = ImageEnhance.Color(img)</span><br><span class="line">imgb = img_color.enhance(<span class="number">1.5</span>)</span><br><span class="line">img_output.paste(imgb,(w,<span class="number">0</span>))</span><br><span class="line">imgc = img_color.enhance(<span class="number">0.5</span>)</span><br><span class="line">img_output.paste(imgc,(<span class="number">2</span>*w,<span class="number">0</span>))</span><br><span class="line">img_output.show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="F:%5Cwork%5Cblog%5Csource_posts%5C22.png" alt></p>
+</li>
+<li><p>示例二：调整亮度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageEnhance</span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">w,h = img.size</span><br><span class="line">img_output = Image.new(<span class="string">'RGB'</span>,(<span class="number">3</span>*w,h))</span><br><span class="line">img_output.paste(img,(<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">img_color = ImageEnhance.Brightness(img)</span><br><span class="line">imgb = img_color.enhance(<span class="number">1.5</span>)</span><br><span class="line">img_output.paste(imgb,(w,<span class="number">0</span>))</span><br><span class="line">imgc = img_color.enhance(<span class="number">0.5</span>)</span><br><span class="line">img_output.paste(imgc,(<span class="number">2</span>*w,<span class="number">0</span>))</span><br><span class="line">img_output.show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="F:%5Cwork%5Cblog%5Csource_posts%5C23.jpg" alt></p>
+</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/09/杨龙云-Day06/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">杨龙云-Day06</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="PIL-StudyDay01" data-title="PIL_StudyDay01" data-url="https://ylongyun.github.io/2021/01/11/PIL-StudyDay01/"  data-images="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" data-content="PIL_StudyDay01">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2021 ylongyun
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
