@@ -594,8 +594,7 @@ fwL/B6DA4QM1ekmSAAAAAElFTkSuQmCC"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img1 = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img2 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">r,g,b = img2.split()</span><br><span class="line">img = Image.composite(img2,img1,r)</span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
-<img src="F:\work\blog\source\_posts\03.png" style="zoom:50%;">
-
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/569af29c58eebe87.png" alt></p>
 <h4 id="复制和缩放"><a href="#复制和缩放" class="headerlink" title="复制和缩放"></a>复制和缩放</h4><ul>
 <li><p>复制图片： </p>
 <p>在Pillow的Image模块中,可以使用函数<code>Image. copy()</code>复制指定的图片,这可以用于在处理或粘贴时需要持有源图片。</p>
@@ -613,8 +612,7 @@ fwL/B6DA4QM1ekmSAAAAAElFTkSuQmCC"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">Image.eval(img,<span class="keyword">lambda</span> i:i*<span class="number">2</span>).show()</span><br></pre></td></tr></table></figure>
 
 <p>​      结果显示</p>
-<img src="F:\work\blog\source\_posts\04.png" style="zoom:50%;">
-
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/de05d6b9db98475a.png" alt></p>
 <ul>
 <li><p>缩放图片  </p>
 <p>在 Pillow库的 Image模块中,可以使用函数 <code>thumbnail()</code>原生地缩放指定的图像。具体语法格式如下:</p>
@@ -624,8 +622,7 @@ fwL/B6DA4QM1ekmSAAAAAElFTkSuQmCC"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line"><span class="comment"># 尺寸缩放</span></span><br><span class="line">img = img.copy()</span><br><span class="line">img.thumbnail((<span class="number">342</span>,<span class="number">500</span>)) <span class="comment"># 尺寸缩小为原来的一半</span></span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
-<img src="F:\work\blog\source\_posts\05.png" style="zoom:50%;">
-
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/e2c5a329c02a992b.png" alt></p>
 </li>
 </ul>
 <h4 id="粘贴和裁剪"><a href="#粘贴和裁剪" class="headerlink" title="粘贴和裁剪"></a>粘贴和裁剪</h4><ul>
@@ -653,8 +650,7 @@ fwL/B6DA4QM1ekmSAAAAAElFTkSuQmCC"></p>
 </li>
 </ul>
 <p>结果显示：</p>
-<img src="F:\work\blog\source\_posts\06.png" style="zoom:50%;">
-
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/37e454768e56ce6e.png" alt></p>
 <h4 id="图像旋转"><a href="#图像旋转" class="headerlink" title="图像旋转"></a>图像旋转</h4><p>在 Pillow库的 Image I模块中,函数 rotate的功能返回此图像的副本,国绕其中心逆时针旋转给定的度数。具体语法格式如下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.rotate(angle,resample=<span class="number">0</span>, expand=<span class="number">0</span>, center=<span class="literal">None</span>, translate = <span class="literal">None</span>, fillcolor = <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 
@@ -662,8 +658,7 @@ fwL/B6DA4QM1ekmSAAAAAElFTkSuQmCC"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img.rotate(<span class="number">90</span>).show()</span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
-<img src="F:\work\blog\source\_posts\08.png" style="zoom:50%;">
-
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/f25ee23710afc98d.png" alt></p>
 <h4 id="格式转化"><a href="#格式转化" class="headerlink" title="格式转化"></a>格式转化</h4><ul>
 <li><p><code>covert()</code></p>
 <p>在 Pillow库的 Image模块中,函数 <code>convert()</code>的功能是返回模式转换后的图像实例。具体转换的语法格式如下:</p>
@@ -695,12 +690,9 @@ fwL/B6DA4QM1ekmSAAAAAElFTkSuQmCC"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line"><span class="comment"># img.rotate(90).show()</span></span><br><span class="line">img.transpose(Image.FLIP_TOP_BOTTOM).show() <span class="comment"># 上下颠倒</span></span><br><span class="line">img.transpose(Image.FLIP_LEFT_RIGHT).show() <span class="comment"># 左右颠倒</span></span><br><span class="line">img.transpose(Image.ROTATE_90).show() <span class="comment"># 旋转90°</span></span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
-<img src="F:\work\blog\source\_posts\11.png" style="zoom:50%;">
-
-<img src="F:\work\blog\source\_posts\10.png" style="zoom:50%;">
-
-<img src="F:\work\blog\source\_posts\09.png" style="zoom:50%;">
-
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/61bda274e67c5027.png" alt></p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/8846188a2a2362b6.png" alt></p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/b6ed009f7d955a82.png" alt></p>
 <h4 id="分离和合并"><a href="#分离和合并" class="headerlink" title="分离和合并"></a>分离和合并</h4><ul>
 <li><p>分离</p>
 <p>在 Pillow库的 Image模块中,使用函数 split()可以将图片分割为多个通道列表。使用函数spli0的语法格式如下所示:</p>
