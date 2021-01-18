@@ -193,7 +193,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="直方图均衡化"><a href="#直方图均衡化" class="headerlink" title="直方图均衡化"></a>直方图均衡化</h4><ul>
-<li>只有灰度图片可以进行之反复图均衡化</li>
+<li>只有灰度图片可以进行直方图均衡化</li>
 </ul>
 <p>用法：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">equalHist_demo</span><span class="params">(img)</span>:</span></span><br><span class="line">    grey = cv.cvtColor(img,cv.COLOR_BGR2GRAY)</span><br><span class="line">    cv.imshow(<span class="string">"grey_input"</span>,grey)</span><br><span class="line">    ans = cv.equalizeHist(grey)</span><br><span class="line">    cv.imshow(<span class="string">"equalHist"</span>,ans)</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">'angle.jpg'</span>)</span><br><span class="line">equalHist_demo(img)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
