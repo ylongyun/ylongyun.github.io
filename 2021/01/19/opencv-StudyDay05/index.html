@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>opencv-StudyDay05 | 庸者的笑柄</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="图像二值化1234567891011121314151617181920import cv2 as cvdef threshold(img):  # 整体阈值方法    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)    ret, binary = cv.threshold(grey, 0, 255, cv.THRESH_BINARY | cv.THRESH">
+<meta name="keywords" content="opencv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="opencv-StudyDay05">
+<meta property="og:url" content="https://ylongyun.github.io/2021/01/19/opencv-StudyDay05/index.html">
+<meta property="og:site_name" content="庸者的笑柄">
+<meta property="og:description" content="图像二值化1234567891011121314151617181920import cv2 as cvdef threshold(img):  # 整体阈值方法    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)    ret, binary = cv.threshold(grey, 0, 255, cv.THRESH_BINARY | cv.THRESH">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://img.imgdb.cn/item/6006de1e3ffa7d37b3f5f8f6.jpg">
+<meta property="og:image" content="https://img.imgdb.cn/item/6006de443ffa7d37b3f6110e.jpg">
+<meta property="og:image" content="https://img.imgdb.cn/item/6006df2a3ffa7d37b3f6a3a5.jpg">
+<meta property="og:updated_time" content="2021-01-19T13:31:56.045Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="opencv-StudyDay05">
+<meta name="twitter:description" content="图像二值化1234567891011121314151617181920import cv2 as cvdef threshold(img):  # 整体阈值方法    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)    ret, binary = cv.threshold(grey, 0, 255, cv.THRESH_BINARY | cv.THRESH">
+<meta name="twitter:image" content="https://img.imgdb.cn/item/6006de1e3ffa7d37b3f5f8f6.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="庸者的笑柄" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">ylongyun</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/PIL/" style="font-size: 13.33px;">PIL</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">ylongyun</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">ylongyun</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-opencv-StudyDay05" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/01/19/opencv-StudyDay05/" class="article-date">
+  	<time datetime="2021-01-19T12:57:31.000Z" itemprop="datePublished">2021-01-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      opencv-StudyDay05
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="图像二值化"><a href="#图像二值化" class="headerlink" title="图像二值化"></a>图像二值化</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">threshold</span><span class="params">(img)</span>:</span>  <span class="comment"># 整体阈值方法</span></span><br><span class="line">    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">    ret, binary = cv.threshold(grey, <span class="number">0</span>, <span class="number">255</span>, cv.THRESH_BINARY | cv.THRESH_OTSU)</span><br><span class="line">    print(<span class="string">"灰度值 %s"</span> % ret)</span><br><span class="line">    cv.imshow(<span class="string">"binary"</span>, binary)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">local_threshold</span><span class="params">(img)</span>:</span> <span class="comment">#局部阈值方法</span></span><br><span class="line">    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">    binary = cv.adaptiveThreshold(grey, <span class="number">255</span>, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, <span class="number">25</span>, <span class="number">10</span>)</span><br><span class="line">    cv.imshow(<span class="string">"local_threshold"</span>, binary)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">'angle.jpg'</span>)</span><br><span class="line">threshold(img)</span><br><span class="line">local_threshold(img)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>整体阈值方法结果：</p>
+<p><img src="https://img.imgdb.cn/item/6006de1e3ffa7d37b3f5f8f6.jpg" alt></p>
+<p>局部阈值方法结果：</p>
+<p><img src="https://img.imgdb.cn/item/6006de443ffa7d37b3f6110e.jpg" alt></p>
+<hr>
+<blockquote>
+<p> *<em>当图片特别大，无论采用哪种方法，都无法取得理想的效果时，我们可以将图片按块分割，然后对每一块进行二值化处理即可 *</em></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">big_image_binary</span><span class="params">(img)</span>:</span></span><br><span class="line">    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">    ch = cw = <span class="number">256</span></span><br><span class="line">    h, w = img.shape[:<span class="number">2</span>]</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> range(<span class="number">0</span>, h, ch):</span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> range(<span class="number">0</span>, w, cw):</span><br><span class="line">            roi = grey[row:row + ch, col:col + cw]</span><br><span class="line">            grey[row:row + ch, col:col + cw] = cv.adaptiveThreshold(roi, <span class="number">255</span>, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, <span class="number">127</span>, <span class="number">20</span>)</span><br><span class="line">    cv.imshow(<span class="string">'big_image_binary'</span>, grey)</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">'violet.jpg'</span>)</span><br><span class="line">big_image_binary(img)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://img.imgdb.cn/item/6006df2a3ffa7d37b3f6a3a5.jpg" alt></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/18/opencv-StudyDay04/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">opencv-StudyDay04</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="opencv-StudyDay05" data-title="opencv-StudyDay05" data-url="https://ylongyun.github.io/2021/01/19/opencv-StudyDay05/"  data-images="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" data-content="opencv-StudyDay05">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2021 ylongyun
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>

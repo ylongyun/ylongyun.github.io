@@ -107,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/PIL/" style="font-size: 13.33px;">PIL</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 16.67px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+						<a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/PIL/" style="font-size: 13.33px;">PIL</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -162,6 +162,78 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-opencv-StudyDay05" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/01/19/opencv-StudyDay05/" class="article-date">
+  	<time datetime="2021-01-19T12:57:31.000Z" itemprop="datePublished">2021-01-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/19/opencv-StudyDay05/">
+        opencv-StudyDay05
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="图像二值化"><a href="#图像二值化" class="headerlink" title="图像二值化"></a>图像二值化</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">threshold</span><span class="params">(img)</span>:</span>  <span class="comment"># 整体阈值方法</span></span><br><span class="line">    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">    ret, binary = cv.threshold(grey, <span class="number">0</span>, <span class="number">255</span>, cv.THRESH_BINARY | cv.THRESH_OTSU)</span><br><span class="line">    print(<span class="string">"灰度值 %s"</span> % ret)</span><br><span class="line">    cv.imshow(<span class="string">"binary"</span>, binary)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">local_threshold</span><span class="params">(img)</span>:</span> <span class="comment">#局部阈值方法</span></span><br><span class="line">    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">    binary = cv.adaptiveThreshold(grey, <span class="number">255</span>, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, <span class="number">25</span>, <span class="number">10</span>)</span><br><span class="line">    cv.imshow(<span class="string">"local_threshold"</span>, binary)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">'angle.jpg'</span>)</span><br><span class="line">threshold(img)</span><br><span class="line">local_threshold(img)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>整体阈值方法结果：</p>
+<p><img src="https://img.imgdb.cn/item/6006de1e3ffa7d37b3f5f8f6.jpg" alt></p>
+<p>局部阈值方法结果：</p>
+<p><img src="https://img.imgdb.cn/item/6006de443ffa7d37b3f6110e.jpg" alt></p>
+<hr>
+<blockquote>
+<p> *<em>当图片特别大，无论采用哪种方法，都无法取得理想的效果时，我们可以将图片按块分割，然后对每一块进行二值化处理即可 *</em></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">big_image_binary</span><span class="params">(img)</span>:</span></span><br><span class="line">    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">    ch = cw = <span class="number">256</span></span><br><span class="line">    h, w = img.shape[:<span class="number">2</span>]</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> range(<span class="number">0</span>, h, ch):</span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> range(<span class="number">0</span>, w, cw):</span><br><span class="line">            roi = grey[row:row + ch, col:col + cw]</span><br><span class="line">            grey[row:row + ch, col:col + cw] = cv.adaptiveThreshold(roi, <span class="number">255</span>, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, <span class="number">127</span>, <span class="number">20</span>)</span><br><span class="line">    cv.imshow(<span class="string">'big_image_binary'</span>, grey)</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">'violet.jpg'</span>)</span><br><span class="line">big_image_binary(img)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://img.imgdb.cn/item/6006df2a3ffa7d37b3f6a3a5.jpg" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-opencv-StudyDay04" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1973,137 +2045,6 @@ fwL/B6DA4QM1ekmSAAAAAElFTkSuQmCC"></p>
 <li><p>删除元组 </p>
 <ul>
 <li>由于元组的元素无法修改，所以只能删除整个元组，使用del语句。</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-杨龙云-Day03" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/01/05/杨龙云-Day03/" class="article-date">
-  	<time datetime="2021-01-05T09:55:48.695Z" itemprop="datePublished">2021-01-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Python-Study-Day03"><a href="#Python-Study-Day03" class="headerlink" title="Python Study Day03"></a>Python Study Day03</h1><ul>
-<li>while循环结构  </li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> 循环条件 :</span><br><span class="line">    循环语句一</span><br><span class="line">    循环语句二</span><br><span class="line">    循环语句三</span><br><span class="line">    循环语句四</span><br><span class="line">    ……</span><br><span class="line">	最后一句循环语句</span><br><span class="line">循环结束后第一条语句</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>替换print函数末尾的换行符  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"*"</span>, end=<span class="string">""</span>)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>字符串end会替换print函数默认在输出内容添加的换行符</p>
-</blockquote>
-</li>
-<li><p>练手题目：给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。你可以假设数组中无重复元素。</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(self, nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">    l = len(nums)</span><br><span class="line">    <span class="keyword">if</span> target &gt; nums[l<span class="number">-1</span>] :</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line">    i = <span class="number">0</span> </span><br><span class="line">    <span class="keyword">while</span> i &lt; l :</span><br><span class="line">        <span class="keyword">if</span> nums[i] == target :</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">elif</span> nums[i] &gt; target :</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        i=i+<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>练手题目：打印九九乘法表</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">multiple_table</span><span class="params">()</span>:</span></span><br><span class="line">i,j=<span class="number">1</span>,<span class="number">1</span></span><br><span class="line"><span class="keyword">while</span>(i &lt; <span class="number">10</span>) :</span><br><span class="line">   	j = <span class="number">1</span></span><br><span class="line">  		<span class="keyword">while</span>(j &lt;= i) :</span><br><span class="line">      		print(<span class="string">f'<span class="subst">&#123;j&#125;</span>*<span class="subst">&#123;i&#125;</span>=<span class="subst">&#123;i*j&#125;</span>'</span>,end=<span class="string">"\t"</span>)</span><br><span class="line">      		j += <span class="number">1</span></span><br><span class="line">  		print(<span class="string">""</span>)</span><br><span class="line">  		i += <span class="number">1</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>函数的定义  </p>
-<ul>
-<li><p>函数代码块以 <strong>def</strong> 关键词开头，后接函数标识符名称和圆括号 <strong>()</strong>。</p>
-</li>
-<li><p>任何传入参数和自变量必须放在圆括号中间，圆括号之间可以用于定义参数。</p>
-</li>
-<li><p>函数的第一行语句可以选择性地使用文档字符串—用于存放函数说明。</p>
-</li>
-<li><p>函数内容以冒号 <strong>:</strong> 起始，并且缩进。</p>
-</li>
-<li><p><strong>return [表达式]</strong> 结束函数，选择性地返回一个值给调用方，不带表达式的 return 相当于返回 None。  </p>
-<blockquote>
-<p>格式如下     </p>
-</blockquote>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> 函数名（参数列表）:</span></span><br><span class="line">    函数体</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>调用函数练手  </li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> typing <span class="keyword">import</span> List</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(nums: List[int], target: int)</span> -&gt; int:</span></span><br><span class="line">    l = len(nums)</span><br><span class="line">    <span class="keyword">if</span> target &gt; nums[l - <span class="number">1</span>]:</span><br><span class="line">        <span class="keyword">return</span> l</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; l:</span><br><span class="line">        <span class="keyword">if</span> nums[i] == target:</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">elif</span> nums[i] &gt; target:</span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        i = i + <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">list1 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">8</span>]</span><br><span class="line">x = <span class="number">5</span></span><br><span class="line">print(searchInsert(list1, x))</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>range()</code>用法  </p>
-<ul>
-<li><p>函数说明  </p>
-<ul>
-<li>Python3 range() 函数返回的是一个可迭代对象（类型是对象），而不是列表类型， 所以打印的时候不会打印列表。</li>
-<li>Python3 list() 函数是对象迭代器，可以把range()返回的可迭代对象转为一个列表，返回的变量类型为列表。</li>
-</ul>
-</li>
-<li><p>函数语法  </p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">range(stop)</span><br><span class="line">range(start, stop[, step])</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>参数说明  <ul>
-<li>start: 计数从 start 开始。默认是从 0 开始。例如range（5）等价于range（0， 5）;  </li>
-<li>stop: 计数到 stop 结束，但不包括 stop。例如：range（0， 5） 是[0, 1, 2, 3, 4]没有5;  </li>
-<li>step：步长，默认为1。例如：range（0， 5） 等价于 range(0, 5, 1);</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>for循环  </p>
-<ul>
-<li><p>for循环结构</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for &lt;variable&gt; in &lt;sequence&gt;:</span><br><span class="line">    &lt;statements&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>循环示例</p>
-<ul>
-<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">languages = [<span class="string">"一个憨憨"</span>, <span class="string">"两个憨憨"</span>] </span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> languages:</span><br><span class="line">	<span class="keyword">print</span> (x)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">结果显示</span></span><br><span class="line"><span class="string">一个憨憨</span></span><br><span class="line"><span class="string">两个憨憨</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">	print(i)</span><br><span class="line">	</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">显示结果：</span></span><br><span class="line"><span class="string">0</span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string">2</span></span><br><span class="line"><span class="string">3</span></span><br><span class="line"><span class="string">4</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
