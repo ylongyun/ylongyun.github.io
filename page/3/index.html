@@ -107,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/PIL/" style="font-size: 13.33px;">PIL</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 16.67px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+						<a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/PIL/" style="font-size: 12.5px;">PIL</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -162,6 +162,96 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-LinkQueue" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/10/09/LinkQueue/" class="article-date">
+  	<time datetime="2019-10-09T10:53:15.000Z" itemprop="datePublished">2019-10-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/09/LinkQueue/">
+        Stack
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="初识栈"><a href="#初识栈" class="headerlink" title="初识栈"></a>初识栈</h2><p>栈（stack）又名堆栈，它是一种运算受限的线性表。限定仅在表尾进行插入和删除操作的线性表。这一端被称为栈顶，相对地，把另一端称为栈底。向一个栈插入新元素又称作进栈、入栈或压栈，它是把新元素放到栈顶元素的上面，使之成为新的栈顶元素；从一个栈删除元素又称作出栈或退栈，它是把栈顶元素删除掉，使其相邻的元素成为新的栈顶元素。  </p>
+<hr>
+<p>刚开始学习栈时，我是充满了对新知识的好奇的。结果等我看完书上的描述，脑海之中就想到了链表，心想这东西和链表储存数据的形式是一样的呀，就是限定了对它的操作，只允许在表尾进行插入和删除节点，具体的操作和链表一摸一样，或者说比链表简单一点。白瞎了我的好奇，换汤不换药而已。因为之前写过对链表的操作了，所以今天就只写了对顺序栈的操作。如下：  </p>
+<h3 id="1-定义顺序栈"><a href="#1-定义顺序栈" class="headerlink" title="1.定义顺序栈"></a>1.定义顺序栈</h3><pre><code>typedef struct Stack
+{
+    int data[100];
+    int top;
+}LinkStack;  </code></pre><h3 id="2-初始化栈"><a href="#2-初始化栈" class="headerlink" title="2.初始化栈"></a>2.初始化栈</h3><pre><code>LinkStack *initStack(LinkStack *stack)//初始化栈 
+{
+    stack-&gt;top = -1;
+    return stack;
+}  </code></pre><h3 id="3-入栈"><a href="#3-入栈" class="headerlink" title="3.入栈"></a>3.入栈</h3><pre><code>void enterStack(LinkStack *stack)//入栈操作 
+{
+    if(stack-&gt;top+1&gt;99)
+        printf(&quot;栈已满&quot;);
+    else
+    {
+        stack-&gt;top++;//栈顶后移 
+        scanf(&quot;%d&quot;,&amp;stack-&gt;data[stack-&gt;top]);//输入新成员元素 
+    } 
+}  </code></pre><h3 id="4-出栈"><a href="#4-出栈" class="headerlink" title="4.出栈"></a>4.出栈</h3><pre><code>int outStack(LinkStack *stack)//出栈操作 
+{
+    if(stack-&gt;top == -1)
+    {
+        printf(&quot;栈为空&quot;);
+        return -1;
+    }
+    else
+    {
+        stack-&gt;top--;//栈顶前移
+        return stack-&gt;data[stack-&gt;top+1];//返回新成员元素 
+     } 
+}</code></pre><h3 id="That-is-all"><a href="#That-is-all" class="headerlink" title="That is all."></a>That is all.</h3>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-约瑟夫问题" class="article article-type-post" itemscope itemprop="blogPost">
   
