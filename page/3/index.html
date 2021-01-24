@@ -163,6 +163,67 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-封装性的理解" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/13/封装性的理解/" class="article-date">
+  	<time datetime="2019-11-13T08:57:26.000Z" itemprop="datePublished">2019-11-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/13/封装性的理解/">
+        封装性的理解
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="面向对象的特征之一：封装与隐藏"><a href="#面向对象的特征之一：封装与隐藏" class="headerlink" title="面向对象的特征之一：封装与隐藏"></a>面向对象的特征之一：封装与隐藏</h1><h2 id="封装性的实际应用"><a href="#封装性的实际应用" class="headerlink" title="封装性的实际应用"></a>封装性的实际应用</h2><p>当我们创建一个类的对象以后，我们可以通过”对象.属性”的方式，对对象的属性进行赋值。这里，赋值操作要受到属性的数据类型和存储范围的制约。除此之外，没有其他制约条件。但是，在实际问题中，我们往往需要给属性赋值加入额外的限制条件。这个条件就不能在属性声明时体现，我们只能通过方法进行限制条件的添加。（比如：对类的属性年龄进行赋值就需要所赋的值大于零）同时，我们需要避免用户再使用”对象.属性”的方式对属性进行赋值（不这样做的话我们的设置的方法就没有什么什么卵用了┐(´-｀)┌），故需要将属性声明为私有的(private). 。<br>–&gt;此时，针对于属性就体现了封装性。</p>
+<h2 id="封装性的体现"><a href="#封装性的体现" class="headerlink" title="封装性的体现"></a>封装性的体现</h2><p>1.我们将类的属性xxx私有化(private),同时，提供公共的(public)方法来获取(getXxx)和设置(setXxx)此属性的值。<br>2.不对外暴露的私有的方法。<br>3.单列模式。</p>
+<h2 id="封装性的体现，需要权限修饰符来配合。"><a href="#封装性的体现，需要权限修饰符来配合。" class="headerlink" title="封装性的体现，需要权限修饰符来配合。"></a>封装性的体现，需要权限修饰符来配合。</h2><p>1.Java规定的4种权限（从小到大排列）：private、缺省、protected 、public 。<br>2.4种权限可以用来修饰类及类的内部结构：属性、方法、构造器、内部类。<br>3.特别的修饰类的话，只能使用：缺省、public。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-LinkQueue" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

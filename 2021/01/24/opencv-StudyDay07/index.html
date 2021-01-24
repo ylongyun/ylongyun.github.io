@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>opencv-StudyDay07 | 庸者的笑柄</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="canny边缘提取 注意：canny边缘提取算法对图片的噪声是比较敏感的，因此在对图片处理前需要进行高斯模糊处理，降低噪声对边缘提取的影响。  123456789101112131415161718import cv2 as cvdef edge_demo(img):    blurred = cv.GaussianBlur(img, (3, 3), 0)    grey = cv.cvtColo">
+<meta name="keywords" content="opencv">
+<meta property="og:type" content="article">
+<meta property="og:title" content="opencv-StudyDay07">
+<meta property="og:url" content="https://ylongyun.github.io/2021/01/24/opencv-StudyDay07/index.html">
+<meta property="og:site_name" content="庸者的笑柄">
+<meta property="og:description" content="canny边缘提取 注意：canny边缘提取算法对图片的噪声是比较敏感的，因此在对图片处理前需要进行高斯模糊处理，降低噪声对边缘提取的影响。  123456789101112131415161718import cv2 as cvdef edge_demo(img):    blurred = cv.GaussianBlur(img, (3, 3), 0)    grey = cv.cvtColo">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://img.imgdb.cn/item/600d56903ffa7d37b35cf23d.png">
+<meta property="og:image" content="https://img.imgdb.cn/item/600d568b3ffa7d37b35ceed3.png">
+<meta property="og:image" content="https://img.imgdb.cn/item/600d602f3ffa7d37b36373f8.jpg">
+<meta property="og:image" content="https://img.imgdb.cn/item/600d63813ffa7d37b36543c8.jpg">
+<meta property="og:image" content="https://img.imgdb.cn/item/600d6a843ffa7d37b36a8286.jpg">
+<meta property="og:image" content="https://img.imgdb.cn/item/600d6b1c3ffa7d37b36b07f7.jpg">
+<meta property="og:updated_time" content="2021-01-24T14:34:52.007Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="opencv-StudyDay07">
+<meta name="twitter:description" content="canny边缘提取 注意：canny边缘提取算法对图片的噪声是比较敏感的，因此在对图片处理前需要进行高斯模糊处理，降低噪声对边缘提取的影响。  123456789101112131415161718import cv2 as cvdef edge_demo(img):    blurred = cv.GaussianBlur(img, (3, 3), 0)    grey = cv.cvtColo">
+<meta name="twitter:image" content="https://img.imgdb.cn/item/600d56903ffa7d37b35cf23d.png">
+  
+    <link rel="alternative" href="/atom.xml" title="庸者的笑柄" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">ylongyun</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/PIL/" style="font-size: 12.5px;">PIL</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">ylongyun</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">ylongyun</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-opencv-StudyDay07" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/01/24/opencv-StudyDay07/" class="article-date">
+  	<time datetime="2021-01-24T10:05:02.000Z" itemprop="datePublished">2021-01-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      opencv-StudyDay07
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="canny边缘提取"><a href="#canny边缘提取" class="headerlink" title="canny边缘提取"></a><code>canny</code>边缘提取</h4><blockquote>
+<p><strong>注意</strong>：<code>canny</code>边缘提取算法对图片的噪声是比较敏感的，因此在对图片处理前需要进行高斯模糊处理，降低噪声对边缘提取的影响。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edge_demo</span><span class="params">(img)</span>:</span></span><br><span class="line">    blurred = cv.GaussianBlur(img, (<span class="number">3</span>, <span class="number">3</span>), <span class="number">0</span>)</span><br><span class="line">    grey = cv.cvtColor(blurred, cv.COLOR_BGR2GRAY)</span><br><span class="line">    grad_x = cv.Sobel(grey, cv.CV_16SC1, <span class="number">1</span>, <span class="number">0</span>)</span><br><span class="line">    grad_y = cv.Sobel(grey, cv.CV_16SC1, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    edge_output = cv.Canny(grad_x, grad_y, <span class="number">50</span>, <span class="number">100</span>)</span><br><span class="line">    cv.imshow(<span class="string">"CAnny Edge"</span>, edge_output)</span><br><span class="line">    dst = cv.bitwise_and(img, img, mask=edge_output)</span><br><span class="line">    cv.imshow(<span class="string">"Color Edge"</span>, dst)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">image = cv.imread(<span class="string">'violet.jpg'</span>)</span><br><span class="line">edge_demo(image)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://img.imgdb.cn/item/600d56903ffa7d37b35cf23d.png" alt></p>
+<p><img src="https://img.imgdb.cn/item/600d568b3ffa7d37b35ceed3.png" alt></p>
+<h4 id="直线检测"><a href="#直线检测" class="headerlink" title="直线检测"></a>直线检测</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import cv2 as cv</span><br><span class="line">import numpy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def line_detection_possibile(img):</span><br><span class="line">    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">    edges = cv.Canny(grey, 50, 150, apertureSize=3)</span><br><span class="line">    lines = cv.HoughLinesP(edges, 1, numpy.pi / 180, 100, minLineLength=50, maxLineGap=10)</span><br><span class="line">    for line in lines:</span><br><span class="line">        cv.line(img, (line[0][0],line[0][1]), (line[0][2],line[0][3]),(0,0,255,2))</span><br><span class="line">    cv.imshow(&quot;image_lines_possible&quot;, image)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">image = cv.imread(&apos;violet.jpg&apos;)</span><br><span class="line">line_detection_possibile(image)</span><br><span class="line">cv.waitKey(0)</span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://img.imgdb.cn/item/600d602f3ffa7d37b36373f8.jpg" alt></p>
+<h4 id="圆检测"><a href="#圆检测" class="headerlink" title="圆检测"></a>圆检测</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">detect_circle_demo</span><span class="params">(image)</span>:</span></span><br><span class="line">    <span class="comment"># dst = cv.bilateralFilter(image, 0, 150, 5)  #高斯双边模糊，不太好调节,霍夫噪声敏感，所以要先消除噪声</span></span><br><span class="line">    <span class="comment"># cv.imshow("1",dst)</span></span><br><span class="line">    <span class="comment"># dst = cv.pyrMeanShiftFiltering(image,5,100)  #均值迁移，EPT边缘保留滤波,霍夫噪声敏感，所以要先消除噪声</span></span><br><span class="line">    <span class="comment"># cv.imshow("2", dst)</span></span><br><span class="line">    dst = cv.GaussianBlur(image,(<span class="number">13</span>,<span class="number">15</span>),<span class="number">15</span>) <span class="comment">#使用高斯模糊，修改卷积核ksize也可以检测出来</span></span><br><span class="line">    <span class="comment"># cv.imshow("3", dst)</span></span><br><span class="line">    gray = cv.cvtColor(dst,cv.COLOR_BGR2GRAY)</span><br><span class="line">    circles = cv.HoughCircles(gray,cv.HOUGH_GRADIENT,<span class="number">1</span>,<span class="number">20</span>,param1=<span class="number">50</span>,param2=<span class="number">30</span>,minRadius=<span class="number">0</span>,maxRadius=<span class="number">0</span>)</span><br><span class="line">    circles = np.uint16(np.around(circles)) <span class="comment"># around对数据四舍五入，为整数</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> circles[<span class="number">0</span>,:]:</span><br><span class="line">        cv.circle(image,(i[<span class="number">0</span>],i[<span class="number">1</span>]),i[<span class="number">2</span>],(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>),<span class="number">2</span>)</span><br><span class="line">        cv.circle(image,(i[<span class="number">0</span>],i[<span class="number">1</span>]),<span class="number">2</span>,(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>),<span class="number">2</span>)   <span class="comment">#圆心</span></span><br><span class="line"></span><br><span class="line">    cv.imshow(<span class="string">"detect_circle_demo"</span>,image)</span><br><span class="line"></span><br><span class="line">image = cv.imread(<span class="string">"ciecle.png "</span>) </span><br><span class="line">cv.imshow(<span class="string">"input image"</span>,image)    </span><br><span class="line"></span><br><span class="line">detect_circle_demo(image)</span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)   </span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://img.imgdb.cn/item/600d63813ffa7d37b36543c8.jpg" alt></p>
+<h4 id="轮廓检测"><a href="#轮廓检测" class="headerlink" title="轮廓检测"></a>轮廓检测</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">contours_demo</span><span class="params">(image)</span>:</span></span><br><span class="line">    dst = cv.GaussianBlur(image, (<span class="number">3</span>, <span class="number">3</span>), <span class="number">0</span>)  <span class="comment"># 高斯模糊，消除噪声</span></span><br><span class="line">    gray = cv.cvtColor(dst, cv.COLOR_BGR2GRAY)  <span class="comment"># 先变灰度图像</span></span><br><span class="line">    ret, binary = cv.threshold(gray, <span class="number">0</span>, <span class="number">255</span>, cv.THRESH_BINARY | cv.THRESH_OTSU)  <span class="comment"># 获取二值图像</span></span><br><span class="line">    cv.imshow(<span class="string">"binary image"</span>, binary)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#contours,heriachy = cv.findContours(binary, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)    #RETR_TREE包含检测内部</span></span><br><span class="line">    contours,heriachy = cv.findContours(binary, cv.RETR_EXTERNAL,cv.CHAIN_APPROX_SIMPLE)  <span class="comment"># RETR_EXTERNAL检测外部轮廓</span></span><br><span class="line">    <span class="keyword">for</span> i, contour <span class="keyword">in</span> enumerate(contours):</span><br><span class="line">        cv.drawContours(image,contours,i,(<span class="number">0</span>,<span class="number">0</span>,<span class="number">255</span>),<span class="number">2</span>)<span class="comment">#绘制轮廓</span></span><br><span class="line">        <span class="comment"># cv.drawContours(image, contours, i, (0, 0, 255), -1)  # 填充轮廓</span></span><br><span class="line">    cv.imshow(<span class="string">"detect contours"</span>, image)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">image = cv.imread(<span class="string">"circle.png"</span>) </span><br><span class="line">cv.imshow(<span class="string">"input image"</span>, image)  </span><br><span class="line">contours_demo(image)</span><br><span class="line">cv.waitKey(<span class="number">0</span>) </span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://img.imgdb.cn/item/600d6a843ffa7d37b36a8286.jpg" alt></p>
+<p>轮廓填充：</p>
+<p><img src="https://img.imgdb.cn/item/600d6b1c3ffa7d37b36b07f7.jpg" alt></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/20/opencv-StudyDay06/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">opencv-StudyDay06</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="opencv-StudyDay07" data-title="opencv-StudyDay07" data-url="https://ylongyun.github.io/2021/01/24/opencv-StudyDay07/"  data-images="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" data-content="opencv-StudyDay07">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2021 ylongyun
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
