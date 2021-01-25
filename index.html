@@ -163,6 +163,115 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-opencv-StudyDay08" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/01/25/opencv-StudyDay08/" class="article-date">
+  	<time datetime="2021-01-25T11:39:35.000Z" itemprop="datePublished">2021-01-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/25/opencv-StudyDay08/">
+        opencv-StudyDay08
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="腐蚀与膨胀"><a href="#腐蚀与膨胀" class="headerlink" title="腐蚀与膨胀"></a>腐蚀与膨胀</h4><ul>
+<li>腐蚀</li>
+</ul>
+<blockquote>
+<p>作用：平滑对象边缘，弱化或分割图象只阿健的半岛型连结。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">erode</span><span class="params">(img)</span>:</span></span><br><span class="line">    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">    ret, binary = cv.threshold(grey, <span class="number">0</span>, <span class="number">255</span>, cv.THRESH_BINARY_INV | cv.THRESH_OTSU)</span><br><span class="line">    kernel = cv.getStructuringElement(cv.MORPH_RECT,(<span class="number">5</span>,  <span class="number">5</span>))</span><br><span class="line">    dst = cv.erode(binary, kernel)</span><br><span class="line">    cv.imshow(<span class="string">'erode'</span>,dst)</span><br><span class="line">    cv.imshow(<span class="string">'binary'</span>,binary)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">image = cv.imread(<span class="string">'violet.jpg'</span>)</span><br><span class="line">erode(image)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://img.imgdb.cn/item/600eaef13ffa7d37b30aa5bc.jpg" alt></p>
+<ul>
+<li>膨胀</li>
+</ul>
+<blockquote>
+<p>作用：平滑对象边缘，减少或填充对象之间的距离。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">erode</span><span class="params">(img)</span>:</span></span><br><span class="line">    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">    ret, binary = cv.threshold(grey, <span class="number">0</span>, <span class="number">255</span>, cv.THRESH_BINARY_INV | 					cv.THRESH_OTSU)</span><br><span class="line">    kernel = cv.getStructuringElement(cv.MORPH_RECT,(<span class="number">5</span>,  <span class="number">5</span>))</span><br><span class="line">    dst = cv.erode(binary, kernel)</span><br><span class="line">    cv.imshow(<span class="string">'erode'</span>,dst)</span><br><span class="line">    cv.imshow(<span class="string">'binary'</span>,binary)</span><br><span class="line"></span><br><span class="line">image = cv.imread(<span class="string">'violet.jpg'</span>)</span><br><span class="line">dilate(image)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://img.imgdb.cn/item/600eafcd3ffa7d37b30b0686.jpg" alt></p>
+<p>上述操作中的二值图像：</p>
+<p><img src="https://img.imgdb.cn/item/600eb0063ffa7d37b30b2011.jpg" alt></p>
+<h4 id="开闭操作"><a href="#开闭操作" class="headerlink" title="开闭操作"></a>开闭操作</h4><ul>
+<li>开操作（先腐蚀再膨胀）</li>
+</ul>
+<blockquote>
+<p>特点：消除噪点，去除小的干扰块，而不影响原来的图像</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">camp</span><span class="params">(val1,val2)</span>:</span></span><br><span class="line">    pv = val1 + val2</span><br><span class="line">    <span class="keyword">if</span> pv &gt; <span class="number">255</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">255</span></span><br><span class="line">    <span class="keyword">if</span> pv &lt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">return</span> pv</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">open_demo</span><span class="params">(image)</span>:</span></span><br><span class="line">    gray = cv.cvtColor(image,cv.COLOR_BGR2GRAY)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):<span class="comment"># 为灰度图像加一些噪点</span></span><br><span class="line">        h = np.random.randint(<span class="number">0</span>,gray.shape[<span class="number">0</span>])</span><br><span class="line">        w = np.random.randint(<span class="number">0</span>, gray.shape[<span class="number">1</span>])</span><br><span class="line">        val = np.random.randint(<span class="number">0</span>, <span class="number">256</span>)</span><br><span class="line">        gray[h,w] = camp(gray[h,w],val)</span><br><span class="line">    ret,binary = cv.threshold(gray,<span class="number">0</span>,<span class="number">255</span>,cv.THRESH_BINARY|cv.THRESH_OTSU)</span><br><span class="line">    cv.imshow(<span class="string">"binary"</span>,binary)</span><br><span class="line">    kernel = cv.getStructuringElement(cv.MORPH_RECT,(<span class="number">3</span>,<span class="number">3</span>))</span><br><span class="line">    binary = cv.morphologyEx(binary,cv.MORPH_OPEN,kernel)<span class="comment">#开操作，先腐蚀后膨胀，会消除一些为1的白色噪点</span></span><br><span class="line">    cv.imshow(<span class="string">"open_demo"</span>,binary)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">image = cv.imread(<span class="string">"violet.jpg"</span>)</span><br><span class="line">open_demo(image)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)   </span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+<p>噪声处理结果：</p>
+<p><img src="https://img.imgdb.cn/item/600eba003ffa7d37b30fa921.jpg" alt></p>
+<p>开操作结果：</p>
+<p><img src="https://img.imgdb.cn/item/600eb9a23ffa7d37b30f6cb0.jpg" alt></p>
+<ul>
+<li>闭操作（先膨胀再腐蚀）</li>
+</ul>
+<blockquote>
+<p>特点：可以填充闭合区域。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">close_demo</span><span class="params">(image)</span>:</span></span><br><span class="line">    gray = cv.cvtColor(image,cv.COLOR_BGR2GRAY)</span><br><span class="line">    ret,binary = cv.threshold(gray,<span class="number">0</span>,<span class="number">255</span>,cv.THRESH_BINARY|cv.THRESH_OTSU)</span><br><span class="line">    cv.imshow(<span class="string">"binary"</span>,binary)</span><br><span class="line">    kernel = cv.getStructuringElement(cv.MORPH_RECT,(<span class="number">15</span>,<span class="number">15</span>))</span><br><span class="line">    binary = cv.morphologyEx(binary,cv.MORPH_CLOSE,kernel)</span><br><span class="line">    cv.imshow(<span class="string">"close_demo"</span>,binary)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">image = cv.imread(<span class="string">"violet.jpg"</span>)</span><br><span class="line">close_demo(image)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:%5CUsers%5C%E6%9D%A8%E9%BE%99%E4%BA%91%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210125203438430.png" alt="image-20210125203438430"></p>
+<h4 id="分水岭算法"><a href="#分水岭算法" class="headerlink" title="分水岭算法"></a>分水岭算法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">watershed_demo</span><span class="params">(img)</span>:</span></span><br><span class="line">    blur = cv.pyrMeanShiftFiltering(img, <span class="number">10</span>, <span class="number">100</span>)</span><br><span class="line">    gray = cv.cvtColor(blur, cv.COLOR_BGR2GRAY)  <span class="comment"># 获取灰度图像</span></span><br><span class="line"></span><br><span class="line">    ret, binary = cv.threshold(gray, <span class="number">0</span>, <span class="number">255</span>, cv.THRESH_BINARY | cv.THRESH_OTSU)</span><br><span class="line">    <span class="comment"># 形态学操作，进一步消除图像中噪点</span></span><br><span class="line">    kernel = cv.getStructuringElement(cv.MORPH_RECT, (<span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line">    mb = cv.morphologyEx(binary, cv.MORPH_OPEN, kernel, iterations=<span class="number">2</span>)  <span class="comment"># iterations连续两次开操作</span></span><br><span class="line">    sure_bg = cv.dilate(mb, kernel, iterations=<span class="number">3</span>)  <span class="comment"># 3次膨胀,可以获取到大部分都是背景的区域</span></span><br><span class="line">    cv.imshow(<span class="string">"sure_bg"</span>, sure_bg)</span><br><span class="line">    <span class="comment"># 距离变换</span></span><br><span class="line">    dist = cv.distanceTransform(mb, cv.DIST_L2, <span class="number">5</span>)</span><br><span class="line">    cv.imshow(<span class="string">"dist"</span>, dist)</span><br><span class="line">    dist_output = cv.normalize(dist, <span class="number">0</span>, <span class="number">1.0</span>, cv.NORM_MINMAX)</span><br><span class="line">    cv.imshow(<span class="string">"distinct-t"</span>, dist_output * <span class="number">50</span>)</span><br><span class="line">    ret, sure_fg = cv.threshold(dist, dist.max() * <span class="number">0.6</span>, <span class="number">255</span>, cv.THRESH_BINARY)</span><br><span class="line">    cv.imshow(<span class="string">"sure_fg"</span>, sure_fg)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取未知区域</span></span><br><span class="line">    surface_fg = np.uint8(sure_fg)  <span class="comment"># 保持色彩空间一致才能进行运算，现在是背景空间为整型空间，前景为浮点型空间，所以进行转换</span></span><br><span class="line">    unknown = cv.subtract(sure_bg, surface_fg)</span><br><span class="line">    cv.imshow(<span class="string">"unknown"</span>, unknown)</span><br><span class="line">    <span class="comment"># 获取maskers,在markers中含有种子区域</span></span><br><span class="line">    ret, markers = cv.connectedComponents(surface_fg)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 分水岭变换</span></span><br><span class="line">    markers = markers + <span class="number">1</span></span><br><span class="line">    markers[unknown == <span class="number">255</span>] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    markers = cv.watershed(img, markers=markers)</span><br><span class="line">    img[markers == <span class="number">-1</span>] = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>]</span><br><span class="line"></span><br><span class="line">    cv.imshow(<span class="string">"result"</span>, img)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">image = cv.imread(<span class="string">"img_8.png"</span>)</span><br><span class="line">watershed_demo(image)</span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br><span class="line">cv.destroyAllWindows()</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img.imgdb.cn/item/600ec0dd3ffa7d37b312cc31.jpg" alt></p>
+<p><img src="https://img.imgdb.cn/item/600ec11a3ffa7d37b312f3d7.jpg" alt></p>
+<p><img src="https://img.imgdb.cn/item/600ec1383ffa7d37b3130978.jpg" alt></p>
+<p><img src="https://img.imgdb.cn/item/600ec1633ffa7d37b313272c.jpg" alt></p>
+<p><img src="C:%5CUsers%5C%E6%9D%A8%E9%BE%99%E4%BA%91%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20210125210245464.png" alt="image-20210125210245464"></p>
+<p><img src="https://img.imgdb.cn/item/600ec1943ffa7d37b31341ba.jpg" alt></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-opencv-StudyDay07" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1687,105 +1796,6 @@ fwL/B6DA4QM1ekmSAAAAAElFTkSuQmCC"></p>
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/">PIL</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-杨龙云-Day06" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/01/09/杨龙云-Day06/" class="article-date">
-  	<time datetime="2021-01-09T04:35:21.000Z" itemprop="datePublished">2021-01-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/09/杨龙云-Day06/">
-        杨龙云-Day06
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Python推导式"><a href="#Python推导式" class="headerlink" title="Python推导式"></a>Python推导式</h4><ul>
-<li>推导式comprehensions（又称解析式），是Python的一种独有特性。推导式是可以从一个数据序列构建另一个新的数据序列的结构体。 共有三种推导。  <ol>
-<li>列表<code>List</code>推导式</li>
-<li>字典<code>Dictionary</code>推导式  </li>
-<li>集合<code>Set</code>推导式  </li>
-</ol>
-</li>
-</ul>
-<hr>
-<h5 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h5><ol>
-<li><p>使用<code>[]</code>生成list</p>
-<p>基本格式：</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">variable = [out_exp_res <span class="keyword">for</span> out_exp <span class="keyword">in</span> input_list <span class="keyword">if</span> out_exp == <span class="number">2</span>]</span><br><span class="line">  <span class="comment"># out_exp_res:　　列表生成元素表达式，可以是有返回值的函数。</span></span><br><span class="line">  <span class="comment"># for out_exp in input_list：　　迭代input_list将out_exp传入out_exp_res表达式中。</span></span><br><span class="line">  <span class="comment"># if out_exp == 2：　　根据条件过滤哪些值可以。</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 样例</span></span><br><span class="line">multiples = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>) <span class="keyword">if</span> i % <span class="number">3</span> <span class="keyword">is</span> <span class="number">0</span>]</span><br><span class="line">print(multiples)</span><br><span class="line"><span class="comment"># Output: [0, 3, 6, 9, 12, 15, 18, 21, 24, 27]</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><p>使用<code>()</code>生成generator  </p>
-<p>基本格式：</p>
-</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">variable = （out_exp_res <span class="keyword">for</span> out_exp <span class="keyword">in</span> input_list <span class="keyword">if</span> out_exp == <span class="number">2</span>）</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 样例</span></span><br><span class="line">multiples = (i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">30</span>) <span class="keyword">if</span> i % <span class="number">3</span> <span class="keyword">is</span> <span class="number">0</span>)</span><br><span class="line">print(type(multiples))</span><br><span class="line"><span class="comment">#  Output: &lt;type 'generator'&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="字典推导式"><a href="#字典推导式" class="headerlink" title="字典推导式"></a>字典推导式</h5><ul>
-<li><p>字典推导和列表推导的使用方法是类似的，不同的是中括号该改成大括号。直接举例说明：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 大小写key合并</span></span><br><span class="line">mcase = &#123;<span class="string">'a'</span>: <span class="number">10</span>, <span class="string">'b'</span>: <span class="number">34</span>, <span class="string">'A'</span>: <span class="number">7</span>, <span class="string">'Z'</span>: <span class="number">3</span>&#125;</span><br><span class="line">mcase_frequency = &#123;</span><br><span class="line">    k.lower(): mcase.get(k.lower(), <span class="number">0</span>) + mcase.get(k.upper(), <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> k <span class="keyword">in</span> mcase.keys()</span><br><span class="line">    <span class="keyword">if</span> k.lower() <span class="keyword">in</span> [<span class="string">'a'</span>,<span class="string">'b'</span>]</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">print</span> mcase_frequency</span><br><span class="line"><span class="comment">#  Output: &#123;'a': 17, 'b': 34&#125;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 快速替换key和value</span></span><br><span class="line">mcase = &#123;<span class="string">'a'</span>: <span class="number">10</span>, <span class="string">'b'</span>: <span class="number">34</span>&#125;</span><br><span class="line">mcase_frequency = &#123;v: k <span class="keyword">for</span> k, v <span class="keyword">in</span> mcase.items()&#125;</span><br><span class="line"><span class="keyword">print</span> mcase_frequency</span><br><span class="line"><span class="comment">#  Output: &#123;10: 'a', 34: 'b'&#125;</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h5 id="集合推导式"><a href="#集合推导式" class="headerlink" title="集合推导式"></a>集合推导式</h5><ul>
-<li><p>跟列表推导式也是类似的。 唯一的区别在于它使用大括号{}。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">squared = &#123;x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>]&#125;</span><br><span class="line">print(squared)</span><br><span class="line"><span class="comment"># Output: set([1, 4])</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
 	</div>
 
       
