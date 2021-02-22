@@ -107,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/PIL/" style="font-size: 12.5px;">PIL</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+						<a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/PIL/" style="font-size: 12.5px;">PIL</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Pytorch/" style="font-size: 10px;">Pytorch</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -162,6 +162,758 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-PIL-StudyDay01" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/01/11/PIL-StudyDay01/" class="article-date">
+  	<time datetime="2021-01-11T09:47:18.000Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/11/PIL-StudyDay01/">
+        PIL_StudyDay01
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="打开和新建"><a href="#打开和新建" class="headerlink" title="打开和新建"></a>打开和新建</h4><ul>
+<li>在 Pillow库中,通过使用 Image模块,可以从文件中加载图像,或者处理其他图像或者从 <code>scratch</code>中创建图像。在对图像进行处理时,首先需要打开要处理的图片。在 Image模块中使用函数 <code>open</code>打开ー副图片,执行后返回image类的实例。当文件不存在时,会引发 <code>IOError</code>错误。使用函数 open语法格式如下所示。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">open(fp,mode)</span><br><span class="line"><span class="comment"># fp : 指文件打开的路径</span></span><br><span class="line"><span class="comment"># mode : 可选参数，表示打开文件的方式，通常使用默认值r</span></span><br></pre></td></tr></table></figure>
+
+<center> Pillow库支持的常用图片模式信息 </center>
+
+<table>
+<thead>
+<tr>
+<th>mode(模式)</th>
+<th>bands(通道)</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“1”</td>
+<td>1</td>
+<td>数字1,表示黑白二值图像,每个像素用0或者1共1位二进制代码表示</td>
+</tr>
+<tr>
+<td>“L”</td>
+<td>1</td>
+<td>灰度图,每个像素用8位二进制代码表示</td>
+</tr>
+<tr>
+<td>“P”</td>
+<td>1</td>
+<td>索引图,每个像素用8位二进制代码表示</td>
+</tr>
+<tr>
+<td>“RGB”</td>
+<td>3</td>
+<td>24位真彩图,每个像素用3个字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“RGBA”</td>
+<td>4</td>
+<td>“RGB”+透明通道表示,每个像素用4字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“CMYK”</td>
+<td>4</td>
+<td>印刷模式图像,每个像素用4字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“YCbCr”</td>
+<td>3</td>
+<td>彩色视频颜色隔离模式,每个像素用3个字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“LAB”</td>
+<td>3</td>
+<td>1ab颜色空间,毎个像素用3字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“HSV”</td>
+<td>3</td>
+<td>每个像素用3字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“I”</td>
+<td>1</td>
+<td>使用整数形式表示像素,毎个像素用4字节的二进制代码表示</td>
+</tr>
+<tr>
+<td>“F”</td>
+<td>1</td>
+<td>使用浮点数形式表示像素,每个像素用4字节的二进制代码表示</td>
+</tr>
+</tbody></table>
+<ul>
+<li>常用操作  </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="comment"># 打开图片</span></span><br><span class="line">img = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line"><span class="comment"># 显示图片</span></span><br><span class="line">img.show()</span><br><span class="line"><span class="comment"># 图片格式</span></span><br><span class="line">print(img.format)</span><br><span class="line"><span class="comment"># 图片尺寸</span></span><br><span class="line">print(img.size)</span><br><span class="line"><span class="comment"># 图片高度</span></span><br><span class="line">print(img.height)</span><br><span class="line"><span class="comment"># 图片指点像素点颜色</span></span><br><span class="line">print(img.getpixel((<span class="number">100</span>,<span class="number">100</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>显示结果：</p>
+<p><img src="data:img/jpg;base64,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
+fwL/B6DA4QM1ekmSAAAAAElFTkSuQmCC"></p>
+<center>图片信息</center>
+
+<img src="C:\Users\杨龙云\Pictures\172557xo113wccvco3zc5u.jpg" alt="打开的图片" style="zoom:50%;">
+
+<center>打开的图片</center>
+
+<h4 id="混合"><a href="#混合" class="headerlink" title="混合"></a>混合</h4><ol>
+<li><p>透明度很合  </p>
+<p>在 Pillow库的 Image模块中,可以使用函数 <code>blend</code>实现透明度混合处理。具体语法格式如下所示：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.blend(img1,img2,alpha) <span class="comment"># alpha : 混合透明度，取值是0~1</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>要求参与混合的图片尺寸相同  </p>
+<p>混合过程：(img1*(1-alpha)+img2*alpha)</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">img2 = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">print(img2.size)</span><br><span class="line">Image.blend(img2, img1, <span class="number">0.5</span>).show()</span><br></pre></td></tr></table></figure>
+
+<p>显示结果：</p>
+<img src="F:\work\blog\source\_posts\02.png" alt="显示结果" style="zoom:50%;">
+
+<ol start="2">
+<li><p>遮罩混合  </p>
+<p>在Pillow库中 Image模块中,可以使用图数 <code>composite</code>实现遮混合处理。法格式如下所示: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.composite(img1,img2,mask)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该函数的功能是使用<code>mask</code>来混和图片img1和img2，并且要求三张图片的尺寸相同。</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img1 = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img2 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">r,g,b = img2.split()</span><br><span class="line">img = Image.composite(img2,img1,r)</span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/569af29c58eebe87.png" alt></p>
+<h4 id="复制和缩放"><a href="#复制和缩放" class="headerlink" title="复制和缩放"></a>复制和缩放</h4><ul>
+<li><p>复制图片： </p>
+<p>在Pillow的Image模块中,可以使用函数<code>Image. copy()</code>复制指定的图片,这可以用于在处理或粘贴时需要持有源图片。</p>
+</li>
+<li><p>缩放图片像素：</p>
+<p>在 Pillow库的 Image模块中,可以使用函数 <code>eval</code>实现像素缩放处理,能够使用函数fun()计算输入图片的每个像素并返回。使用函数eval()语法格式如下:</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.eval(img,fun)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其中 image 表示输入的图片,fun表小输入图片的每个像素应用此函数,fun()函数只允许接收一个整型参数。如果一个图片含有多个通道,则每个通道都会应用这个函数。</p>
+</blockquote>
+<p>​       示例：缩放指定图片，实现图像每个像素值*2</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">Image.eval(img,<span class="keyword">lambda</span> i:i*<span class="number">2</span>).show()</span><br></pre></td></tr></table></figure>
+
+<p>​      结果显示</p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/de05d6b9db98475a.png" alt></p>
+<ul>
+<li><p>缩放图片  </p>
+<p>在 Pillow库的 Image模块中,可以使用函数 <code>thumbnail()</code>原生地缩放指定的图像。具体语法格式如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.thumbnail(size,resample=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line"><span class="comment"># 尺寸缩放</span></span><br><span class="line">img = img.copy()</span><br><span class="line">img.thumbnail((<span class="number">342</span>,<span class="number">500</span>)) <span class="comment"># 尺寸缩小为原来的一半</span></span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/e2c5a329c02a992b.png" alt></p>
+</li>
+</ul>
+<h4 id="粘贴和裁剪"><a href="#粘贴和裁剪" class="headerlink" title="粘贴和裁剪"></a>粘贴和裁剪</h4><ul>
+<li><p>粘贴  </p>
+<p>在Pillow库的 Image模块中,函数<code>paste</code>的功能是粘贴源图像或像素至该图像中。具体语法格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.paste(img,box = <span class="literal">None</span>,mask = <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其中<code>im</code>是原图或像素值；<code>box</code>是粘贴区域；<code>mask</code>是遮罩。</p>
+<p>参数<code>box</code>可以分为以下三种情况</p>
+<ol>
+<li>(x,y) ： 将图像左上角对齐(x,y)点，鳍鱼朝数倍粘贴图像的区域被抛弃。</li>
+<li>(x1,y1,x2,y2) : 原图像与此区域一致。</li>
+<li>None ：原图像与被粘贴图像的大小必须一致。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>裁剪  </p>
+<p>在 Pillow库的 Image模块中,函数 <code>crop()</code>的功能是剪切图片中box所指定的区域具体语法如下:  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.crop(box = <span class="literal">None</span>) <span class="comment"># 参数`box`是一个四元组分别定义了剪切区域的左、上、右、下四个坐标</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例：对指定图片进行剪切和粘贴图片</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">imga = img.copy()</span><br><span class="line">region = img.crop((<span class="number">20</span>,<span class="number">20</span>,<span class="number">300</span>,<span class="number">300</span>))</span><br><span class="line">imga.paste(region,(<span class="number">300</span>,<span class="number">20</span>))</span><br><span class="line">imga.show()</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>结果显示：</p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/37e454768e56ce6e.png" alt></p>
+<h4 id="图像旋转"><a href="#图像旋转" class="headerlink" title="图像旋转"></a>图像旋转</h4><p>在 Pillow库的 Image I模块中,函数 rotate的功能返回此图像的副本,国绕其中心逆时针旋转给定的度数。具体语法格式如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.rotate(angle,resample=<span class="number">0</span>, expand=<span class="number">0</span>, center=<span class="literal">None</span>, translate = <span class="literal">None</span>, fillcolor = <span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img.rotate(<span class="number">90</span>).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/f25ee23710afc98d.png" alt></p>
+<h4 id="格式转化"><a href="#格式转化" class="headerlink" title="格式转化"></a>格式转化</h4><ul>
+<li><p><code>covert()</code></p>
+<p>在 Pillow库的 Image模块中,函数 <code>convert()</code>的功能是返回模式转换后的图像实例。具体转换的语法格式如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image. convert(mode = <span class="literal">None</span>,Matrix = <span class="literal">None</span>, dither=<span class="literal">None</span>, palette=<span class="number">0</span>,colors=<span class="number">256</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其中mode:转换文件的模式,默契支持的模式有“L”、“RGB”“CMYK”; matrix转使用的矩阵: dither:取值为None切转为黑白图时非0(1-255)像素均为白,也可以设置此参数为 FLOYDSTEINBERG</p>
+</blockquote>
+</li>
+<li><p><code>transpose()</code></p>
+<p>在 Pillow库的 Image模块中,函数 transpose函数功能是实现图像格式的转换。语法格式如下:  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.transpose(method)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>转化图像后，返回转换后的图像，“method”的取值有以下几个。</p>
+<ol>
+<li>PIL. Image. FLIP LEFT RIGHT  :  左右镜像</li>
+<li>PIL. Image. FLIP_TOP_BOTTON  :  上下镜像</li>
+<li>PIL.Image. ROTATE_90  :  旋转90</li>
+<li>PIL.mage ROTATIE_180  :  旋转180</li>
+<li>PIL. Image. ROTATE_270  :  旋转270</li>
+<li>PIL. Image. TRANSPOSE   :   颠倒顺序</li>
+</ol>
+</blockquote>
+</li>
+<li><p>示例：对指定图片进行转换操作  </p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line"><span class="comment"># img.rotate(90).show()</span></span><br><span class="line">img.transpose(Image.FLIP_TOP_BOTTOM).show() <span class="comment"># 上下颠倒</span></span><br><span class="line">img.transpose(Image.FLIP_LEFT_RIGHT).show() <span class="comment"># 左右颠倒</span></span><br><span class="line">img.transpose(Image.ROTATE_90).show() <span class="comment"># 旋转90°</span></span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/61bda274e67c5027.png" alt></p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/8846188a2a2362b6.png" alt></p>
+<p><img src="https://ftp.bmp.ovh/imgs/2021/01/b6ed009f7d955a82.png" alt></p>
+<h4 id="分离和合并"><a href="#分离和合并" class="headerlink" title="分离和合并"></a>分离和合并</h4><ul>
+<li><p>分离</p>
+<p>在 Pillow库的 Image模块中,使用函数 split()可以将图片分割为多个通道列表。使用函数spli0的语法格式如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.split()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并</p>
+<p>在 Pillow库的 Image 模块中,使用函数 merger()可以将一个通道的图像合并到更多通道图像中。使用函数 merge的语法格式如下所示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.merge(mode,bands)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其中mode指输出图像的模式, banas段通道,一个序列包含单个带图通道。</p>
+</blockquote>
+</li>
+<li><p>示例，对指定图片进行合并和分离操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img2 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">r1,g1,b1 = img.split()</span><br><span class="line">r2,g2,b2 = img2.split()</span><br><span class="line">temp = [r1,g1,b2]</span><br><span class="line">imgb = Image.merge(<span class="string">"RGB"</span>,temp)</span><br><span class="line">imgb.show()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果：</p>
+<img src="C:\Users\杨龙云\AppData\Roaming\Typora\typora-user-images\image-20210111205056190.png" style="zoom:50%;">
+
+</li>
+</ul>
+<h4 id="滤镜"><a href="#滤镜" class="headerlink" title="滤镜"></a>滤镜</h4><ul>
+<li><p>在 Pillow库中的 Image模块中,使用函数<code>filter()</code>可以对指定的图片使用滤镜效果,在Pillow库中可以用的滤镜保存在 ImageFilter模块中。使用函数 filter的语法格式如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Image.filter(filter)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>参数“filter”表示滤镜内核</p>
+</blockquote>
+</li>
+<li><p>示例：对特定图片实现滤镜迷糊操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageFilter</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">w,h = img.size</span><br><span class="line">imgb = img.filter(ImageFilter.GaussianBlur)</span><br><span class="line">img_new = Image.new(<span class="string">'RGB'</span>,(<span class="number">2</span>*w,h))</span><br><span class="line">img_new.paste(img,(<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">img_new.paste(imgb,(w,<span class="number">0</span>))</span><br><span class="line">img_new.show()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果</p>
+<img src="F:\work\blog\source\_posts\14.png" style="zoom:50%;">
+
+</li>
+</ul>
+<h4 id="ImageChops模块"><a href="#ImageChops模块" class="headerlink" title="ImageChops模块"></a>ImageChops模块</h4><blockquote>
+<p>在 Pillow库的内置模块 Imagechops中包含了多个用于实现图片合成的函数。这些合成功能是通过计算通道中像素值的方式来实现的。其主要用于制作特效、合成图片等操作。常用的内置函数如下所示</p>
+</blockquote>
+<ol>
+<li><p>相加函数ad,功能是对两张图片进行算术加法运算。具体语法如下所示: </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChop.add(img1,img2,scale = <span class="number">1.0</span>,offset = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在合成后图像中的每个像素值,是两幅图像对应像素值依据下面的公式进行计算得到的。</p>
+<p>out=((image1 + image2)/scale + offset)</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：使用add图片合成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.add(img,img1,<span class="number">3</span>,<span class="number">0</span>).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\15.png" style="zoom:50%;">
+
+<ol start="2">
+<li>减法函数 subtract(),功能是对两张图片进行算术减法运算。具体语法如下所示</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChop.subtract(img1,img2,scale = <span class="number">1.0</span>,offset = <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在合成后图像中的每个像素值,是两幅图像对应像素值依据下面的公式进行计算得到的。</p>
+<p>out=((image1 - image2)/scale + offset)</p>
+</blockquote>
+<p>示例：使用subtract()图片合成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.subtract(img,img1,<span class="number">1</span>,<span class="number">0</span>).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\16.png" style="zoom:50%;">
+
+<ol start="3">
+<li><p>变暗函数 darker,功能是比较两个图片的像素,取两张图片中对应像素的教小值,所分。具体语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.darker(img1,img2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out = min(img1,img2)</p>
+</blockquote>
+</li>
+</ol>
+<p>​       示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.darker(img,img1).show()</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li><p>(变亮函数 lighter,与变暗函数 darker相反,功能是比较两个图片(逐像素比较)返回一幅新的图片,这幅新的图片是将两张图片中较亮的部分登加得到的。也就是说,在某点上,两张图中哪个的值大(亮)则取之。具体语法如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.lighter(img1,img2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out = max(img1,img2)</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.lighter(img,img1).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\18.png" style="zoom:50%;">
+
+<ol start="5">
+<li><p>叠加函数 multiply功能是将两张图片互相登加。如果用纯界色与某图片进行叠加操作,就会得到一幅纯黑色的图片。如果用纯白色与图片作叠加,则图片不受影响。具体语法如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.multiply(img1,img2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out = img1 * img2 /MAX</p>
+</blockquote>
+</li>
+</ol>
+<p>​    示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.multiply(img,img1).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\19.png" style="zoom:50%;">
+
+<ol start="6">
+<li><p>屏幕函数screen(),功能是先反色后叠加,实现合成图像的效果,就像将两张幻灯片用两台投影机同时投影到一个屏幕上的效果。具体语法如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.screen(img1,img2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out = Max-((Max-img1)*(Max-img2)/MAX</p>
+</blockquote>
+</li>
+</ol>
+<p>​    示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.screen(img,img1).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\20.png" style="zoom:50%;">
+
+<ol start="7">
+<li><p>反色函数 invert,类似于集合操作中的求补集,最大值为Max,每个像素做减法,取出反色。在反色时将用255减去一幅图像的每个像素值,从而得到原来图像的反相。也就是说,其表现为“底片”性质的图像。具体语法如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.invert(img)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out  = MAX - img</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line"><span class="comment"># ImageChops.screen(img,img1).show()</span></span><br><span class="line">ImageChops.invert(img).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\21.png" style="zoom:50%;">
+
+<ol start="8">
+<li><p>比较函数 difference,可以逐像素做减法操作,计算出绝对值。函数 difference()能够两幅图像的对应像素值相减后的图像,对应像素值相同的,则为黑色。函数 difference()遇常用来找出图像之间的差异。具体语法如下所示:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageChops.difference(img1,img2)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>像素的计算公式：out  = abs(img1-img2)</p>
+</blockquote>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageChops</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">img1 = Image.open(<span class="string">'666.jpg'</span>)</span><br><span class="line">ImageChops.difference(img,img1).show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<img src="F:\work\blog\source\_posts\2.png" style="zoom:50%;">
+
+<h4 id="ImageEnhance模块"><a href="#ImageEnhance模块" class="headerlink" title="ImageEnhance模块"></a>ImageEnhance模块</h4><ul>
+<li><p>内置的 ImageEnhance模块中包含了多个用于增强图像效果的函数,主要用来调整图像的色彩、对比度、亮度和清晰度等,感觉上和调整电视机的显示参数一样</p>
+</li>
+<li><p>在模块 ImageEnhance中,所有的图片増强对象都实现一个通用的接口。这个接口只包含如下一个方法方法 </p>
+</li>
+<li><p>enhance会返回一个增强的 Image对象,参数 factor是一个大于0的浮点数,1表示返回原始图片。</p>
+</li>
+<li><p>当在 Python程序中使用模块 ImageEnhance增强图像效果时,需要首先创建对应的增强周整器,然后调用调整器输出函数,根据指定的增强系数(小于1表示减弱,大于1表示增强,等于1表示原图不变)进行调整,最后输出调整后的图像。在模块 ImageEnhance中,常用的内置函数如下所示:</p>
+<ol>
+<li><p>ImageEnhance. Color( img):功能是调整图像色彩平衡,相当于彩色电视机的色彩调整，实现了上边的enhance方法。</p>
+</li>
+<li><p>ImageEnhance.Contrat(img):功能是调整图像对比度,相当于彩色电视机的对比度调整。</p>
+</li>
+<li><p>ImageEnhance.Brightness( img):功能是调整图像亮度。</p>
+</li>
+<li><p>ImageEnhance.Sharpness( Img);功能是调整图像清晰度,用于锐化/钝化图片。</p>
+<blockquote>
+<p>锐化操作的 factor是02之间的一个浮点数。当 factor=0时,返回一个模糊的图片对象;当 factor=2时,返回一个锐化的图片对象;当 factor=1时,返回原始图片对象。 </p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>示例一：调整色彩</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageEnhance</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">w,h = img.size</span><br><span class="line">img_output = Image.new(<span class="string">'RGB'</span>,(<span class="number">3</span>*w,h))</span><br><span class="line">img_output.paste(img,(<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">img_color = ImageEnhance.Color(img)</span><br><span class="line">imgb = img_color.enhance(<span class="number">1.5</span>)</span><br><span class="line">img_output.paste(imgb,(w,<span class="number">0</span>))</span><br><span class="line">imgc = img_color.enhance(<span class="number">0.5</span>)</span><br><span class="line">img_output.paste(imgc,(<span class="number">2</span>*w,<span class="number">0</span>))</span><br><span class="line">img_output.show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="F:%5Cwork%5Cblog%5Csource_posts%5C22.png" alt></p>
+</li>
+<li><p>示例二：调整亮度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageEnhance</span><br><span class="line">img = Image.open(<span class="string">'667.jpg'</span>)</span><br><span class="line">w,h = img.size</span><br><span class="line">img_output = Image.new(<span class="string">'RGB'</span>,(<span class="number">3</span>*w,h))</span><br><span class="line">img_output.paste(img,(<span class="number">0</span>,<span class="number">0</span>))</span><br><span class="line">img_color = ImageEnhance.Brightness(img)</span><br><span class="line">imgb = img_color.enhance(<span class="number">1.5</span>)</span><br><span class="line">img_output.paste(imgb,(w,<span class="number">0</span>))</span><br><span class="line">imgc = img_color.enhance(<span class="number">0.5</span>)</span><br><span class="line">img_output.paste(imgc,(<span class="number">2</span>*w,<span class="number">0</span>))</span><br><span class="line">img_output.show()</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="F:%5Cwork%5Cblog%5Csource_posts%5C23.jpg" alt></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/">PIL</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-杨龙云-Day06" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1317,69 +2069,6 @@ class Order{
         <h2 id="一、package关键字的使用"><a href="#一、package关键字的使用" class="headerlink" title="一、package关键字的使用"></a>一、package关键字的使用</h2><p>  1.为了更好的实现项目中类的管理，提供包的概念。<br>  2.使用package声明类或接口所属的包，声明在源文件的首行。<br>  3.包，属于标识符，遵循标识符的命名规则、规范(xxxyyyzzz)、“见名知意”。<br>  4.每”.”一次，就代表一层文件目录。</p>
 <p>  补充：<br>同一个包下，不能命名同名的接口、类。<br>      不同的包下，可以命名同名的接口、类。</p>
 <h2 id="二、import关键字的使用"><a href="#二、import关键字的使用" class="headerlink" title="二、import关键字的使用"></a>二、import关键字的使用</h2><p>  import:导入。<br>1.在源文件中显式的使用import结构导入指定包下的类、接口。<br>2.声明在包的声明和类的声明之间。<br>3.如果需要导入多个结构,则并列写出即可。<br>4.可以使用”xxx.*“的方式,表示可以导入xxx包下的所有结构。<br>5.如果使用的类或接口是java.lang包下定义的,则可以省略import结构。<br>6.如果使用的类或接口是本包下定义的,则可以省略import结构。<br>7.如果在源文件中，使用了不同包下的同名的类，则必须至少有一个类需要以全类名的方式显示。<br>8.使用”xxx.*“方式表明可以调用xxx包下的所有结构。但是如果使用的是xxx子包下的结构，则仍需要显式导入。<br>9.import static:导入指定类或接口中的静态结构:属性或方法。 </p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-多态性的理解" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/11/21/多态性的理解/" class="article-date">
-  	<time datetime="2019-11-21T02:36:29.000Z" itemprop="datePublished">2019-11-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/21/多态性的理解/">
-        多态性的理解
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="面向对象特征之三-多态性"><a href="#面向对象特征之三-多态性" class="headerlink" title="面向对象特征之三:多态性"></a>面向对象特征之三:多态性</h1><h2 id="理解多态性"><a href="#理解多态性" class="headerlink" title="理解多态性"></a>理解多态性</h2><p>就是字面意思，一个事物的多种形态。  </p>
-<h2 id="什么是多态性？"><a href="#什么是多态性？" class="headerlink" title="什么是多态性？"></a>什么是多态性？</h2><p>对象的多态性：父类的引用指向子类的对象（或子类的对象赋给父类的引用）。  </p>
-<h2 id="多态性的使用"><a href="#多态性的使用" class="headerlink" title="多态性的使用"></a>多态性的使用</h2><p>虚拟方法的调用。<br>有了对象的多态性以后,我们在编译期,只能调用父类中声明的方法,但在运行期,我们实际执行的是子类重写父类的方法<br>总结:编译,看左边;运行,看右边。  </p>
-<h2 id="多态性的使用前提"><a href="#多态性的使用前提" class="headerlink" title="多态性的使用前提"></a>多态性的使用前提</h2><p>1.类的继承关系。<br>2.方法的重写。  </p>
-<h2 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h2><p>只适用于方法，不适用于属性（编译和运行都看左边）。  </p>
 
       
     </div>
