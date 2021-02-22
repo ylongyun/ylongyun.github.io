@@ -242,6 +242,7 @@
 <p>运行结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tensor([[-0.2354,  1.7104],</span><br><span class="line">        [ 0.2825,  1.5118],</span><br><span class="line">        [ 0.6198, -0.0961]], device=&apos;cuda:0&apos;)</span><br><span class="line">tensor([[-0.2354,  1.7104],</span><br><span class="line">        [ 0.2825,  1.5118],</span><br><span class="line">        [ 0.6198, -0.0961]])</span><br></pre></td></tr></table></figure>
 
+<p>GPU张量在末尾会显示在数据所在GPU的位置。可以调用torch.cuda.get_device_name()去查看GPU的型号。</p>
 
       
     </div>
