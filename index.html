@@ -107,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/PIL/" style="font-size: 12.5px;">PIL</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Pytorch/" style="font-size: 10px;">Pytorch</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+						<a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/PIL/" style="font-size: 12.5px;">PIL</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Pytorch/" style="font-size: 12.5px;">Pytorch</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -162,6 +162,214 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Pytorch-CreateTensor" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/02/23/Pytorch-CreateTensor/" class="article-date">
+  	<time datetime="2021-02-23T12:04:37.000Z" itemprop="datePublished">2021-02-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/23/Pytorch-CreateTensor/">
+        Pytorch_CreateTensor
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="创建Tensor"><a href="#创建Tensor" class="headerlink" title="创建Tensor"></a>创建Tensor</h3><ul>
+<li>Import from numpy</li>
+</ul>
+<p>使用<code>torch.from_numpy()</code>创建<code>tensor</code>数据</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">3.3</span>])</span><br><span class="line">c = np.ones([<span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">a = torch.from_numpy(b)</span><br><span class="line">d = torch.from_numpy(c)</span><br><span class="line">print(a)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tensor([2.0000, 3.3000], dtype=torch.float64)</span><br><span class="line">tensor([[1., 1., 1.],</span><br><span class="line">        [1., 1., 1.]], dtype=torch.float64)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Import from List</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = [<span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = torch.tensor(a)</span><br><span class="line">c = torch.tensor([[<span class="number">2.</span>, <span class="number">3.2</span>], [<span class="number">1.</span>, <span class="number">3.</span>]])</span><br><span class="line">print(b)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tensor([2, 3])</span><br><span class="line">tensor([[2.0000, 3.2000],</span><br><span class="line">        [1.0000, 3.0000]])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建未初始化的tensor</li>
+</ul>
+<p>使用<code>torch.empty()</code>，参数为维度</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">print(torch.empty(<span class="number">8</span>,<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tensor([[7.1118e-04, 1.7444e+28],</span><br><span class="line">        [7.3909e+22, 4.5828e+30],</span><br><span class="line">        [3.2483e+33, 1.9690e-19],</span><br><span class="line">        [6.8589e+22, 1.3340e+31],</span><br><span class="line">        [1.1708e-19, 7.2128e+22],</span><br><span class="line">        [9.2216e+29, 7.5546e+31],</span><br><span class="line">        [1.6932e+22, 3.0728e+32],</span><br><span class="line">        [2.9514e+29, 2.8940e+12]])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建随机初始化的tensor</li>
+</ul>
+<p>使用<code>torch.rand()</code>,<code>torch.rand_like()</code>,<code>torch.randint()</code>，<code>torch.randn(3,3)</code></p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((<span class="number">3</span>,<span class="number">2</span>))</span><br><span class="line">print(a)</span><br><span class="line">print(torch.rand_like(a))</span><br><span class="line">print(torch.randint(<span class="number">3</span>,(<span class="number">3</span>,<span class="number">2</span>)))</span><br><span class="line">print(torch.randn(<span class="number">3</span>,<span class="number">3</span>)) <span class="comment"># 正态分布随机产生</span></span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">tensor([[0.8932, 0.4137],</span><br><span class="line">        [0.7366, 0.5403],</span><br><span class="line">        [0.3183, 0.7051]])</span><br><span class="line">tensor([[0.4852, 0.2656],</span><br><span class="line">        [0.1002, 0.1804],</span><br><span class="line">        [0.7408, 0.7914]])</span><br><span class="line">tensor([[2, 1],</span><br><span class="line">        [2, 1],</span><br><span class="line">        [1, 0]])</span><br><span class="line">tensor([[ 0.9407,  0.7319, -0.8401],</span><br><span class="line">        [ 1.0448,  0.9497, -2.2670],</span><br><span class="line">        [ 0.5650, -0.2958, -0.0625]])</span><br></pre></td></tr></table></figure>
+
+<h3 id="维度变换"><a href="#维度变换" class="headerlink" title="维度变换"></a>维度变换</h3><ol>
+<li>view / reshape</li>
+</ol>
+<blockquote>
+<p>变换前后数据的Size必须相同</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((<span class="number">3</span>,<span class="number">2</span>,<span class="number">20</span>))</span><br><span class="line">print(a.shape)</span><br><span class="line">print(a.view(<span class="number">3</span>,<span class="number">40</span>).shape)</span><br><span class="line">print(a.view(<span class="number">3</span>,<span class="number">20</span>,<span class="number">2</span>).shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([3, 2, 20])</span><br><span class="line">torch.Size([3, 40])</span><br><span class="line">torch.Size([3, 20, 2])</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>unsqueeze / squeeze</li>
+</ol>
+<blockquote>
+<p> 在指定位置插入或删去一个维度，参数必须符合实际</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((<span class="number">3</span>,<span class="number">2</span>,<span class="number">20</span>))</span><br><span class="line">print(a.shape)</span><br><span class="line">print(a.unsqueeze(<span class="number">0</span>).shape)</span><br><span class="line">print(a.unsqueeze(<span class="number">-1</span>).shape)</span><br><span class="line">print()</span><br><span class="line">t = torch.rand((<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">20</span>,<span class="number">1</span>))</span><br><span class="line">print(t.shape)</span><br><span class="line">print(t.squeeze(<span class="number">0</span>).shape)</span><br><span class="line">print(t.squeeze().shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([3, 2, 20])</span><br><span class="line">torch.Size([1, 3, 2, 20])</span><br><span class="line">torch.Size([3, 2, 20, 1])</span><br><span class="line"></span><br><span class="line">torch.Size([1, 3, 2, 20, 1])</span><br><span class="line">torch.Size([3, 2, 20, 1])</span><br><span class="line">torch.Size([3, 2, 20])</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Expand</li>
+</ol>
+<blockquote>
+<p>将指定维度进行扩张，所指定维度必须为一</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">20</span>))</span><br><span class="line">print(a.shape)</span><br><span class="line">print(a.expand(<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">20</span>).shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([1, 3, 2, 20])</span><br><span class="line">torch.Size([4, 3, 2, 20])</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>repeat</li>
+</ol>
+<blockquote>
+<p>对维度进行指定倍数的扩张</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">20</span>))</span><br><span class="line">print(a.shape)</span><br><span class="line">print(a.repeat(<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>).shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([1, 3, 2, 20])</span><br><span class="line">torch.Size([4, 9, 4, 40])</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>t</li>
+</ol>
+<blockquote>
+<p>适用于2D数据，将行列互换</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((3,2))</span><br><span class="line">print(a.shape)</span><br><span class="line">print(a.t().shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([3, 2])</span><br><span class="line">torch.Size([2, 3])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="合并与分割"><a href="#合并与分割" class="headerlink" title="合并与分割"></a>合并与分割</h3></li>
+</ul>
+<ol>
+<li>cat</li>
+</ol>
+<blockquote>
+<p>指定维度进行合并，只有指定维度的大小可以不同</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">4</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">b = torch.rand(<span class="number">4</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">32</span>)</span><br><span class="line">print(torch.cat([a,b],dim=<span class="number">2</span>).shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([4, 3, 37, 32])</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>stack</li>
+</ol>
+<blockquote>
+<p>创建新的维度进行合并，合并前两个tensor的维度必须相同</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">4</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">b = torch.rand(<span class="number">4</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">print(torch.stack([a,b],dim=<span class="number">0</span>).shape)</span><br><span class="line">print(torch.stack([a,b],dim=<span class="number">1</span>).shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([2, 4, 3, 32, 32])</span><br><span class="line">torch.Size([4, 2, 3, 32, 32])</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>spilt</li>
+</ol>
+<blockquote>
+<p>根据长度进行拆分</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">2</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">t = a.split(<span class="number">2</span>,dim=<span class="number">2</span>)</span><br><span class="line">print(t[<span class="number">0</span>].shape)</span><br><span class="line">print(len(t))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([2, 3, 2, 32])</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>chunk</li>
+</ol>
+<blockquote>
+<p>根据数量进行拆分</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">3</span>,<span class="number">4</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">t = a.chunk(<span class="number">4</span>,dim=<span class="number">2</span>)</span><br><span class="line">print(t[<span class="number">1</span>].shape)</span><br><span class="line">print(len(t))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([3, 4, 8, 32])</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pytorch/">Pytorch</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Pytorch数据类型" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -956,203 +1164,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/open-cv/">open_cv</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-PIL-StudyDay02" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/01/12/PIL-StudyDay02/" class="article-date">
-  	<time datetime="2021-01-12T09:42:51.000Z" itemprop="datePublished">2021-01-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/12/PIL-StudyDay02/">
-        PIL-StudyDay02
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="ImageDraw模块"><a href="#ImageDraw模块" class="headerlink" title="ImageDraw模块"></a>ImageDraw模块</h4><ul>
-<li><p>Imagedraw模块实现了绘图功能。可以通过创建图片的方式来绘制2D图像:还可以在原有的图片上进行绘图,己达到修饰图片或对片进行注释的目的。</p>
-</li>
-<li><p>在 Imagedraw模块绘图时需要首先创建一个 Imagedraw. Draw对象,并且提供指向文件的参数。然后引用创建的Draw对象方法进行绘图。最后保存或直接输出绘制的图像。</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawObject = ImageDraw.Draw(balck)</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>绘制直线</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawObject.line([x1,y1,x2,y2],fill = None,width = 0,joint = None)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>表示以(x1,y1)为起始点,以(x2,y2)冬止点画一条直线。[x1,y1,x2,y2也可以写为(x1,y1,x2,y2)、[(xl,y1),(x2,y2]等:fil用于设置指定线条颜色;widh设置线条的宽度; joint表示一系列线之间的联合类型。它可以是“曲线”</p>
-</blockquote>
-<ol start="2">
-<li>绘制圆弧</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawObject.arc([x1,y1,x2,y2],start,end,fill = None,width = 0)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在左上角坐标为(x1,y1),右下角坐标为(x2,y2)的矩形区域内,满圆O内,以start为起始角度,以end为终止角度,截取圆O的一部分圆弧并画出来。如果[x1,y1,x2,y2]区域不是正方形,则在该区域内的最大椭圆中根据角度截取片段。参数fil和 width与line方法相同</p>
-</blockquote>
-<ol start="3">
-<li>绘制椭圆</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawObject.ellipse([x1,y1,x2,y2],fill = None,outline = None,width = 0)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>用法同arc类似,用于画圆(或者椭圆)。 outline表示只规定圆的颜色。</p>
-</blockquote>
-<ol start="4">
-<li>绘制弦</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawObject.chord([x1,y1,x2,y2],start,end,fill = None,outline = None,width = 0)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>用法同arc类似,用于画圆中从start到end的弦。fiil表示弦与圆弧之间空间用指定色填满,设置为 outline表示只规定弦线的颜色。</p>
-</blockquote>
-<ol start="5">
-<li>绘制扇形</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawObject.pieslice([x1,y1,x2,y2],start,end,fill = None,outline = None,width = 0)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>用法同 ellipse类似,用于画起止角度间的扇形区域。fiil表示将扇形区域用指定颜色填,设置为 outline表示只用指定颜色描出区域轮廓</p>
-</blockquote>
-<ol start="6">
-<li>绘制多边形</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawObject.polygon([x1,y1,x2,y2,……],fill = None,outline = None)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>据坐标画多边形, Python会根据第一个参量中的(xy)坐标对,连接出整个图形。fill表示将多边形区域用指定颜色填满, outline只用于设置指定颜色描出区域轮廓。</p>
-</blockquote>
-<ol start="7">
-<li>绘制矩形</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawObject.polygon([x1,y1,x2,y2],fill = None,outline = None,width = 0)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在指定的区域内画一个矩形,(x1,y1)表示矩形左上角的坐标,(x2,y2)表示矩形右<br>下角的坐标。fill用于将矩形区域颜色填满, outline用于描出区域轮廓。</p>
-</blockquote>
-<ol start="8">
-<li>绘制文字</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drawObject.text (position, text, fill=None, font=None, anchor=None, spacing=0</span><br><span class="line">align=&quot;left&quot;, direction=None, features -None, language =None)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在图像内添加文字。其中参数position是一个二元组,用于指定文字左上角的坐标text表示要写入的文字内容;fill表示文本的颜色:font必须为 ImageFont中指定的font类型;spacing表示行之间的像素数: align表示位置“left”,“ center”或“ right”; direction表示文字的方向。它可以是’rlt’(从右到左),’ltr’(从左到右)或’ttb’(从上到下)。</p>
-</blockquote>
-<ol start="9">
-<li>绘制点</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drawObject.point([x,y],fill = None)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>给定坐标绘制点（单个像素）</p>
-</blockquote>
-<h4 id="ImageFont模块"><a href="#ImageFont模块" class="headerlink" title="ImageFont模块"></a>ImageFont模块</h4><ul>
-<li>ImageFont的功能是实现对字体和字型的处理。比较常用的内置函数如下所示:</li>
-</ul>
-<ol>
-<li>load()  :  从指定的的文件中加载一种字体，该函数返回对应的字体对象。如果函数运行失败，那么将会产生IORrror异常。语法格式如下：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageFont.load(文件名)</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>load_path()和函数load()一样,但是如果没有指定当前路径,就会从文件 sys. path开始查找指定的字体文件。语法格式如下:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageFont.load_path(文件名)</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>truetype():有两种定义格式。第1种格式的功能是加載一个 Truetype或者 Opentype字体文件,并且创建一个字体对象。在 Windows系统中,如果指定的文件不存在,加载器就会顺便看看 Windows的字体目录下它是否存在。语法格式如下:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageFont.truetype(file,size)</span><br></pre></td></tr></table></figure>
-
-<p>   第2种格式的功能是,加載一个 Truetype或者 OpenType字体文件,并且创建一个字体对象。通常的编码方是“uic”( Unicode)、“symb”( Microsoftsymbol)、“ADOB”( Adobe Standard)、“ADBE”( Adobe Expert)和“amn”( Apple Roman)。语法格式如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageFont.truetype(file,size,encoding = value)</span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>load_default(): 功能是加载一种默认的字体。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageFont.load_default()</span><br></pre></td></tr></table></figure>
-
-<ol start="5">
-<li>getsize():返回给定文本的宽度和高度,返回值是一个二元组。具体语法格式如下:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ImageFont.getsize()</span><br></pre></td></tr></table></figure>
-
-<h4 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h4><ul>
-<li>绘制十字</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> ImageDraw, Image</span><br><span class="line"></span><br><span class="line">img = Image.open(<span class="string">'violet.png'</span>)</span><br><span class="line">w, h = img.size</span><br><span class="line">imgb = Image.new(<span class="string">'RGB'</span>, [w, <span class="number">2</span> * h])</span><br><span class="line">imgb.paste(img, (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line">draw = ImageDraw.Draw(img)</span><br><span class="line">draw.line([<span class="number">0</span>, <span class="number">0</span>, w, h], <span class="string">'purple'</span>, <span class="number">1</span>)</span><br><span class="line">draw.line([w, <span class="number">0</span>, <span class="number">0</span>, h], <span class="string">'purple'</span>, <span class="number">1</span>)</span><br><span class="line">imgb.paste(img, (<span class="number">0</span>, h))</span><br><span class="line">imgb.show()</span><br></pre></td></tr></table></figure>
-
-<p>结果显示：</p>
-<p><a href="https://imgchr.com/i/sYUzwj" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sYUzwj.png" alt="sYUzwj.png"></a></p>
-<ul>
-<li>绘制验证码  </li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw, ImageFont</span><br><span class="line"></span><br><span class="line">w, h = <span class="number">150</span>, <span class="number">150</span></span><br><span class="line">img = Image.new(<span class="string">'RGB'</span>, (w, h), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line">draw_img = ImageDraw.Draw(img)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_color</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> (random.randint(<span class="number">200</span>, <span class="number">255</span>), random.randint(<span class="number">200</span>, <span class="number">255</span>), random.randint(<span class="number">200</span>, <span class="number">255</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(w):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> range(h):</span><br><span class="line">        draw_img.point((x, y), fill=get_color())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_char</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> chr(random.randint(<span class="number">65</span>, <span class="number">97</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">font = ImageFont.truetype(<span class="string">'simsun.ttc'</span>, <span class="number">36</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    draw_img.text((<span class="number">10</span> + i * <span class="number">20</span>, <span class="number">40</span>), get_char(), font=font, fill=(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    draw_img.line((random.randint(<span class="number">0</span>, <span class="number">150</span>), random.randint(<span class="number">0</span>, <span class="number">150</span>), random.randint(<span class="number">0</span>, <span class="number">150</span>), random.randint(<span class="number">0</span>, <span class="number">150</span>)),</span><br><span class="line">                  fill=<span class="string">"blue"</span>, width=<span class="number">1</span>)</span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<p><a href="https://imgchr.com/i/sYw6Fs" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sYw6Fs.png" alt="sYw6Fs.png"></a></p>
-<ul>
-<li>绘制九宫格</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw</span><br><span class="line"></span><br><span class="line">w = h = <span class="number">300</span></span><br><span class="line">x = y = <span class="number">0</span></span><br><span class="line">img = Image.new(<span class="string">'RGB'</span>, (w, h), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line">draw = ImageDraw.Draw(img)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_color</span><span class="params">()</span>:</span></span><br><span class="line">    a = (x // <span class="number">100</span>) + (y // <span class="number">100</span>)</span><br><span class="line">    <span class="keyword">if</span> a == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">elif</span> a == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">    <span class="keyword">elif</span> a == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line">    <span class="keyword">elif</span> a == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">elif</span> a == <span class="number">4</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(w):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> range(h):</span><br><span class="line">        draw.point((x, y), fill=get_color())</span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<p><a href="https://imgchr.com/i/sY07DS" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sY07DS.png" alt="sY07DS.png"></a></p>
-<ul>
-<li>将图片中的黄色改为红色</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image, ImageDraw</span><br><span class="line"></span><br><span class="line">w = h = <span class="number">300</span></span><br><span class="line">x = y = <span class="number">0</span></span><br><span class="line">img = Image.new(<span class="string">'RGB'</span>, (w, h), (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>))</span><br><span class="line">draw = ImageDraw.Draw(img)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_color</span><span class="params">()</span>:</span></span><br><span class="line">    a = (x // <span class="number">100</span>) + (y // <span class="number">100</span>)</span><br><span class="line">    <span class="keyword">if</span> a == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">elif</span> a == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">    <span class="keyword">elif</span> a == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line">    <span class="keyword">elif</span> a == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">elif</span> a == <span class="number">4</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(w):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> range(h):</span><br><span class="line">        draw.point((x, y), fill=get_color())</span><br><span class="line">x = y = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(w):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> range(h):</span><br><span class="line">        oc = img.getpixel((x, y))</span><br><span class="line">        <span class="keyword">if</span> oc[<span class="number">0</span>] &gt; <span class="number">60</span> <span class="keyword">and</span> oc[<span class="number">1</span>] &gt; <span class="number">60</span>:</span><br><span class="line">            draw.point((x, y), fill=(oc[<span class="number">0</span>], <span class="number">0</span>, oc[<span class="number">2</span>]))</span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
-
-<p>结果：（原图为上一个例子中的九宫格）</p>
-<p><a href="https://imgchr.com/i/sYD9zt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/12/sYD9zt.png" alt="sYD9zt.png"></a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/">PIL</a></li></ul>
 	</div>
 
       

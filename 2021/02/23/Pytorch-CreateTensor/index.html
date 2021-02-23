@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Pytorch_CreateTensor | 庸者的笑柄</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="创建Tensor Import from numpy  使用torch.from_numpy()创建tensor数据 示例： 123456789import torchimport numpy as npb = np.array([2, 3.3])c = np.ones([2, 3])a = torch.from_numpy(b)d = torch.from_numpy(c)print(a)pri">
+<meta name="keywords" content="Pytorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pytorch_CreateTensor">
+<meta property="og:url" content="https://ylongyun.github.io/2021/02/23/Pytorch-CreateTensor/index.html">
+<meta property="og:site_name" content="庸者的笑柄">
+<meta property="og:description" content="创建Tensor Import from numpy  使用torch.from_numpy()创建tensor数据 示例： 123456789import torchimport numpy as npb = np.array([2, 3.3])c = np.ones([2, 3])a = torch.from_numpy(b)d = torch.from_numpy(c)print(a)pri">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-02-23T14:12:00.583Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pytorch_CreateTensor">
+<meta name="twitter:description" content="创建Tensor Import from numpy  使用torch.from_numpy()创建tensor数据 示例： 123456789import torchimport numpy as npb = np.array([2, 3.3])c = np.ones([2, 3])a = torch.from_numpy(b)d = torch.from_numpy(c)print(a)pri">
+  
+    <link rel="alternative" href="/atom.xml" title="庸者的笑柄" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">ylongyun</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/PIL/" style="font-size: 12.5px;">PIL</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Pytorch/" style="font-size: 12.5px;">Pytorch</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">ylongyun</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">ylongyun</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Pytorch-CreateTensor" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/02/23/Pytorch-CreateTensor/" class="article-date">
+  	<time datetime="2021-02-23T12:04:37.000Z" itemprop="datePublished">2021-02-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Pytorch_CreateTensor
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pytorch/">Pytorch</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="创建Tensor"><a href="#创建Tensor" class="headerlink" title="创建Tensor"></a>创建Tensor</h3><ul>
+<li>Import from numpy</li>
+</ul>
+<p>使用<code>torch.from_numpy()</code>创建<code>tensor</code>数据</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">b = np.array([<span class="number">2</span>, <span class="number">3.3</span>])</span><br><span class="line">c = np.ones([<span class="number">2</span>, <span class="number">3</span>])</span><br><span class="line">a = torch.from_numpy(b)</span><br><span class="line">d = torch.from_numpy(c)</span><br><span class="line">print(a)</span><br><span class="line">print(d)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tensor([2.0000, 3.3000], dtype=torch.float64)</span><br><span class="line">tensor([[1., 1., 1.],</span><br><span class="line">        [1., 1., 1.]], dtype=torch.float64)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Import from List</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = [<span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = torch.tensor(a)</span><br><span class="line">c = torch.tensor([[<span class="number">2.</span>, <span class="number">3.2</span>], [<span class="number">1.</span>, <span class="number">3.</span>]])</span><br><span class="line">print(b)</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tensor([2, 3])</span><br><span class="line">tensor([[2.0000, 3.2000],</span><br><span class="line">        [1.0000, 3.0000]])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建未初始化的tensor</li>
+</ul>
+<p>使用<code>torch.empty()</code>，参数为维度</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">print(torch.empty(<span class="number">8</span>,<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tensor([[7.1118e-04, 1.7444e+28],</span><br><span class="line">        [7.3909e+22, 4.5828e+30],</span><br><span class="line">        [3.2483e+33, 1.9690e-19],</span><br><span class="line">        [6.8589e+22, 1.3340e+31],</span><br><span class="line">        [1.1708e-19, 7.2128e+22],</span><br><span class="line">        [9.2216e+29, 7.5546e+31],</span><br><span class="line">        [1.6932e+22, 3.0728e+32],</span><br><span class="line">        [2.9514e+29, 2.8940e+12]])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建随机初始化的tensor</li>
+</ul>
+<p>使用<code>torch.rand()</code>,<code>torch.rand_like()</code>,<code>torch.randint()</code>，<code>torch.randn(3,3)</code></p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((<span class="number">3</span>,<span class="number">2</span>))</span><br><span class="line">print(a)</span><br><span class="line">print(torch.rand_like(a))</span><br><span class="line">print(torch.randint(<span class="number">3</span>,(<span class="number">3</span>,<span class="number">2</span>)))</span><br><span class="line">print(torch.randn(<span class="number">3</span>,<span class="number">3</span>)) <span class="comment"># 正态分布随机产生</span></span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">tensor([[0.8932, 0.4137],</span><br><span class="line">        [0.7366, 0.5403],</span><br><span class="line">        [0.3183, 0.7051]])</span><br><span class="line">tensor([[0.4852, 0.2656],</span><br><span class="line">        [0.1002, 0.1804],</span><br><span class="line">        [0.7408, 0.7914]])</span><br><span class="line">tensor([[2, 1],</span><br><span class="line">        [2, 1],</span><br><span class="line">        [1, 0]])</span><br><span class="line">tensor([[ 0.9407,  0.7319, -0.8401],</span><br><span class="line">        [ 1.0448,  0.9497, -2.2670],</span><br><span class="line">        [ 0.5650, -0.2958, -0.0625]])</span><br></pre></td></tr></table></figure>
+
+<h3 id="维度变换"><a href="#维度变换" class="headerlink" title="维度变换"></a>维度变换</h3><ol>
+<li>view / reshape</li>
+</ol>
+<blockquote>
+<p>变换前后数据的Size必须相同</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((<span class="number">3</span>,<span class="number">2</span>,<span class="number">20</span>))</span><br><span class="line">print(a.shape)</span><br><span class="line">print(a.view(<span class="number">3</span>,<span class="number">40</span>).shape)</span><br><span class="line">print(a.view(<span class="number">3</span>,<span class="number">20</span>,<span class="number">2</span>).shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([3, 2, 20])</span><br><span class="line">torch.Size([3, 40])</span><br><span class="line">torch.Size([3, 20, 2])</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>unsqueeze / squeeze</li>
+</ol>
+<blockquote>
+<p> 在指定位置插入或删去一个维度，参数必须符合实际</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((<span class="number">3</span>,<span class="number">2</span>,<span class="number">20</span>))</span><br><span class="line">print(a.shape)</span><br><span class="line">print(a.unsqueeze(<span class="number">0</span>).shape)</span><br><span class="line">print(a.unsqueeze(<span class="number">-1</span>).shape)</span><br><span class="line">print()</span><br><span class="line">t = torch.rand((<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">20</span>,<span class="number">1</span>))</span><br><span class="line">print(t.shape)</span><br><span class="line">print(t.squeeze(<span class="number">0</span>).shape)</span><br><span class="line">print(t.squeeze().shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([3, 2, 20])</span><br><span class="line">torch.Size([1, 3, 2, 20])</span><br><span class="line">torch.Size([3, 2, 20, 1])</span><br><span class="line"></span><br><span class="line">torch.Size([1, 3, 2, 20, 1])</span><br><span class="line">torch.Size([3, 2, 20, 1])</span><br><span class="line">torch.Size([3, 2, 20])</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Expand</li>
+</ol>
+<blockquote>
+<p>将指定维度进行扩张，所指定维度必须为一</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">20</span>))</span><br><span class="line">print(a.shape)</span><br><span class="line">print(a.expand(<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">20</span>).shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([1, 3, 2, 20])</span><br><span class="line">torch.Size([4, 3, 2, 20])</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>repeat</li>
+</ol>
+<blockquote>
+<p>对维度进行指定倍数的扩张</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">20</span>))</span><br><span class="line">print(a.shape)</span><br><span class="line">print(a.repeat(<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>).shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([1, 3, 2, 20])</span><br><span class="line">torch.Size([4, 9, 4, 40])</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>t</li>
+</ol>
+<blockquote>
+<p>适用于2D数据，将行列互换</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line"></span><br><span class="line">a = torch.rand((3,2))</span><br><span class="line">print(a.shape)</span><br><span class="line">print(a.t().shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([3, 2])</span><br><span class="line">torch.Size([2, 3])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="合并与分割"><a href="#合并与分割" class="headerlink" title="合并与分割"></a>合并与分割</h3></li>
+</ul>
+<ol>
+<li>cat</li>
+</ol>
+<blockquote>
+<p>指定维度进行合并，只有指定维度的大小可以不同</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">4</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">b = torch.rand(<span class="number">4</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">32</span>)</span><br><span class="line">print(torch.cat([a,b],dim=<span class="number">2</span>).shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([4, 3, 37, 32])</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>stack</li>
+</ol>
+<blockquote>
+<p>创建新的维度进行合并，合并前两个tensor的维度必须相同</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">4</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">b = torch.rand(<span class="number">4</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">print(torch.stack([a,b],dim=<span class="number">0</span>).shape)</span><br><span class="line">print(torch.stack([a,b],dim=<span class="number">1</span>).shape)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([2, 4, 3, 32, 32])</span><br><span class="line">torch.Size([4, 2, 3, 32, 32])</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>spilt</li>
+</ol>
+<blockquote>
+<p>根据长度进行拆分</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">2</span>,<span class="number">3</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">t = a.split(<span class="number">2</span>,dim=<span class="number">2</span>)</span><br><span class="line">print(t[<span class="number">0</span>].shape)</span><br><span class="line">print(len(t))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([2, 3, 2, 32])</span><br><span class="line">16</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>chunk</li>
+</ol>
+<blockquote>
+<p>根据数量进行拆分</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">3</span>,<span class="number">4</span>,<span class="number">32</span>,<span class="number">32</span>)</span><br><span class="line">t = a.chunk(<span class="number">4</span>,dim=<span class="number">2</span>)</span><br><span class="line">print(t[<span class="number">1</span>].shape)</span><br><span class="line">print(len(t))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([3, 4, 8, 32])</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/02/22/Pytorch数据类型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Pytorch数据类型</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="Pytorch-CreateTensor" data-title="Pytorch_CreateTensor" data-url="https://ylongyun.github.io/2021/02/23/Pytorch-CreateTensor/"  data-images="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" data-content="Pytorch_CreateTensor">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2021 ylongyun
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
