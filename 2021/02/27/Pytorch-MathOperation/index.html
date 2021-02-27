@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Pytorch_Math | 庸者的笑柄</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数值计算 基础运算  可以直接使用重载过的+、-、、/ 、*符号直接进行计算，或者使用add、sub、mul、div、pow进行计算。 示例： 123456789import torcha = torch.rand(3,4)b = torch.rand(3,4)print(a+b)print(torch.mul(a,b))print(torch.div(a,b))print(a-b)print(a">
+<meta name="keywords" content="Pytorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pytorch_Math">
+<meta property="og:url" content="https://ylongyun.github.io/2021/02/27/Pytorch-MathOperation/index.html">
+<meta property="og:site_name" content="庸者的笑柄">
+<meta property="og:description" content="数值计算 基础运算  可以直接使用重载过的+、-、、/ 、*符号直接进行计算，或者使用add、sub、mul、div、pow进行计算。 示例： 123456789import torcha = torch.rand(3,4)b = torch.rand(3,4)print(a+b)print(torch.mul(a,b))print(torch.div(a,b))print(a-b)print(a">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-02-27T15:00:36.393Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Pytorch_Math">
+<meta name="twitter:description" content="数值计算 基础运算  可以直接使用重载过的+、-、、/ 、*符号直接进行计算，或者使用add、sub、mul、div、pow进行计算。 示例： 123456789import torcha = torch.rand(3,4)b = torch.rand(3,4)print(a+b)print(torch.mul(a,b))print(torch.div(a,b))print(a-b)print(a">
+  
+    <link rel="alternative" href="/atom.xml" title="庸者的笑柄" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">ylongyun</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/PIL/" style="font-size: 12.5px;">PIL</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Pytorch/" style="font-size: 15px;">Pytorch</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">ylongyun</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">ylongyun</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Pytorch-MathOperation" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/02/27/Pytorch-MathOperation/" class="article-date">
+  	<time datetime="2021-02-27T09:37:19.000Z" itemprop="datePublished">2021-02-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Pytorch_Math
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pytorch/">Pytorch</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数值计算"><a href="#数值计算" class="headerlink" title="数值计算"></a>数值计算</h2><ul>
+<li><h3 id="基础运算"><a href="#基础运算" class="headerlink" title="基础运算"></a>基础运算</h3></li>
+</ul>
+<p>可以直接使用重载过的+、-、<em>、/ 、*</em>符号直接进行计算，或者使用<code>add</code>、<code>sub</code>、<code>mul</code>、<code>div</code>、<code>pow</code>进行计算。</p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">b = torch.rand(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">print(a+b)</span><br><span class="line">print(torch.mul(a,b))</span><br><span class="line">print(torch.div(a,b))</span><br><span class="line">print(a-b)</span><br><span class="line">print(a.pow(<span class="number">2</span>))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">tensor([[0.8360, 0.9611, 0.6880, 1.3160],</span><br><span class="line">        [1.6362, 1.2642, 1.3258, 0.4614],</span><br><span class="line">        [0.3999, 1.5097, 1.3235, 1.2334]])</span><br><span class="line">tensor([[0.1605, 0.0539, 0.0957, 0.3473],</span><br><span class="line">        [0.6513, 0.3637, 0.4146, 0.0498],</span><br><span class="line">        [0.0377, 0.5649, 0.3735, 0.2717]])</span><br><span class="line">tensor([[1.7966, 0.0663, 2.5562, 0.3843],</span><br><span class="line">        [0.7183, 0.5392, 0.6160, 1.6839],</span><br><span class="line">        [1.6351, 1.2045, 2.2446, 3.2963]])</span><br><span class="line">tensor([[ 0.2381, -0.8416,  0.3011, -0.5853],</span><br><span class="line">        [-0.2682, -0.3785, -0.3151,  0.1176],</span><br><span class="line">        [ 0.0964,  0.1401,  0.5077,  0.6592]])</span><br><span class="line">tensor([[0.2884, 0.0036, 0.2445, 0.1335],</span><br><span class="line">        [0.4678, 0.1961, 0.2554, 0.0838],</span><br><span class="line">        [0.0616, 0.6804, 0.8383, 0.8956]])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="矩阵相乘"><a href="#矩阵相乘" class="headerlink" title="矩阵相乘"></a>矩阵相乘</h3></li>
+</ul>
+<p>有两种表达方式：</p>
+<ol>
+<li><code>torch.mm</code>(只适用于二维数据)</li>
+<li><code>torch.matmul</code>或者符号<code>@</code></li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.rand(<span class="number">4</span>,<span class="number">784</span>)</span><br><span class="line">b = torch.rand(<span class="number">512</span>,<span class="number">784</span>)</span><br><span class="line">print((a@b.t()).shape)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([4, 512])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h3></li>
+</ul>
+<ol>
+<li><code>floor</code>:向下取整。</li>
+<li><code>ceil</code>:向上取整。</li>
+<li><code>trunc</code>:取整数部分。</li>
+<li><code>frac</code>:取小数部分。</li>
+<li><code>round</code>：四舍五入。</li>
+</ol>
+<h2 id="属性统计"><a href="#属性统计" class="headerlink" title="属性统计"></a>属性统计</h2><ul>
+<li><h3 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h3></li>
+</ul>
+<p><code>norm</code></p>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.full([<span class="number">8</span>],<span class="number">1.</span>)</span><br><span class="line">b = a.view(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line">c = a.view(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">print(a.norm(<span class="number">2</span>))</span><br><span class="line">print(b.norm(<span class="number">2</span>))</span><br><span class="line">print(c.norm(<span class="number">2</span>))</span><br><span class="line">print(b.norm(<span class="number">1</span>,dim=<span class="number">1</span>))</span><br><span class="line">print(c.norm(<span class="number">1</span>,dim=<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tensor(2.8284)</span><br><span class="line">tensor(2.8284)</span><br><span class="line">tensor(2.8284)</span><br><span class="line">tensor([4., 4.])</span><br><span class="line">tensor([[2., 2.],</span><br><span class="line">        [2., 2.]])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><h3 id="其他属性"><a href="#其他属性" class="headerlink" title="其他属性"></a>其他属性</h3></li>
+</ul>
+<ol>
+<li><p><code>min</code>:最小值。</p>
+</li>
+<li><p><code>max</code>:最大值。</p>
+</li>
+<li><p><code>mean</code>：平均值。</p>
+</li>
+<li><p><code>sum</code>:求和。</p>
+</li>
+<li><p><code>prod</code>：连乘。</p>
+</li>
+<li><p><code>argmax</code>:最大值的索引。</p>
+</li>
+<li><p><code>argmin</code>:最小值的索引。</p>
+</li>
+<li><p><code>topk</code>:最大的k个值。</p>
+</li>
+<li><p><code>kthvalue</code>:第k小的值。</p>
+</li>
+<li><p><code>compare</code>:</p>
+</li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.arange(<span class="number">16</span>).view(<span class="number">4</span>,<span class="number">4</span>).float()</span><br><span class="line">print(a.argmax(dim=<span class="number">1</span>,keepdim=<span class="literal">True</span>))</span><br><span class="line">print(a.topk(<span class="number">2</span>,dim=<span class="number">1</span>))</span><br><span class="line">print(a.kthvalue(<span class="number">3</span>,dim=<span class="number">1</span>))</span><br><span class="line">print(torch.eq(a,<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">tensor([[3],</span><br><span class="line">        [3],</span><br><span class="line">        [3],</span><br><span class="line">        [3]])</span><br><span class="line">torch.return_types.topk(</span><br><span class="line">values=tensor([[ 3.,  2.],</span><br><span class="line">        [ 7.,  6.],</span><br><span class="line">        [11., 10.],</span><br><span class="line">        [15., 14.]]),</span><br><span class="line">indices=tensor([[3, 2],</span><br><span class="line">        [3, 2],</span><br><span class="line">        [3, 2],</span><br><span class="line">        [3, 2]]))</span><br><span class="line">torch.return_types.kthvalue(</span><br><span class="line">values=tensor([ 2.,  6., 10., 14.]),</span><br><span class="line">indices=tensor([2, 2, 2, 2]))</span><br><span class="line">tensor([[False, False, False, False],</span><br><span class="line">        [False,  True, False, False],</span><br><span class="line">        [False, False, False, False],</span><br><span class="line">        [False, False, False, False]])</span><br></pre></td></tr></table></figure>
+
+<h2 id="高阶操作"><a href="#高阶操作" class="headerlink" title="高阶操作"></a>高阶操作</h2><ol>
+<li><code>where</code></li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">cond = torch.rand(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">print(cond)</span><br><span class="line">a = torch.full([<span class="number">4</span>],<span class="number">0.</span>).view(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">b = torch.full([<span class="number">4</span>],<span class="number">1.</span>).view(<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">print(torch.where(cond&gt;<span class="number">0.5</span>,a,b))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tensor([[0.5322, 0.4258],</span><br><span class="line">        [0.9245, 0.0092]])</span><br><span class="line">tensor([[0., 1.],</span><br><span class="line">        [0., 1.]])</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><code>gather</code></li>
+</ol>
+<p>示例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">cond = torch.randn(<span class="number">4</span>,<span class="number">10</span>)</span><br><span class="line">idx = cond.topk(<span class="number">3</span>,dim=<span class="number">1</span>)</span><br><span class="line">idx = idx[<span class="number">1</span>]</span><br><span class="line">lable = torch.arange(<span class="number">10</span>)+<span class="number">100</span></span><br><span class="line">print(torch.gather(lable.expand(<span class="number">4</span>,<span class="number">10</span>),dim=<span class="number">1</span>,index=idx.long()))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tensor([[105, 109, 104],</span><br><span class="line">        [103, 104, 101],</span><br><span class="line">        [104, 101, 102],</span><br><span class="line">        [108, 103, 100]])</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/02/23/Pytorch-CreateTensor/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Pytorch_CreateTensor</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="Pytorch-MathOperation" data-title="Pytorch_Math" data-url="https://ylongyun.github.io/2021/02/27/Pytorch-MathOperation/"  data-images="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" data-content="Pytorch_Math">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2021 ylongyun
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
