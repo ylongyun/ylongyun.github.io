@@ -107,7 +107,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/PIL/" style="font-size: 12.5px;">PIL</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Pytorch/" style="font-size: 15px;">Pytorch</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+						<a href="/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tags/PIL/" style="font-size: 12.5px;">PIL</a> <a href="/tags/Python/" style="font-size: 15px;">Python</a> <a href="/tags/Pytorch/" style="font-size: 17.5px;">Pytorch</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 15px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
 					</div>
 				</section>
 				
@@ -162,6 +162,62 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-接口的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/12/06/接口的使用/" class="article-date">
+  	<time datetime="2019-12-06T10:23:51.000Z" itemprop="datePublished">2019-12-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/06/接口的使用/">
+        接口的使用
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="接口的使用"><a href="#接口的使用" class="headerlink" title="接口的使用"></a>接口的使用</h1><h3 id="1-接口使用interface来定义。"><a href="#1-接口使用interface来定义。" class="headerlink" title="1.接口使用interface来定义。"></a>1.接口使用interface来定义。</h3><h3 id="2-Java中，接口和类是并列的两个结构。"><a href="#2-Java中，接口和类是并列的两个结构。" class="headerlink" title="2.Java中，接口和类是并列的两个结构。"></a>2.Java中，接口和类是并列的两个结构。</h3><h3 id="3-如何定义接口：定义接口中的成员。"><a href="#3-如何定义接口：定义接口中的成员。" class="headerlink" title="3.如何定义接口：定义接口中的成员。"></a>3.如何定义接口：定义接口中的成员。</h3><h4 id="3-1-JDK7及以前：只能定义全局常量和抽象方法。"><a href="#3-1-JDK7及以前：只能定义全局常量和抽象方法。" class="headerlink" title="3.1 JDK7及以前：只能定义全局常量和抽象方法。"></a>3.1 JDK7及以前：只能定义全局常量和抽象方法。</h4><pre><code>&gt;全局常量：public static final的.但是书写时，可以省略不写。  
+&gt;抽象方法：public abstract的</code></pre><h4 id="3-2-JDK8：除了定义全局常量和抽象方法之外，还可以定义静态方法、默认方法。"><a href="#3-2-JDK8：除了定义全局常量和抽象方法之外，还可以定义静态方法、默认方法。" class="headerlink" title="3.2 JDK8：除了定义全局常量和抽象方法之外，还可以定义静态方法、默认方法。"></a>3.2 JDK8：除了定义全局常量和抽象方法之外，还可以定义静态方法、默认方法。</h4><h3 id="4-接口中不能定义构造器的！意味着接口不可以实例化，只能被类实现"><a href="#4-接口中不能定义构造器的！意味着接口不可以实例化，只能被类实现" class="headerlink" title="4. 接口中不能定义构造器的！意味着接口不可以实例化，只能被类实现"></a>4. 接口中不能定义构造器的！意味着接口不可以实例化，只能被类实现</h3><h3 id="5-Java开发中，接口通过让类去实现-implements-的方式来使用"><a href="#5-Java开发中，接口通过让类去实现-implements-的方式来使用" class="headerlink" title="5. Java开发中，接口通过让类去实现(implements)的方式来使用."></a>5. Java开发中，接口通过让类去实现(implements)的方式来使用.</h3><pre><code>如果实现类覆盖了接口中的所有抽象方法，则此实现类就可以实例化。  
+如果实现类没有覆盖接口中所有的抽象方法，则此实现类仍为一个抽象类。</code></pre><h3 id="6-Java类可以实现多个接口-—-gt-弥补了Java单继承性的局限性"><a href="#6-Java类可以实现多个接口-—-gt-弥补了Java单继承性的局限性" class="headerlink" title="6. Java类可以实现多个接口   —&gt;弥补了Java单继承性的局限性"></a>6. Java类可以实现多个接口   —&gt;弥补了Java单继承性的局限性</h3><pre><code>格式：class AA extends BB implements CC,DD,EE  </code></pre><h3 id="7-接口与接口之间可以继承，而且可以多继承"><a href="#7-接口与接口之间可以继承，而且可以多继承" class="headerlink" title="7. 接口与接口之间可以继承，而且可以多继承"></a>7. 接口与接口之间可以继承，而且可以多继承</h3><h3 id="8-接口中定义的静态的方法只能通过接口去调用。"><a href="#8-接口中定义的静态的方法只能通过接口去调用。" class="headerlink" title="8.接口中定义的静态的方法只能通过接口去调用。"></a>8.接口中定义的静态的方法只能通过接口去调用。</h3><h3 id="9-接口的具体使用，体现多态性"><a href="#9-接口的具体使用，体现多态性" class="headerlink" title="9. 接口的具体使用，体现多态性."></a>9. 接口的具体使用，体现多态性.</h3>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-单例设计模式" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -938,208 +994,9 @@ The third line of code    </code></pre><figure class="highlight plain"><table><t
 
 
   
-    <article id="post-data-structure" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/26/data-structure/" class="article-date">
-  	<time datetime="2019-09-26T11:28:55.000Z" itemprop="datePublished">2019-09-26</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/26/data-structure/">
-        单链表
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据结构-单链表"><a href="#数据结构-单链表" class="headerlink" title="数据结构-单链表"></a>数据结构-单链表</h1><p>在数据结构的学习中，第一个学的就是单链表，虽然在第一个学期的c语言中已经接触到这个东西，但实际上对链表还是一片模糊。在之前的几天里，慢慢地又把链表给学习了一遍，将单链表的基础操作自己写了一遍。如下。  </p>
-<h2 id="1-定义结构体"><a href="#1-定义结构体" class="headerlink" title="1.定义结构体"></a>1.定义结构体</h2><p>在我理解中，链表就是由若干个结构体链接而成的，结构体内存放我们的数据，因此在使用链表之前要先根据你的需求定义结构体。   </p>
-<pre><code>typedef struct Node 
-{
-   int data;
-   struct Node* next;
-
-}LinkList;  </code></pre><h2 id="2-初始化链表（尾插法建立链表）"><a href="#2-初始化链表（尾插法建立链表）" class="headerlink" title="2.初始化链表（尾插法建立链表）"></a>2.初始化链表（尾插法建立链表）</h2><p>在链表中添加头节点会简化对链表的操作，头节点内不储存任何数据，只起到一个确定链表地址的作用。 </p>
-<pre><code>LinkList* creatList(int n)  
-{
-   LinkList* head;  
-   if (n == 0)//n为0的即生成一个空链表  
-   {  
-       head = (LinkList*)malloc(sizeof(LinkList));
-       head-&gt;next = NULL;//封闭节点
-       head-&gt;data = NULL;
-
-   }
-   else
-   {
-       int i;
-       LinkList* node, * last;
-       head = (LinkList*)malloc(sizeof(LinkList));
-       last = head;
-       for (i = 0;i &lt; n;i++)   
-       {
-           node = (LinkList*)malloc(sizeof(LinkList));//为新节点开辟空间
-           scanf(&quot;%d&quot;, &amp;node-&gt;data);
-           last-&gt;next = node;//将新节点连接到链表上
-           last = node;//使新节点成为最后一个节点
-           node-&gt;next = NULL;//封闭最后一个节点
-       }
-
-    }
-    return(head);
-}  </code></pre><h2 id="3-输出链表"><a href="#3-输出链表" class="headerlink" title="3.输出链表"></a>3.输出链表</h2><p>链表的输出需要注意节点的更替，且要完整的输出，不能出现遗漏。  </p>
-<pre><code>void print(LinkList* head)
-{
-    LinkList* node;
-    if (head-&gt;next == NULL)//判断是否为空链表
-        printf(&quot;there are nothing in the list.&quot;);
-    else
-   {
-    node = head-&gt;next;//从第一个结点开始输出
-    do {
-        printf(&quot;%d\n&quot;, node-&gt;data);//输出节点内容
-        node = node-&gt;next;//切换下一个节点
-       } while (node-&gt;next != NULL);//输出最后一个节点后终止循环
-   }  
-   printf(&quot;%d\n&quot;, node-&gt;data);  
-/*这里需要注意，当while循环结束时，最后一个节点地内容并没有输出，由while的结束循环标志可知此时node  
-指向最后一个节点，因此我们只需要将node-&gt;data输出就可以了。*/
-}  </code></pre><h2 id="4-查找操作"><a href="#4-查找操作" class="headerlink" title="4.查找操作"></a>4.查找操作</h2><h3 id="4-1按值查找"><a href="#4-1按值查找" class="headerlink" title="4.1按值查找"></a>4.1按值查找</h3><p>此操作用于确定链表中是否有某个元素。  </p>
-<pre><code>int find_data(LinkList* head, int data)
-{
-    LinkList* node;
-    node = head-&gt;next;
-    int k = 0;//k为作为判断结果的标志，k=1时表示已查找到，k=0表示未查找到。
-    while (node-&gt;next != NULL)
-    {
-
-        if (node-&gt;data == data)判断该节点内的值是否是我们要查找的
-        {
-            ++k;
-            break;//查找到该值后结束循环
-        }
-        else
-        {
-            node = node-&gt;next;
-        }
-    }
-   if(node-&gt;data == data)  
-        k=1;
-   if (k == 1)
-        return (i);
-   else  
-        return(-1);
-        printf(&quot;链表内没有该元素&quot;);
-}  </code></pre><h3 id="4-2按顺序查找"><a href="#4-2按顺序查找" class="headerlink" title="4.2按顺序查找"></a>4.2按顺序查找</h3><p>此操作用于确定链表中某一个元素的位置  </p>
-<pre><code>int find_order(LinkList* head, int num)  
-{
-    int i = 1;
-    LinkList* node = head-&gt;next;
-    while (node-&gt;data != num) //判断该节点数据是否为我们所查找的元素
-    {
-        i++;
-        node = node-&gt;next;//切换节点
-    }
-    return(i);//返回所查找的元素的位置顺序
-}</code></pre><h2 id="5-插入节点"><a href="#5-插入节点" class="headerlink" title="5.插入节点"></a>5.插入节点</h2><p>更改链表的内容，在给定的序号后插入。  </p>
-<pre><code>void add(LinkList* head, int num)
-{
-    LinkList* pre,* node;
-    int i=0;
-    node = (LinkList*)malloc(sizeof(LinkList));//为新节点开辟空间
-    pre = head;
-    scanf(&quot;%d&quot;, &amp;node-&gt;data);
-    for (;i &lt; num;i++) //确定插入位置前一个节点
-    {
-        pre = pre-&gt;next;
-    }
-    node-&gt;next = pre-&gt;next;//将插入位置之后的节点连接到新节点的后面
-    pre-&gt;next = node;//将新节点连接到插入位置前一个节点的后面
-}</code></pre><h2 id="6-删除节点"><a href="#6-删除节点" class="headerlink" title="6.删除节点"></a>6.删除节点</h2><p>删除特定序号的节点，并释放该节点所占用的空间。  </p>
-<pre><code>void delete(LinkList* head, int num)
-{
-    LinkList* pre, * cur, * node;
-    int i = 0;
-    pre = head;
-    for (;i &lt; num-1;i++)
-    {
-        pre = pre-&gt;next;//确定被删除节点的前一个结点的位置
-    }
-    node = pre-&gt;next;//找到被删除节点的位置
-    cur = node-&gt;next;//找到被删除节点的后一个节点的位置
-    pre-&gt;next = cur;//将被删除的节点从链表中移除
-    free(node);//释放被删除节点的内存
-
-}  </code></pre><h2 id="7-测量链表的长度"><a href="#7-测量链表的长度" class="headerlink" title="7.测量链表的长度"></a>7.测量链表的长度</h2><p>链表的长度不包括头节点，函数返回值为链表的长度。  </p>
-<pre><code>int size(LinkList* head)
-{
-    int i = 0;
-    LinkList* node;
-    node = head;
-    if (node-&gt;next == NULL)//判断是否为空链表
-    {
-        return i;//是的话就直接返回0
-    }
-    else//不是的话就一个一个的数节点
-    {
-        while (1)
-        {
-            if (node-&gt;next != NULL) //
-            {
-                ++i;
-                node = node-&gt;next;
-            }
-            else break;//没有节点就不数了
-        }
-        return (i);
-    }
-}  </code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>
