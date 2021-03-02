@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>梯度下降算法演示 | 庸者的笑柄</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="梯度下降算法梯度下降算法的目的绝大多数的机器学习模型都会有一个损失函数。比如常见的均方误差（Mean Squared Error)损失函数：  （1） 其中，  表示样本数据的实际目标值，  表示预测函数  根据样本数据  计算出的预测值。从几何意义上来说，它可以看成预测值和实际值的平均距离的平方。 损失函数用来衡量机器学习模型的精确度。一般来说，损失函数的值越小，模型的精确度就越高。如果要提高机">
+<meta name="keywords" content="Pytorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="梯度下降算法演示">
+<meta property="og:url" content="https://ylongyun.github.io/2021/03/02/梯度下降算法演示/index.html">
+<meta property="og:site_name" content="庸者的笑柄">
+<meta property="og:description" content="梯度下降算法梯度下降算法的目的绝大多数的机器学习模型都会有一个损失函数。比如常见的均方误差（Mean Squared Error)损失函数：  （1） 其中，  表示样本数据的实际目标值，  表示预测函数  根据样本数据  计算出的预测值。从几何意义上来说，它可以看成预测值和实际值的平均距离的平方。 损失函数用来衡量机器学习模型的精确度。一般来说，损失函数的值越小，模型的精确度就越高。如果要提高机">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=L%28w%2Cb%29+%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%7B%28y_%7Bi%7D+-+f%28wx_%7Bi%7D+%2B+b%29%29%5E%7B2%7D%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=y_%7Bi%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=f%28wx_%7Bi%7D+%2B+b%29">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=f">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=x_%7Bi%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=b">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=L">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cfrac%7BdL%7D%7Bdw%7D">
+<meta property="og:image" content="https://img.imgdb.cn/item/603e2fd3360785be544ac2a3.jpg">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w_%7Bi%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Calpha">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D+%3D+w_%7Bi%7D+-+%5Calpha%2A%5Cfrac%7BdL%7D%7Bdw_%7Bi%7D%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Calpha">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Calpha">
+<meta property="og:updated_time" content="2021-03-02T12:43:39.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="梯度下降算法演示">
+<meta name="twitter:description" content="梯度下降算法梯度下降算法的目的绝大多数的机器学习模型都会有一个损失函数。比如常见的均方误差（Mean Squared Error)损失函数：  （1） 其中，  表示样本数据的实际目标值，  表示预测函数  根据样本数据  计算出的预测值。从几何意义上来说，它可以看成预测值和实际值的平均距离的平方。 损失函数用来衡量机器学习模型的精确度。一般来说，损失函数的值越小，模型的精确度就越高。如果要提高机">
+<meta name="twitter:image" content="https://www.zhihu.com/equation?tex=L%28w%2Cb%29+%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%7B%28y_%7Bi%7D+-+f%28wx_%7Bi%7D+%2B+b%29%29%5E%7B2%7D%7D">
+  
+    <link rel="alternative" href="/atom.xml" title="庸者的笑柄" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">ylongyun</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Java/" style="font-size: 16px;">Java</a> <a href="/tags/PIL/" style="font-size: 12px;">PIL</a> <a href="/tags/Python/" style="font-size: 14px;">Python</a> <a href="/tags/Pytorch/" style="font-size: 18px;">Pytorch</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/open-cv/" style="font-size: 10px;">open_cv</a> <a href="/tags/opencv/" style="font-size: 20px;">opencv</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/数据结构/" style="font-size: 14px;">数据结构</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">ylongyun</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">ylongyun</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-梯度下降算法演示" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/03/02/梯度下降算法演示/" class="article-date">
+  	<time datetime="2021-03-02T12:07:57.000Z" itemprop="datePublished">2021-03-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      梯度下降算法演示
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pytorch/">Pytorch</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="梯度下降算法"><a href="#梯度下降算法" class="headerlink" title="梯度下降算法"></a>梯度下降算法</h1><h2 id="梯度下降算法的目的"><a href="#梯度下降算法的目的" class="headerlink" title="梯度下降算法的目的"></a>梯度下降算法的目的</h2><p>绝大多数的机器学习模型都会有一个损失函数。比如常见的均方误差（Mean Squared Error)损失函数：</p>
+<p><img src="https://www.zhihu.com/equation?tex=L%28w%2Cb%29+%3D%5Cfrac%7B1%7D%7BN%7D%5Csum_%7Bi%3D1%7D%5E%7BN%7D%7B%28y_%7Bi%7D+-+f%28wx_%7Bi%7D+%2B+b%29%29%5E%7B2%7D%7D" alt="[公式]"> （1）</p>
+<p>其中， <img src="https://www.zhihu.com/equation?tex=y_%7Bi%7D" alt="[公式]"> 表示样本数据的实际目标值， <img src="https://www.zhihu.com/equation?tex=f%28wx_%7Bi%7D+%2B+b%29" alt="[公式]"> 表示预测函数 <img src="https://www.zhihu.com/equation?tex=f" alt="[公式]"> 根据样本数据 <img src="https://www.zhihu.com/equation?tex=x_%7Bi%7D" alt="[公式]"> 计算出的预测值。从几何意义上来说，它可以看成预测值和实际值的平均距离的平方。</p>
+<p>损失函数用来衡量机器学习模型的精确度。一般来说，损失函数的值越小，模型的精确度就越高。如果要提高机器学习模型的精确度，就需要尽可能降低损失函数的值。而降低损失函数的值，我们一般采用梯度下降这个方法。所以，<strong>梯度下降的目的，就是为了最小化损失函数。</strong></p>
+<h2 id="梯度下降的原理"><a href="#梯度下降的原理" class="headerlink" title="梯度下降的原理"></a>梯度下降的原理</h2><p>寻找损失函数的最低点，就像我们在山谷里行走，希望找到山谷里最低的地方。那么如何寻找损失函数的最低点呢？在这里，我们使用了微积分里导数，通过求出函数导数的值，从而找到函数下降的方向或者是最低点（极值点）。</p>
+<p>损失函数里一般有两种参数，一种是控制输入信号量的权重(Weight, 简称 <img src="https://www.zhihu.com/equation?tex=w" alt="[公式]"> ），另一种是调整函数与真实值距离的偏差（Bias，简称 <img src="https://www.zhihu.com/equation?tex=b" alt="[公式]"> ）。我们所要做的工作，就是通过梯度下降方法，不断地调整权重 <img src="https://www.zhihu.com/equation?tex=w" alt="[公式]"> 和偏差b，使得损失函数的值变得越来越小。</p>
+<p>假设某个损失函数里，模型损失值 <img src="https://www.zhihu.com/equation?tex=L" alt="[公式]"> 与权重 <img src="https://www.zhihu.com/equation?tex=w" alt="[公式]"> 有下图这样的关系。实际模型里，可能会有多个权重 <img src="https://www.zhihu.com/equation?tex=w" alt="[公式]"> ，这里为了简单起见，举只有一个权重 <img src="https://www.zhihu.com/equation?tex=w" alt="[公式]"> 的例子。权重 <img src="https://www.zhihu.com/equation?tex=w" alt="[公式]"> 目前的位置是在A点。此时如果求出A点的梯度 <img src="https://www.zhihu.com/equation?tex=%5Cfrac%7BdL%7D%7Bdw%7D" alt="[公式]"> ，便可以知道如果我们向右移动，可以使损失函数的值变得更小。</p>
+<p><img src="https://img.imgdb.cn/item/603e2fd3360785be544ac2a3.jpg" alt></p>
+<p>通过计算梯度，我们就可以知道 <img src="https://www.zhihu.com/equation?tex=w" alt="[公式]"> 的移动方向，应该让 <img src="https://www.zhihu.com/equation?tex=w" alt="[公式]"> 向右走而不是向左走，也可以知道什么时候会到达最低点（梯度为0的地方）。</p>
+<p>上面的例子里只出现了一个权重 <img src="https://www.zhihu.com/equation?tex=w" alt="[公式]"> , 实际的项目里样本数据会有很多个。对于每一个样本数据，我们都可以求出一个权重的梯度。这个时候，我们需要把各个样本数据的权重梯度加起来，并求出它们的平均值，用这个平均值来作为样本整体的权重梯度。</p>
+<p>现在知道了 <img src="https://www.zhihu.com/equation?tex=w" alt="[公式]"> 需要前进的方向，接下来需要知道应该前进多少。这里我们用到<strong>学习率(Learning Rate)</strong>这个概念。通过学习率，可以计算前进的距离（步长）。</p>
+<p>我们用 <img src="https://www.zhihu.com/equation?tex=w_%7Bi%7D" alt="[公式]"> 表示权重的初始值， <img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D" alt="[公式]"> 表示更新后的权重值，用 <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="[公式]"> 表示学习率，则有：</p>
+<p><img src="https://www.zhihu.com/equation?tex=w_%7Bi%2B1%7D+%3D+w_%7Bi%7D+-+%5Calpha%2A%5Cfrac%7BdL%7D%7Bdw_%7Bi%7D%7D" alt="[公式]"> (2)</p>
+<p>在梯度下降中，我们会重复式子(2)多次，直至损失函数值收敛不变。</p>
+<p>如果学习率 <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="[公式]"> 设置得过大，有可能我们会错过损失函数的最小值；如果设置得过小，可能我们要迭代式子(2)非常多次才能找到最小值，会耗费较多的时间。因此，在实际应用中，我们需要为学习率 <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="[公式]"> 设置一个合适的值。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>给定一百个坐标点，求取一条直线，使得该直线能够尽可能地拟合坐标点。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># y = wx + b</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compute_error_for_line_given_points</span><span class="params">(b, w, points)</span>:</span></span><br><span class="line">    totalError = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(points)):</span><br><span class="line">        x = points[i, <span class="number">0</span>]</span><br><span class="line">        y = points[i, <span class="number">1</span>]</span><br><span class="line">        totalError += (y - (w * x + b)) ** <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> totalError / float(len(points))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">step_gradient</span><span class="params">(b_current, w_current, points, learningRate)</span>:</span></span><br><span class="line">    b_gradient = <span class="number">0</span></span><br><span class="line">    w_gradient = <span class="number">0</span></span><br><span class="line">    N = float(len(points))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(points)):</span><br><span class="line">        x = points[i, <span class="number">0</span>]</span><br><span class="line">        y = points[i, <span class="number">1</span>]</span><br><span class="line">        b_gradient += -(<span class="number">2</span> / N) * (y - ((w_current * x) + b_current))</span><br><span class="line">        w_gradient += -(<span class="number">2</span> / N) * x * (y - ((w_current * x) + b_current))</span><br><span class="line">    new_b = b_current - (learningRate * b_gradient)</span><br><span class="line">    new_m = w_current - (learningRate * w_gradient)</span><br><span class="line">    <span class="keyword">return</span> [new_b, new_m]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradient_descent_runner</span><span class="params">(points, starting_b, starting_m, learning_rate, num_iterations)</span>:</span></span><br><span class="line">    b = starting_b</span><br><span class="line">    w = starting_m</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_iterations):</span><br><span class="line">        b, w = step_gradient(b, w, np.array(points), learning_rate)</span><br><span class="line">    <span class="keyword">return</span> [b, w]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">()</span>:</span></span><br><span class="line">    points = np.genfromtxt(<span class="string">"data.csv"</span>, delimiter=<span class="string">","</span>)</span><br><span class="line">    learning_rate = <span class="number">0.0001</span></span><br><span class="line">    initial_b = <span class="number">0</span>  <span class="comment"># initial y-intercept guess</span></span><br><span class="line">    initial_m = <span class="number">0</span>  <span class="comment"># initial slope guess</span></span><br><span class="line">    num_iterations = <span class="number">1000</span></span><br><span class="line">    print(<span class="string">"Starting gradient descent at b = &#123;0&#125;, m = &#123;1&#125;, error = &#123;2&#125;"</span></span><br><span class="line">          .format(initial_b, initial_m,</span><br><span class="line">                  compute_error_for_line_given_points(initial_b, initial_m, points))</span><br><span class="line">          )</span><br><span class="line">    print(<span class="string">"Running..."</span>)</span><br><span class="line">    [b, m] = gradient_descent_runner(points, initial_b, initial_m, learning_rate, num_iterations)</span><br><span class="line">    print(<span class="string">"After &#123;0&#125; iterations b = &#123;1&#125;, m = &#123;2&#125;, error = &#123;3&#125;"</span>.</span><br><span class="line">          format(num_iterations, b, m,</span><br><span class="line">                 compute_error_for_line_given_points(b, m, points))</span><br><span class="line">          )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    run()</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Starting gradient descent at b = 0, m = 0, error = 5565.107834483211</span><br><span class="line">Running...</span><br><span class="line">After 1000 iterations b = 0.08893651993741346, m = 1.4777440851894448, error = 112.61481011613473</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/01/求取函数极小值/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">求取函数极小值</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="梯度下降算法演示" data-title="梯度下降算法演示" data-url="https://ylongyun.github.io/2021/03/02/梯度下降算法演示/"  data-images="https://up.enterdesk.com/edpic/73/ac/ef/73acef0bdd4587179a1f4c421a156f2f.jpg" data-content="梯度下降算法演示">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2021 ylongyun
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
