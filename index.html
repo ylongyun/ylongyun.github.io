@@ -163,6 +163,79 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-全连接层" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/03/04/全连接层/" class="article-date">
+  	<time datetime="2021-03-04T13:37:12.000Z" itemprop="datePublished">2021-03-04</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/04/全连接层/">
+        全连接层
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="全连接层"><a href="#全连接层" class="headerlink" title="全连接层"></a>全连接层</h2><p>全连接层在整个卷积神经网络中起到“分类器”的作用。全连接层起到将学到的“分布式特征表示”映射到样本标记空间的作用。在实际使用中，全连接层可由卷积操作实现：对前层是全连接的全连接层可以转化为卷积核为1x1的卷积；而前层是卷积层的全连接层可以转化为卷积核为hxw的全局卷积，h和w分别为前层卷积结果的高和宽。</p>
+<p><strong>总而言之，使用全连接层可以把分布式特征representation映射到样本标记空间，从而减弱特征位置对分类带来的影响。</strong></p>
+<ul>
+<li>一个简单的三层的全连接层</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.randn([<span class="number">1</span>, <span class="number">784</span>])</span><br><span class="line">print(x.shape)</span><br><span class="line"></span><br><span class="line">layer1 = torch.nn.Linear(<span class="number">784</span>, <span class="number">200</span>)</span><br><span class="line">layer2 = torch.nn.Linear(<span class="number">200</span>, <span class="number">200</span>)</span><br><span class="line">layer3 = torch.nn.Linear(<span class="number">200</span>, <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">x = layer1(x)</span><br><span class="line">print(x.shape)</span><br><span class="line">x = layer2(x)</span><br><span class="line">print(x.shape)</span><br><span class="line">x = layer3(x)</span><br><span class="line">print(x.shape)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">torch.Size([1, 784])</span><br><span class="line">torch.Size([1, 200])</span><br><span class="line">torch.Size([1, 200])</span><br><span class="line">torch.Size([1, 10])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在全连接层加入激活函数relu</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">import torch</span><br><span class="line">x = torch.randn([1, 784])</span><br><span class="line">print(x.shape)</span><br><span class="line"></span><br><span class="line">layer1 = torch.nn.Linear(784, 200)</span><br><span class="line">layer2 = torch.nn.Linear(200, 200)</span><br><span class="line">layer3 = torch.nn.Linear(200, 10)</span><br><span class="line"></span><br><span class="line">x1 = layer1(x)</span><br><span class="line">x1 = torch.nn.functional.relu(x1, inplace = True)</span><br><span class="line">print(x1.shape)</span><br><span class="line">x2 = layer2(x1)</span><br><span class="line">x2 = torch.nn.functional.relu(x2, inplace = True)</span><br><span class="line"></span><br><span class="line">print(x.shape)</span><br><span class="line">x3 = layer3(x2)</span><br><span class="line">x3 = torch.nn.functional.relu(x3, inplace = True)</span><br><span class="line"></span><br><span class="line">print(x3.shape)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pytorch/">Pytorch</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-梯度下降算法演示" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1140,95 +1213,6 @@
 
 <p>结果：</p>
 <p><img src="https://img.imgdb.cn/item/6006df2a3ffa7d37b3f6a3a5.jpg" alt></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-opencv-StudyDay04" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/01/18/opencv-StudyDay04/" class="article-date">
-  	<time datetime="2021-01-18T12:52:59.000Z" itemprop="datePublished">2021-01-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/18/opencv-StudyDay04/">
-        opencv-StudyDay04
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="直方图均衡化"><a href="#直方图均衡化" class="headerlink" title="直方图均衡化"></a>直方图均衡化</h4><ul>
-<li>只有灰度图片可以进行直方图均衡化</li>
-</ul>
-<p>用法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">equalHist_demo</span><span class="params">(img)</span>:</span></span><br><span class="line">    grey = cv.cvtColor(img,cv.COLOR_BGR2GRAY)</span><br><span class="line">    cv.imshow(<span class="string">"grey_input"</span>,grey)</span><br><span class="line">    ans = cv.equalizeHist(grey)</span><br><span class="line">    cv.imshow(<span class="string">"equalHist"</span>,ans)</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">'angle.jpg'</span>)</span><br><span class="line">equalHist_demo(img)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<p><img src="https://img.imgdb.cn/item/60058be23ffa7d37b33f2635.png" alt></p>
-<h4 id="自适应直方图均衡化"><a href="#自适应直方图均衡化" class="headerlink" title="自适应直方图均衡化"></a>自适应直方图均衡化</h4><ul>
-<li>可自定义均衡参数</li>
-</ul>
-<p>用法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clahe_demo</span><span class="params">(img)</span>:</span></span><br><span class="line">    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">    cv.imshow(<span class="string">"grey_input"</span>, grey)</span><br><span class="line">    clahe = cv.createCLAHE(<span class="number">5.0</span>,(<span class="number">8</span>,<span class="number">8</span>))</span><br><span class="line">    ans = clahe.apply(grey)</span><br><span class="line">    cv.imshow(<span class="string">"clahe"</span>, ans)</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">'angle.jpg'</span>)</span><br><span class="line">clahe_demo(img)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<p><img src="https://img.imgdb.cn/item/60058bed3ffa7d37b33f2e1e.png" alt></p>
-<h4 id="图像直方图比较"><a href="#图像直方图比较" class="headerlink" title="图像直方图比较"></a>图像直方图比较</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_rgb_hist</span><span class="params">(image)</span>:</span></span><br><span class="line">    h, w, c = image.shape</span><br><span class="line">    rgbHist = np.zeros([<span class="number">16</span>*<span class="number">16</span>*<span class="number">16</span>,<span class="number">1</span>], np.float32)</span><br><span class="line">    bsize = <span class="number">16</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> range(h):</span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> range(w):</span><br><span class="line">            index = np.int(image[row,col,<span class="number">0</span>]/bsize)*<span class="number">16</span>*<span class="number">16</span></span><br><span class="line">            + np.int(image[row,col,<span class="number">1</span>]/bsize) * <span class="number">16</span></span><br><span class="line">            + np.int(image[row,col,<span class="number">2</span>]/bsize)</span><br><span class="line">            rgbHist[np.int(index)] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> rgbHist</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hist_compare</span><span class="params">(img1,img2)</span>:</span></span><br><span class="line">    hist1 = create_rgb_hist(img1)</span><br><span class="line">    hist2 = create_rgb_hist(img2)</span><br><span class="line">    match1 = cv.compareHist(hist1, hist2, cv.HISTCMP_BHATTACHARYYA)</span><br><span class="line">    match2 = cv.compareHist(hist1, hist2, cv.HISTCMP_CORREL)</span><br><span class="line">    match3 = cv.compareHist(hist1, hist2, cv.HISTCMP_CHISQR)</span><br><span class="line">    print(<span class="string">"巴氏距离：%s，相关性：%s，卡方：%s"</span> %(match1,match2,match3))</span><br><span class="line"></span><br><span class="line">img1 = cv.imread(<span class="string">'angle.jpg'</span>)</span><br><span class="line">img2 = cv.imread(<span class="string">'violet.jpg'</span>)</span><br><span class="line">hist_compare(img1,img2)</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<p><img src="https://img.imgdb.cn/item/60059cee3ffa7d37b348db68.jpg" alt></p>
-<h4 id="直方图反向映射"><a href="#直方图反向映射" class="headerlink" title="直方图反向映射"></a>直方图反向映射</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">back_projection</span><span class="params">(sample,target)</span>:</span></span><br><span class="line">    roi_hsv = cv.cvtColor(sample, cv.COLOR_RGB2HSV)</span><br><span class="line">    target_hsv = cv.cvtColor(target, cv.COLOR_RGB2HSV)</span><br><span class="line">    roiHist = cv.calcHist([roi_hsv],[<span class="number">0</span>,<span class="number">1</span>],<span class="literal">None</span>,[<span class="number">180</span>,<span class="number">256</span>],[<span class="number">0</span>,<span class="number">180</span>,<span class="number">0</span>,<span class="number">256</span>])</span><br><span class="line">    cv.normalize(roiHist,roiHist,<span class="number">0</span>,<span class="number">255</span>,cv.NORM_MINMAX)</span><br><span class="line">    ans = cv.calcBackProject([target_hsv],[<span class="number">0</span>,<span class="number">1</span>],roiHist,[<span class="number">0</span>,<span class="number">180</span>,<span class="number">0</span>,<span class="number">256</span>],<span class="number">1</span>)</span><br><span class="line">    cv.namedWindow(<span class="string">"calcBackProject"</span>,cv.WINDOW_KEEPRATIO)</span><br><span class="line">    cv.imshow(<span class="string">"calcBackProject"</span>, ans)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">img1 = cv.imread(<span class="string">'violet.jpg'</span>)</span><br><span class="line">img2 = cv.imread(<span class="string">'img_5.png'</span>)</span><br><span class="line">cv.imshow(<span class="string">"target"</span>, img2)</span><br><span class="line">cv.namedWindow(<span class="string">"sample"</span>,cv.WINDOW_KEEPRATIO)</span><br><span class="line">cv.imshow(<span class="string">"sample"</span>, img1)</span><br><span class="line"></span><br><span class="line">back_projection(img2,img1)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>在样本中寻找目标图像的分布</li>
-</ul>
-<p><strong>sample</strong></p>
-<p><img src="https://img.imgdb.cn/item/60059c993ffa7d37b348ae6e.jpg" alt></p>
-<p><strong>target</strong>（这是眼中的光泽）</p>
-<p><img src="https://img.imgdb.cn/item/60059c3a3ffa7d37b34878c4.png" alt></p>
-<p><strong>结果</strong></p>
-<p><a href="https://img.imgdb.cn/item/60059c393ffa7d37b34877e8.png" target="_blank" rel="noopener"><img src="https://img.imgdb.cn/item/60059c393ffa7d37b34877e8" alt></a></p>
 
       
     </div>

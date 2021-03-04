@@ -163,6 +163,95 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-opencv-StudyDay04" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/01/18/opencv-StudyDay04/" class="article-date">
+  	<time datetime="2021-01-18T12:52:59.000Z" itemprop="datePublished">2021-01-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/18/opencv-StudyDay04/">
+        opencv-StudyDay04
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="直方图均衡化"><a href="#直方图均衡化" class="headerlink" title="直方图均衡化"></a>直方图均衡化</h4><ul>
+<li>只有灰度图片可以进行直方图均衡化</li>
+</ul>
+<p>用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">equalHist_demo</span><span class="params">(img)</span>:</span></span><br><span class="line">    grey = cv.cvtColor(img,cv.COLOR_BGR2GRAY)</span><br><span class="line">    cv.imshow(<span class="string">"grey_input"</span>,grey)</span><br><span class="line">    ans = cv.equalizeHist(grey)</span><br><span class="line">    cv.imshow(<span class="string">"equalHist"</span>,ans)</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">'angle.jpg'</span>)</span><br><span class="line">equalHist_demo(img)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://img.imgdb.cn/item/60058be23ffa7d37b33f2635.png" alt></p>
+<h4 id="自适应直方图均衡化"><a href="#自适应直方图均衡化" class="headerlink" title="自适应直方图均衡化"></a>自适应直方图均衡化</h4><ul>
+<li>可自定义均衡参数</li>
+</ul>
+<p>用法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clahe_demo</span><span class="params">(img)</span>:</span></span><br><span class="line">    grey = cv.cvtColor(img, cv.COLOR_BGR2GRAY)</span><br><span class="line">    cv.imshow(<span class="string">"grey_input"</span>, grey)</span><br><span class="line">    clahe = cv.createCLAHE(<span class="number">5.0</span>,(<span class="number">8</span>,<span class="number">8</span>))</span><br><span class="line">    ans = clahe.apply(grey)</span><br><span class="line">    cv.imshow(<span class="string">"clahe"</span>, ans)</span><br><span class="line"></span><br><span class="line">img = cv.imread(<span class="string">'angle.jpg'</span>)</span><br><span class="line">clahe_demo(img)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://img.imgdb.cn/item/60058bed3ffa7d37b33f2e1e.png" alt></p>
+<h4 id="图像直方图比较"><a href="#图像直方图比较" class="headerlink" title="图像直方图比较"></a>图像直方图比较</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_rgb_hist</span><span class="params">(image)</span>:</span></span><br><span class="line">    h, w, c = image.shape</span><br><span class="line">    rgbHist = np.zeros([<span class="number">16</span>*<span class="number">16</span>*<span class="number">16</span>,<span class="number">1</span>], np.float32)</span><br><span class="line">    bsize = <span class="number">16</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> range(h):</span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> range(w):</span><br><span class="line">            index = np.int(image[row,col,<span class="number">0</span>]/bsize)*<span class="number">16</span>*<span class="number">16</span></span><br><span class="line">            + np.int(image[row,col,<span class="number">1</span>]/bsize) * <span class="number">16</span></span><br><span class="line">            + np.int(image[row,col,<span class="number">2</span>]/bsize)</span><br><span class="line">            rgbHist[np.int(index)] += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> rgbHist</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hist_compare</span><span class="params">(img1,img2)</span>:</span></span><br><span class="line">    hist1 = create_rgb_hist(img1)</span><br><span class="line">    hist2 = create_rgb_hist(img2)</span><br><span class="line">    match1 = cv.compareHist(hist1, hist2, cv.HISTCMP_BHATTACHARYYA)</span><br><span class="line">    match2 = cv.compareHist(hist1, hist2, cv.HISTCMP_CORREL)</span><br><span class="line">    match3 = cv.compareHist(hist1, hist2, cv.HISTCMP_CHISQR)</span><br><span class="line">    print(<span class="string">"巴氏距离：%s，相关性：%s，卡方：%s"</span> %(match1,match2,match3))</span><br><span class="line"></span><br><span class="line">img1 = cv.imread(<span class="string">'angle.jpg'</span>)</span><br><span class="line">img2 = cv.imread(<span class="string">'violet.jpg'</span>)</span><br><span class="line">hist_compare(img1,img2)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="https://img.imgdb.cn/item/60059cee3ffa7d37b348db68.jpg" alt></p>
+<h4 id="直方图反向映射"><a href="#直方图反向映射" class="headerlink" title="直方图反向映射"></a>直方图反向映射</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2 <span class="keyword">as</span> cv</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">back_projection</span><span class="params">(sample,target)</span>:</span></span><br><span class="line">    roi_hsv = cv.cvtColor(sample, cv.COLOR_RGB2HSV)</span><br><span class="line">    target_hsv = cv.cvtColor(target, cv.COLOR_RGB2HSV)</span><br><span class="line">    roiHist = cv.calcHist([roi_hsv],[<span class="number">0</span>,<span class="number">1</span>],<span class="literal">None</span>,[<span class="number">180</span>,<span class="number">256</span>],[<span class="number">0</span>,<span class="number">180</span>,<span class="number">0</span>,<span class="number">256</span>])</span><br><span class="line">    cv.normalize(roiHist,roiHist,<span class="number">0</span>,<span class="number">255</span>,cv.NORM_MINMAX)</span><br><span class="line">    ans = cv.calcBackProject([target_hsv],[<span class="number">0</span>,<span class="number">1</span>],roiHist,[<span class="number">0</span>,<span class="number">180</span>,<span class="number">0</span>,<span class="number">256</span>],<span class="number">1</span>)</span><br><span class="line">    cv.namedWindow(<span class="string">"calcBackProject"</span>,cv.WINDOW_KEEPRATIO)</span><br><span class="line">    cv.imshow(<span class="string">"calcBackProject"</span>, ans)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">img1 = cv.imread(<span class="string">'violet.jpg'</span>)</span><br><span class="line">img2 = cv.imread(<span class="string">'img_5.png'</span>)</span><br><span class="line">cv.imshow(<span class="string">"target"</span>, img2)</span><br><span class="line">cv.namedWindow(<span class="string">"sample"</span>,cv.WINDOW_KEEPRATIO)</span><br><span class="line">cv.imshow(<span class="string">"sample"</span>, img1)</span><br><span class="line"></span><br><span class="line">back_projection(img2,img1)</span><br><span class="line">cv.waitKey(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在样本中寻找目标图像的分布</li>
+</ul>
+<p><strong>sample</strong></p>
+<p><img src="https://img.imgdb.cn/item/60059c993ffa7d37b348ae6e.jpg" alt></p>
+<p><strong>target</strong>（这是眼中的光泽）</p>
+<p><img src="https://img.imgdb.cn/item/60059c3a3ffa7d37b34878c4.png" alt></p>
+<p><strong>结果</strong></p>
+<p><a href="https://img.imgdb.cn/item/60059c393ffa7d37b34877e8.png" target="_blank" rel="noopener"><img src="https://img.imgdb.cn/item/60059c393ffa7d37b34877e8" alt></a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-opencv-StudyDay03" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -2025,150 +2114,6 @@ fwL/B6DA4QM1ekmSAAAAAElFTkSuQmCC"></p>
     <div class="article-info article-info-index">
       
       
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-杨龙云-Day02" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2021/01/04/杨龙云-Day02/" class="article-date">
-  	<time datetime="2021-01-04T15:54:19.000Z" itemprop="datePublished">2021-01-04</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/04/杨龙云-Day02/">
-        Python Study Day02
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Python-Study-Day02"><a href="#Python-Study-Day02" class="headerlink" title="Python Study Day02"></a>Python Study Day02</h1><h2 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h2><table>
-<thead>
-<tr>
-<th>格式化字符</th>
-<th align="center">含义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>%s</td>
-<td align="center">字符串</td>
-</tr>
-<tr>
-<td>%d</td>
-<td align="center">有符号十进制整数，%06d表示输出的整数显示位数，不足的地方用零补足</td>
-</tr>
-<tr>
-<td>%f</td>
-<td align="center">浮点数，%.02f表示小数点后只显示两位</td>
-</tr>
-<tr>
-<td>%%</td>
-<td align="center">输出%</td>
-</tr>
-</tbody></table>
-<ul>
-<li><p>语法格式  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"这是一个整数：%d"</span> % 变量)</span><br><span class="line">print(<span class="string">"这是整数%d，这是浮点数%f，这是字符串%s"</span> % (变量一，变量二，变量三))</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="查看关键字的方法"><a href="#查看关键字的方法" class="headerlink" title="查看关键字的方法"></a>查看关键字的方法</h2><p>可以通过以下命令查看关键字  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> keyword</span><br><span class="line">print(keyword.kwlist)</span><br></pre></td></tr></table></figure>
-
-<p>可以通过<code>help(keyword)</code>函数查看关键字信息  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">help(int)</span><br></pre></td></tr></table></figure>
-
-<h2 id="输出函数input"><a href="#输出函数input" class="headerlink" title="输出函数input"></a>输出函数input</h2><ul>
-<li>input可以从读取用户从键盘输入的信息  </li>
-<li>输入的数据完全按照字符串的方式储存  </li>
-</ul>
-<p>格式：  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">temp = input(<span class="string">"这是提示信息"</span>)</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意</strong>  </p>
-<ul>
-<li><code>input</code>函数可以将提示信息空着，但不可不写<code>(&quot;&quot;)</code>，否则程序会将<code>temp</code>定义为关键字<code>input</code></li>
-</ul>
-<h2 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h2><p>当我们需要输入一个特定类型的数据时，需要对输入的数据进行转换，否则数据无法按照我们需要的方式运算。  </p>
-<ul>
-<li>需要一个整数时  </li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">temp = int(input(<span class="string">"请输入一个整数："</span>)) <span class="comment"># 此时temp的类型为整型</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>需要浮点数时</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">temp = float(input(<span class="string">"请输入一个整数："</span>)) <span class="comment"># 此时temp的类型为整型</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="if-else判断语句基本语法"><a href="#if-else判断语句基本语法" class="headerlink" title="if else判断语句基本语法"></a>if else判断语句基本语法</h2><p>在<code>Python</code>中，if语句用来进行条件判断，格式如下：  </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> 条件:</span><br><span class="line">	条件成立时要做的事</span><br><span class="line">	……</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	条件不成立时要做的事</span><br><span class="line">    ……</span><br><span class="line">下一条语句</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p><strong>注意：</strong>  </p>
-<ul>
-<li>if语句后的代码缩进为一个<code>tab</code>或者四个空格  ，但是在具体使用中，只能选择一个不能混用。</li>
-<li>if   else结构中可以嵌套，在嵌套中要严格按照缩进要求，否则会发生语法错误。  </li>
-</ul>
-</blockquote>
-<h2 id="逻辑运算"><a href="#逻辑运算" class="headerlink" title="逻辑运算"></a>逻辑运算</h2><ul>
-<li><code>Python</code>含有的<strong>逻辑运算符</strong>包括：与and/或or/非not  </li>
-</ul>
-<ol>
-<li><strong>and</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">条件一 <span class="keyword">and</span> 条件二</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li><strong>or</strong>  </li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">条件一 <span class="keyword">or</span> 条件二</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li><strong>not</strong></li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">not</span> 条件</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
-	</div>
-
       
 
       
